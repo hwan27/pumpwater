@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
 });
 
 SectorScreen.propTypes = {
-  sector: PropTypes.object.isRequired
+  sector: PropTypes.array.isRequired
 };
 
 export default SectorScreen;

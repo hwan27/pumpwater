@@ -16,7 +16,7 @@ const { width, height } = Dimensions.get("window");
 
 const LogInScreen = props => (
   <View style={styles.container}>
-    <StatusBar barStyle={"light-content"} />
+    <StatusBar barStyle={"dark-content"} />
     {/* <View style={styles.header}>
       <Text style={styles.logo}>WATER PUMP</Text>
     </View> */}
@@ -36,8 +36,8 @@ const LogInScreen = props => (
         autoCorrect={false}
         value={props.username}
         onChangeText={props.changeUsername}
-        selectionColor='#008de6'
-        underlineColorAndroid='#008de6'
+      
+        
       />
       <TextInput
         placeholder="password"
@@ -94,12 +94,10 @@ const styles = StyleSheet.create({
     height: 50,
     backgroundColor:'rgba(0,0,0,0)',
     borderColor:'rgba(0,0,0,0)',
-    borderWidth:0,
+    borderWidth:StyleSheet.hairlineWidth,
     borderColor: "#008DE6",
-    
-    borderWidth: StyleSheet.hairlineWidth,
     width: width - 80,
-    borderBottomWidth:2,
+    // borderBottomWidth:2,
     marginBottom: width*0.1,
     paddingHorizontal: 15,
     backgroundColor: "#FAFAFA",
