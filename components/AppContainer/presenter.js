@@ -11,12 +11,8 @@ class AppContainer extends Component {
     const { isLoggedIn, profile } = this.props;
     return (
       <View style={styles.container}>
-        <StatusBar hidden={true} />
-        {isLoggedIn && profile ? (
-          <Text>Oh God Please</Text>
-        ) : (
-          <LoggedOutNavigation />
-        )}
+        <StatusBar hidden={false} />
+        {isLoggedIn ? <Text>Oh GOD</Text> : <LoggedOutNavigation />}
       </View>
     );
   }

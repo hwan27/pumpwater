@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/es/integration/react";
+import { PersistGate } from "redux-persist/integration/react";
 import configureStore from "./redux/configureStore";
-import AppContainer from "./components/AppConatiner/presenter";
+import AppContainer from "./components/AppContainer";
 
 const { persistor, store } = configureStore();
 

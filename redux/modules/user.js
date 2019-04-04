@@ -1,6 +1,6 @@
 // Imports
 
-import { API_URL, FB_APP_ID } from "../../constants";
+import { API_URL } from "../../constants";
 import { AsyncStorage } from "react-native";
 
 // Actions

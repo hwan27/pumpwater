@@ -9,5 +9,4 @@ const mapStateToProps = (state, ownProps) => {
     profile: user.profile
   };
 };
-
 export default connect(mapStateToProps)(AppContainer);
