@@ -8,6 +8,13 @@ class Container extends Component {
     feed: PropsTypes.object,
     getFeed: PropsTypes.func.isRequired
   };
+  static navigationOptions = {
+    title: "상수도 가압장 관측 제어 설비",
+    headerStyle: {
+      backgroundColor: "#008de6"
+    },
+    headerTitleStyle: { color: "white", marginLeft: 30 }
+  };
   state = {
     isFetching: false
   };

@@ -1,24 +1,25 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   View,
   Text,
-  TouchableOpacity,
-  Image,
+  ScrollView,
+  RefreshControl,
   Dimensions,
-  StyleSheet
+  StyleSheet,
+  TouchableOpacity,
+  Alert
 } from "react-native";
-import PropTypes from "prop-types";
-import FadeIn from "react-native-fade-in-image";
 import { withNavigation } from "react-navigation";
 
 const { width, height } = Dimensions.get("window");
 
-const Town = props => (
+const Sector = props => (
   <View style={styles.town}>
     <TouchableOpacity
       onPressOut={() =>
-        props.navigation.navigate("Sectors", {
-          sector: props.sector_set
+        props.navigation.navigate("Pumps", {
+          pump: props.pump_set
         })
       }
     >
@@ -50,6 +51,6 @@ const styles = StyleSheet.create({
   }
 });
 
-Town.propTypes = {};
+Sector.propTypes = {};
 
-export default withNavigation(Town);
+export default withNavigation(Sector);

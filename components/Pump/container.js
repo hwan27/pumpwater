@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Alert } from "react-native";
 import PropTypes from "prop-types";
-import Town from "./presenter";
+import Pump from "./presenter";
 
 class Container extends Component {
   render() {
-    return <Town {...this.props} />;
+    return <Pump {...this.props} />;
   }
 }
 

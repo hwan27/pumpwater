@@ -5,10 +5,7 @@ import sharedRoutes, { sharedOptions } from "./sharedRoutes";
 const HomeRoute = createStackNavigator(
   {
     Home: {
-      screen: FeedScreen,
-      navigationOptions: {
-        title: "WATERPUMP"
-      }
+      screen: FeedScreen
     },
     ...sharedRoutes
   },
