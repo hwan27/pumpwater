@@ -1,26 +1,27 @@
 import { connect } from "react-redux";
-import AppContainer from "./presenter";
-import { actionCreators as userActions } from "../../redux/modules/user";
+import Container from "./container";
 import { actionCreators as townActions } from "../../redux/modules/town";
 
 const mapStateToProps = (state, ownProps) => {
-  const { user } = state;
+  const {
+    town: { feed }
+  } = state;
   return {
-    isLoggedIn: user.isLoggedIn,
-    profile: user.profile
+    feed
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
+    getFeed: () => {
+      dispatch(townActions.getFeed());
+    },
     initApp: () => {
       dispatch(townActions.getFeed());
-      //dispatch(userActions.getNotifications());
-      //getSetting
     }
   };
 };
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AppContainer);
+)(Container);

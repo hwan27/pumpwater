@@ -9,6 +9,7 @@
   "dependencies": {
     "@types/react-redux": "^7.0.6",
     "@types/redux-persist": "^4.3.1",
+    "native-base": "^2.12.1",
     "prop-types": "^15.7.2",
     "react": "16.8.3",
     "react-native": "0.59.3",
