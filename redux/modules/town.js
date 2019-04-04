@@ -3,9 +3,13 @@ import { API_URL } from "../../constants";
 import { actionCreators as userActions } from "./user";
 //actions
 const SET_FEED = "SET_FEED";
+const SET_SECTOR = "SET_SECTOR";
 //action creators
 function setFeed(feed) {
   return { type: SET_FEED, feed };
+}
+function setSector(sector) {
+  return { type: SET_SECTOR, sector };
 }
 //api action
 function getFeed() {
@@ -29,6 +33,27 @@ function getFeed() {
   };
 }
 
+function getSector(townId) {
+  return (dispatch, getState) => {
+    const {
+      user: { token }
+    } = getState();
+    return fetch(`${API_URL}/pumps/towns/${townId}/sectors`, {
+      header: {
+        Authorization: `JWT ${token}`
+      }
+    })
+      .then(response => {
+        if (response.status === 401) {
+          dispatch(userActions.logOut());
+        } else {
+          return response.json();
+        }
+      })
+      .then(json => dispatch(setSector(json)));
+  };
+}
+
 //initial state
 
 const initialState = {};
@@ -39,6 +64,8 @@ function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_FEED:
       return applySetFeed(state, action);
+    case SET_SECTOR:
+      return applySetSector(state, action);
     default:
       return state;
   }
@@ -52,9 +79,14 @@ function applySetFeed(state, action) {
     feed
   };
 }
+function applySetSector(state, action) {
+  const { sector } = action;
+  return { ...state, sector };
+}
 //exports
 const actionCreators = {
-  getFeed
+  getFeed,
+  getSector
 };
 
 export { actionCreators };
