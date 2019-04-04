@@ -5,7 +5,7 @@ import PropsTypes from "prop-types";
 
 class Container extends Component {
   static propsTypes = {
-    feed: PropsTypes.array,
+    feed: PropsTypes.object,
     getFeed: PropsTypes.func.isRequired
   };
   state = {
