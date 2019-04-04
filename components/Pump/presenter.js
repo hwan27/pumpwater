@@ -15,7 +15,7 @@ const { width, height } = Dimensions.get("window");
 
 const Pump = props => (
   <View style={styles.town}>
-    <TouchableOpacity>
+    <TouchableOpacity onPressOut={() => Alert.alert(JSON.stringify(props))}>
       <View style={styles.header}>
         <Text style={styles.title}>{props.title}</Text>
       </View>
