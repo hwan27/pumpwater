@@ -17,17 +17,27 @@ const { width, height } = Dimensions.get("window");
 const LogInScreen = props => (
   <View style={styles.container}>
     <StatusBar barStyle={"light-content"} />
-    <View style={styles.header}>
+    {/* <View style={styles.header}>
       <Text style={styles.logo}>WATER PUMP</Text>
-    </View>
+    </View> */}
     <View style={styles.content}>
+
+    <View style={styles.character}>
+      <Image source={require('../../assets/images/character.gif')}
+        style={{resizeMode:'contain',width:width*0.25,
+        }}
+      />
+      </View>
+
       <TextInput
-        placeholder="username"
+        placeholder="user name"
         style={styles.textInput}
         autoCapitalize={"none"}
         autoCorrect={false}
         value={props.username}
         onChangeText={props.changeUsername}
+        selectionColor='#008de6'
+        underlineColorAndroid='#008de6'
       />
       <TextInput
         placeholder="password"
@@ -39,13 +49,14 @@ const LogInScreen = props => (
         onChangeText={props.changePassword}
         returnKeyType={"send"}
         onSubmitEditing={props.submit}
+        
       />
       <TouchableOpacity style={styles.touchable} onPressOut={props.submit}>
         <View style={styles.button}>
           {props.isSubmitting ? (
             <ActivityIndicator size="small" color="white" />
           ) : (
-            <Text style={styles.btnText}>Log In</Text>
+            <Text style={styles.btnText}>LOGIN</Text>
           )}
         </View>
       </TouchableOpacity>
@@ -81,18 +92,23 @@ const styles = StyleSheet.create({
   },
   textInput: {
     height: 50,
-    borderColor: "#bbb",
+    backgroundColor:'rgba(0,0,0,0)',
+    borderColor:'rgba(0,0,0,0)',
+    borderWidth:0,
+    borderColor: "#008DE6",
+    
     borderWidth: StyleSheet.hairlineWidth,
     width: width - 80,
-    borderRadius: 5,
-    marginBottom: 15,
+    borderBottomWidth:2,
+    marginBottom: width*0.1,
     paddingHorizontal: 15,
     backgroundColor: "#FAFAFA",
-    fontSize: 15
+    fontSize: 10,
+    color:'#898989'
   },
   touchable: {
     borderRadius: 3,
-    backgroundColor: "#4E65B4",
+    backgroundColor: "#008de6",
     width: width - 80,
     marginTop: 20
   },
@@ -106,6 +122,15 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     textAlign: "center",
     fontSize: 15
+  },
+  character: {
+    justifyContent:'center',
+    alignItems:'center',
+    backgroundColor:'#008de6',
+    width:width*0.4,
+    height:width*0.4,
+    borderRadius:width*0.3,
+    marginBottom:width*0.2,
   }
 });
 export default LogInScreen;
