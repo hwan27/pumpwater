@@ -1,11 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import configureStore from "./redux/configureStore";
 import AppContainer from "./components/AppContainer";
 
 const { persistor, store } = configureStore();
+const { width, height } = Dimensions.get("window");
 
 class App extends React.Component {
   state = {
@@ -15,8 +16,12 @@ class App extends React.Component {
     const { isLoading } = this.state;
     if (!isLoading) {
       return (
-        <View style={styles.loading}>
-          <Image source={require("./assets/images/sample.png")} />
+        <View style={styles.container}>
+       
+          <Image source={require("./assets/images/loadingLogo.png")} 
+            style={{resizeMode:'contain', width:width*0.3}}
+          />
+    
         </View>
       );
     }
