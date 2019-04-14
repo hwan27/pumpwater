@@ -10,12 +10,19 @@ import {
   TouchableOpacity,
   Alert
 } from "react-native";
+import { withNavigation } from "react-navigation";
 
 const { width, height } = Dimensions.get("window");
 
 const Pump = props => (
   <View style={styles.town}>
-    <TouchableOpacity onPressOut={() => Alert.alert(JSON.stringify(props))}>
+    <TouchableOpacity
+      onPressOut={() =>
+        props.navigation.navigate("PumpDetail", {
+          pumpDetail: props
+        })
+      }
+    >
       <View style={styles.header}>
         <Text style={styles.title}>{props.title}</Text>
       </View>
@@ -46,4 +53,4 @@ const styles = StyleSheet.create({
 
 Pump.propTypes = {};
 
-export default Pump;
+export default withNavigation(Pump);

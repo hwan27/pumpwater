@@ -13,6 +13,7 @@ class Container extends Component {
     },
     headerTitleStyle: { color: "white", marginLeft: 30 }
   };
+
   render() {
     const {
       navigation: {

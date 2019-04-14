@@ -1,6 +1,7 @@
 import React from "react";
 import SectorScreen from "../screens/SectorScreen";
 import PumpScreen from "../screens/PumpScreen";
+import PumpDetailScreen from "../screens/PumpDetailScreen";
 import NavButton from "../components/NavButton";
 
 const sharedRoutes = {
@@ -9,6 +10,9 @@ const sharedRoutes = {
   },
   Pumps: {
     screen: PumpScreen
+  },
+  PumpDetail: {
+    screen: PumpDetailScreen
   }
 };
 

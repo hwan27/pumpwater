@@ -55,7 +55,8 @@ function login(username, password) {
         } else {
           return false;
         }
-      });
+      })
+      .then(error => console.log(error));
   };
 }
 
@@ -76,7 +77,8 @@ function getNotifications() {
           return response.json();
         }
       })
-      .then(json => dispatch(setNotifications(json)));
+      .then(json => dispatch(setNotifications(json)))
+      .then(error => console.log(error));
   };
 }
 
