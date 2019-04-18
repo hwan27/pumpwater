@@ -1,7 +1,7 @@
 // Imports
 
 import { API_URL } from "../../constants";
-import { AsyncStorage } from "react-native";
+import { AsyncStorage, Alert } from "react-native";
 
 // Actions
 
@@ -9,6 +9,7 @@ const LOG_IN = "LOG_IN";
 const LOG_OUT = "LOG_OUT";
 const SET_USER = "SET_USER";
 const SET_NOTIFICATIONS = "SET_NOTIFICATIONS";
+const ALERT = "ALERT";
 
 // Action Creators
 
@@ -26,7 +27,7 @@ function setUser(user) {
   };
 }
 
-function logOut() {
+function logout() {
   return { type: LOG_OUT };
 }
 
@@ -55,32 +56,31 @@ function login(username, password) {
         } else {
           return false;
         }
-      })
-      .then(error => console.log(error));
+      });
   };
 }
 
-function getNotifications() {
-  return (dispatch, getState) => {
-    const {
-      user: { token }
-    } = getState();
-    fetch(`${API_URL}/notifications/`, {
-      headers: {
-        Authorization: `JWT ${token}`
-      }
-    })
-      .then(response => {
-        if (response.status === 401) {
-          dispatch(logOut());
-        } else {
-          return response.json();
-        }
-      })
-      .then(json => dispatch(setNotifications(json)))
-      .then(error => console.log(error));
-  };
-}
+// function getNotifications() {
+//   return (dispatch, getState) => {
+//     const {
+//       user: { token }
+//     } = getState();
+//     fetch(`${API_URL}/notifications/`, {
+//       headers: {
+//         Authorization: `JWT ${token}`
+//       }
+//     })
+//       .then(response => {
+//         if (response.status === 401) {
+//           dispatch(logout());
+//         } else {
+//           return response.json();
+//         }
+//       })
+//       .then(json => dispatch(setNotifications(json)))
+//       .then(error => console.log(error));
+//   };
+// }
 
 // Initial State
 
@@ -100,7 +100,8 @@ function reducer(state = initialState, action) {
       return applySetUser(state, action);
     case SET_NOTIFICATIONS:
       return applySetNotifications(state, action);
-
+    case ALERT:
+      return applyAlert(state, action);
     default:
       return state;
   }
@@ -117,8 +118,11 @@ function applyLogIn(state, action) {
   };
 }
 
-function applyLogOut(state, action) {
-  AsyncStorage.clear();
+async function applyLogOut(state, action) {
+  //AsyncStorage.removeItem("persist:root");
+  // const root = await AsyncStorage.getItem("persist:root");
+  // Alert.alert(root);
+
   return {
     ...state,
     isLoggedIn: false,
@@ -134,20 +138,32 @@ function applySetUser(state, action) {
   };
 }
 
-function applySetNotifications(state, action) {
-  const { notifications } = action;
+async function applyAlert(state, action) {
+  AsyncStorage.clear();
+  const root = await AsyncStorage.getItem("persist:root");
+  Alert.alert("ohgodplease", root);
+
   return {
     ...state,
-    notifications
+    isLoggedIn: false,
+    token: ""
   };
 }
+// function applySetNotifications(state, action) {
+//   const { notifications } = action;
+//   return {
+//     ...state,
+//     notifications
+//   };
+// }
 
 // Exports
 
 const actionCreators = {
   login,
-  logOut,
-  getNotifications
+  logout,
+  alert
+  //getNotifications
 };
 
 export { actionCreators };

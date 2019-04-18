@@ -36,8 +36,6 @@ const styles = StyleSheet.create({
   }
 });
 
-PumpDetailScreen.propTypes = {
-  pump: PropTypes.array.isRequired
-};
+PumpDetailScreen.propTypes = {};
 
 export default PumpDetailScreen;

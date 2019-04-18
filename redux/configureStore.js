@@ -1,4 +1,4 @@
-import { applyMiddleware, createStore } from "redux";
+import { applyMiddleware, createStore, combineReducers } from "redux";
 import { persistStore, persistCombineReducers } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
@@ -12,7 +12,7 @@ const persistConfig = {
   storage
 };
 
-const reducer = persistCombineReducers(persistConfig, {
+const reducer = combineReducers({
   user,
   town
 });

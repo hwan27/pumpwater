@@ -4,9 +4,10 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import configureStore from "./redux/configureStore";
 import AppContainer from "./components/AppContainer";
-
 const { persistor, store } = configureStore();
 const { width, height } = Dimensions.get("window");
+
+store.dispatch({ type: "LOG_OUT" });
 
 class App extends React.Component {
   state = {
@@ -17,19 +18,18 @@ class App extends React.Component {
     if (!isLoading) {
       return (
         <View style={styles.container}>
-       
-          <Image source={require("./assets/images/loadingLogo.png")} 
-            style={{resizeMode:'contain', width:width*0.3}}
+          <Image
+            source={require("./assets/images/loadingLogo.png")}
+            style={{ resizeMode: "contain", width: width * 0.3 }}
           />
-    
         </View>
       );
     }
     return (
       <Provider store={store}>
-        <PersistGate persistor={persistor}>
-          <AppContainer />
-        </PersistGate>
+        {/* <PersistGate persistor={persistor}> */}
+        <AppContainer />
+        {/* </PersistGate> */}
       </Provider>
     );
   }

@@ -7,7 +7,7 @@ import Sector from "../../components/Sector";
 
 class Container extends Component {
   static navigationOptions = {
-    title: "PUMPDETAIL",
+    title: "PUMP",
     headerStyle: {
       backgroundColor: "#008de6"
     },

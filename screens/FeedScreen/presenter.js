@@ -5,7 +5,8 @@ import {
   Text,
   ScrollView,
   RefreshControl,
-  StyleSheet
+  StyleSheet,
+  TouchableOpacity
 } from "react-native";
 import Town from "../../components/Town";
 
@@ -45,8 +46,7 @@ const styles = StyleSheet.create({
 
 FeedScreen.propTypes = {
   isFetching: PropTypes.bool.isRequired,
-  refresh: PropTypes.func.isRequired,
-  feed: PropTypes.object.isRequired
+  refresh: PropTypes.func.isRequired
 };
 
 export default FeedScreen;
