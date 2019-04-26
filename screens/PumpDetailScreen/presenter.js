@@ -5,7 +5,9 @@ import {
   Text,
   ScrollView,
   RefreshControl,
-  StyleSheet
+  TouchableOpacity,
+  StyleSheet,
+  Alert
 } from "react-native";
 import PumpDetail from "../../components/PumpDetail";
 
@@ -25,6 +27,9 @@ const PumpDetailScreen = props => (
       <PumpDetail {...props.pumpDetail} />
       {/* )} */}
     </View>
+    <TouchableOpacity onPress={() => Alert.alert(props.data)}>
+      <Text>getmodem</Text>
+    </TouchableOpacity>
   </ScrollView>
 );
 

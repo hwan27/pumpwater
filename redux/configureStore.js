@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
 import user from "./modules/user";
 import town from "./modules/town";
+import modem from "./modules/modem";
 
 const middlewares = [thunk];
 
@@ -14,7 +15,8 @@ const persistConfig = {
 
 const reducer = combineReducers({
   user,
-  town
+  town,
+  modem
 });
 
 const configureStore = () => {

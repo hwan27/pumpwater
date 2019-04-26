@@ -18,6 +18,7 @@ class Container extends Component {
   //   }
 
   render() {
+    const { data } = this.props;
     const {
       navigation: {
         state: {
@@ -25,7 +26,18 @@ class Container extends Component {
         }
       }
     } = this.props;
-    return <PumpDetailScreen pumpDetail={pumpDetail} />;
+    return (
+      <PumpDetailScreen
+        pumpDetail={pumpDetail}
+        getModem={this._getModem}
+        data={data}
+      />
+    );
   }
+
+  _getModem = () => {
+    const { getModem } = this.props;
+    getModem();
+  };
 }
 export default Container;
