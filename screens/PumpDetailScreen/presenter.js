@@ -9,14 +9,7 @@ import {
   StyleSheet,
   Alert
 } from "react-native";
-import Grid from "react-native-grid-component";
 import PumpDetail from "../../components/PumpDetail";
-
-_renderItem = i => (
-  <View style={[{ backgroundColor: blue }, styles.item]} key={i} />
-);
-
-_renderPlaceholder = i => <View style={styles.item} key={i} />;
 
 const PumpDetailScreen = props => (
   <ScrollView
@@ -28,19 +21,14 @@ const PumpDetailScreen = props => (
       />
     }
   >
-    <Grid
-      styles={styles.container}
-      itemPerRow={3}
-      renderItem={this._renderItem}
-    >
-      {/* {props.pump &&
+    {/* {props.pump &&
         props.pump.map(pump =>  */}
-      <PumpDetail {...props.pumpDetail} />
-      {/* )} */}
-    </Grid>
-    <TouchableOpacity onPress={() => Alert.alert(props.data)}>
+    <PumpDetail {...props.pumpDetail} />
+    {/* )} */}
+
+    {/* <TouchableOpacity onPress={() => Alert.alert(props.data)}>
       <Text>getmodem</Text>
-    </TouchableOpacity>
+    </TouchableOpacity> */}
   </ScrollView>
 );
 

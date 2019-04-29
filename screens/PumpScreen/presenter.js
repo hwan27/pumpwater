@@ -26,17 +26,17 @@ const PumpScreen = props => (
       />
     }
   >
-    <Grid
+    {/* <Grid
       styles={styles.container}
       itemPerRow={3}
       renderItem={this._renderItem}
       renderItem={this._renderPlaceholder}
       data={["black"]}
-    >
-      {/* <View styles={styles.container}> */}
-      {/* {props.pump && props.pump.map(pump => <Pump {...pump} key={pump.id} />)} */}
-      {/* </View> */}
-    </Grid>
+    > */}
+    <View styles={styles.container}>
+      {props.pump && props.pump.map(pump => <Pump {...pump} key={pump.id} />)}
+    </View>
+    {/* </Grid> */}
   </ScrollView>
 );
 
