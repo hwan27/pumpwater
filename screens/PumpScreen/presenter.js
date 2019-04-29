@@ -8,6 +8,13 @@ import {
   StyleSheet
 } from "react-native";
 import Pump from "../../components/Pump";
+import Grid from "react-native-grid-component";
+
+_renderItem = (data, i) => (
+  <View style={[{ backgroundColor: data }, styles.item]} key={i} />
+);
+
+_renderPlaceholder = i => <View style={styles.item} key={i} />;
 
 const PumpScreen = props => (
   <ScrollView
@@ -19,9 +26,17 @@ const PumpScreen = props => (
       />
     }
   >
-    <View styles={styles.container}>
-      {props.pump && props.pump.map(pump => <Pump {...pump} key={pump.id} />)}
-    </View>
+    <Grid
+      styles={styles.container}
+      itemPerRow={3}
+      renderItem={this._renderItem}
+      renderItem={this._renderPlaceholder}
+      data={["black"]}
+    >
+      {/* <View styles={styles.container}> */}
+      {/* {props.pump && props.pump.map(pump => <Pump {...pump} key={pump.id} />)} */}
+      {/* </View> */}
+    </Grid>
   </ScrollView>
 );
 
@@ -30,6 +45,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     flexDirection: "row"
+  },
+  item: {
+    flex: 1,
+    height: 160,
+    margin: 1
   }
 });
 
