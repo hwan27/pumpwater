@@ -3,8 +3,9 @@ import FeedScreen from "./presenter";
 import NavButton from "../../components/NavButton";
 import PropsTypes from "prop-types";
 import { Icon } from "native-base";
-import { Alert, TouchableOpacity, Text } from "react-native";
+import { Alert, TouchableOpacity, Text, Image, Dimensions } from "react-native";
 
+const { width} = Dimensions.get('window')
 class Container extends Component {
   static propsTypes = {
     feed: PropsTypes.object,
@@ -16,15 +17,18 @@ class Container extends Component {
       headerStyle: {
         backgroundColor: "#008de6"
       },
-      headerTitleStyle: { color: "white", marginLeft: 30 },
+      headerTitleStyle: { color: "white", marginLeft: width * 0.15 },
       headerRight: (
-        <TouchableOpacity>
-          <Text
+        <TouchableOpacity onPress={navigation.getParam('logout')}>
+          {/* <Text
             style={{ paddingRight: 10, fontSize: 16, color: "white" }}
             onPress={navigation.getParam("logout")}
           >
             LOGOUT
-          </Text>
+          </Text> */}
+          <Image source={require('../../assets/images/logoutIcon.png')}
+            style={{resizeMode:'contain', width:28, marginRight: 10} }
+          />
         </TouchableOpacity>
       )
     };
