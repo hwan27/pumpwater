@@ -35,7 +35,7 @@ const PumpDetail = props => (
     <View style={styles.row}>
       <TouchableOpacity>
         <View style={styles.header}>
-          <Text style={styles.title}>PUMP MODEM_NUMBER</Text>
+          <Text style={styles.title}>MODEM NUMBER</Text>
         </View>
       </TouchableOpacity>
       <TextInput style={styles.input} value={props.modem_number} />
@@ -67,7 +67,7 @@ const PumpDetail = props => (
     <View style={styles.row}>
       <TouchableOpacity>
         <View style={styles.header}>
-          <Text style={styles.title}>PUMP COMSTATE</Text>
+          <Text style={styles.title}>COMSTATE</Text>
         </View>
       </TouchableOpacity>
       <TextInput style={styles.input} value={props.comstate} />
@@ -75,7 +75,7 @@ const PumpDetail = props => (
     <View style={styles.row}>
       <TouchableOpacity>
         <View style={styles.header}>
-          <Text style={styles.title}>PUMP PRESSURE</Text>
+          <Text style={styles.title}>PRESSURE</Text>
         </View>
       </TouchableOpacity>
       <TextInput style={styles.input} value={props.pressure} />
@@ -83,7 +83,7 @@ const PumpDetail = props => (
     <View style={styles.row}>
       <TouchableOpacity>
         <View style={styles.header}>
-          <Text style={styles.title}>PUMP 1 FREQ</Text>
+          <Text style={styles.title}>PUMP1 FREQ</Text>
         </View>
       </TouchableOpacity>
       <TextInput style={styles.input} value={props.pump_1_freq} />
@@ -91,7 +91,7 @@ const PumpDetail = props => (
     <View style={styles.row}>
       <TouchableOpacity>
         <View style={styles.header}>
-          <Text style={styles.title}>PUMP 1 CURRENT</Text>
+          <Text style={styles.title}>PUMP1 CURRENT</Text>
         </View>
       </TouchableOpacity>
       <TextInput style={styles.input} value={props.pump_1_current} />
@@ -99,7 +99,7 @@ const PumpDetail = props => (
     <View style={styles.row}>
       <TouchableOpacity>
         <View style={styles.header}>
-          <Text style={styles.title}>PUMP 2 FREQ</Text>
+          <Text style={styles.title}>PUMP2 FREQ</Text>
         </View>
       </TouchableOpacity>
       <TextInput style={styles.input} value={props.pump_2_freq} />
@@ -107,7 +107,7 @@ const PumpDetail = props => (
     <View style={styles.row}>
       <TouchableOpacity>
         <View style={styles.header}>
-          <Text style={styles.title}>PUMP 2 CURRENT</Text>
+          <Text style={styles.title}>PUMP2 CURRENT</Text>
         </View>
       </TouchableOpacity>
       <TextInput style={styles.input} value={props.pump_2_current} />
@@ -115,7 +115,7 @@ const PumpDetail = props => (
     <View style={styles.row}>
       <TouchableOpacity>
         <View style={styles.header}>
-          <Text style={styles.title}>PUMP 3 FREQ</Text>
+          <Text style={styles.title}>PUMP3 FREQ</Text>
         </View>
       </TouchableOpacity>
       <TextInput style={styles.input} value={props.pump_3_freq} />
@@ -123,7 +123,7 @@ const PumpDetail = props => (
     <View style={styles.row}>
       <TouchableOpacity>
         <View style={styles.header}>
-          <Text style={styles.title}>PUMP 3 CURRENT</Text>
+          <Text style={styles.title}>PUMP3 CURRENT</Text>
         </View>
       </TouchableOpacity>
       <TextInput style={styles.input} value={props.pump_3_current} />
@@ -136,30 +136,31 @@ const styles = StyleSheet.create({
     flex: 1
   },
   header: {
-    width: width * 0.3,
+    width: width * 0.4,
     height: 40,
     paddingHorizontal: 10,
     paddingVertical: 10,
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
     borderRadius: 35,
     margin: width * 0.02,
-    alignItems: "center",
-    textAlign: "center"
+    marginRight: 0,
+    alignItems:"flex-start",
+    
   },
   title: {
-    fontWeight: "400",
+    fontWeight: "600",
     fontSize: 14,
     color: "#397999"
   },
   input: {
-    width: width * 0.55,
+    width: width * 0.5,
     margin: width * 0.02,
     height: 40,
     paddingHorizontal: 10,
     paddingVertical: 10,
     height: 40,
-    borderColor: "#dbdbdb",
-    borderWidth: 1,
+    // borderColor: "#dbdbdb",
+    // borderWidth: 1,
     backgroundColor: "white"
   },
   row: { flexDirection: "row" }

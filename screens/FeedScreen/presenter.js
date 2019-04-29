@@ -11,6 +11,7 @@ import {
 import Town from "../../components/Town";
 
 const FeedScreen = props => (
+  <View style={{ flexDirection: "row" }}>
   <ScrollView
     horizontal={false}
     style={{ flexDirection: "row" }}
@@ -23,11 +24,15 @@ const FeedScreen = props => (
       />
     }
   >
+
+
     <View>
       {props.feed &&
         props.feed.town_set.map(town => <Town {...town} key={town.id} />)}
     </View>
   </ScrollView>
+
+  </View>
 );
 
 const styles = StyleSheet.create({
