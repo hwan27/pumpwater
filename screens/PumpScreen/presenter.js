@@ -72,7 +72,7 @@ const PumpScreen = props => (
     <View style={{flexDirection:'row', marginTop:20,justifyContent:'center',alignItems:'center'}}>
       <View style={styles.pressure}>
         <Text style={styles.pressureFont}>토출압력</Text>
-        <TextInput style={styles.input} value={200} />
+        <TextInput style={styles.input} value={"200"} />
         <Text style={styles.pressureFont}>Bar</Text>
       </View>
     </View>
@@ -80,18 +80,18 @@ const PumpScreen = props => (
     <View style={{flexDirection:'row', marginTop:20,justifyContent:'center',alignItems:'center'}}>
       <View style={styles.pressure}>
         <Text style={styles.pressureFont}>설정압력</Text>
-        <TextInput style={styles.input} value={340} />
+        <TextInput style={styles.input} value={"340"} />
         <Text style={styles.pressureFont}>Bar</Text>
       </View>
     </View>
 
     </View>
     
-      <View style={{width:width,justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
-        <Image source={require('../../assets/images/pump01.png')}
-          style={{resizeMode:'contain', width: width * 0.8,}}
+      <View style={{width:width,justifyContent:'center',alignItems:'center',flexDirection:'column',}}>
+        <Image source={require('../../assets/images/pump_02.gif')}
+          style={{resizeMode:'contain', width: width * 0.8,marginBottom:-20}}
         />
-        <Image source={require('../../assets/images/pump02.png')}
+        <Image source={require('../../assets/images/pump_01.gif')}
           style={{resizeMode:'contain', width: width * 0.8,}}
         />
       </View>
