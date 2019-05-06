@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     backgroundColor:'rgba(0,0,0,0)',
     borderColor:'rgba(0,0,0,0)',
     borderWidth:StyleSheet.hairlineWidth,
-    borderColor: "#008DE6",
+    borderColor: "#00a5dd",
     width: width - 80,
     // borderBottomWidth:2,
     marginBottom: width*0.1,
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   },
   touchable: {
     borderRadius: 3,
-    backgroundColor: "#008de6",
+    backgroundColor: "#00a5dd",
     width: width - 80,
     marginTop: 20
   },
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   character: {
     justifyContent:'center',
     alignItems:'center',
-    backgroundColor:'#008de6',
+    backgroundColor:'#00a5dd',
     width:width*0.4,
     height:width*0.4,
     borderRadius:width*0.3,

@@ -16,14 +16,13 @@ const { width, height } = Dimensions.get("window");
 
 const PumpDetail = props => (
   <View style={styles.town}>
-    <View style={styles.row}>
-      <TouchableOpacity>
-        <View style={styles.header}>
-          <Text style={styles.title}>PUMP TITLE</Text>
-        </View>
-      </TouchableOpacity>
-      <TextInput style={styles.input} value={props.title} />
+    
+    <View style={{width:width,justifyContent:'center',alignItems:'center'}}>
+      
+      <Text style={{fontSize:30,fontWeight:'500',color:'#4593bc'}}>{props.title}</Text>
+
     </View>
+
     <View style={styles.row}>
       <TouchableOpacity>
         <View style={styles.header}>
@@ -32,6 +31,7 @@ const PumpDetail = props => (
       </TouchableOpacity>
       <TextInput style={styles.input} value={props.name} />
     </View>
+
     <View style={styles.row}>
       <TouchableOpacity>
         <View style={styles.header}>
@@ -40,6 +40,7 @@ const PumpDetail = props => (
       </TouchableOpacity>
       <TextInput style={styles.input} value={props.modem_number} />
     </View>
+
     <View style={styles.row}>
       <TouchableOpacity>
         <View style={styles.header}>
@@ -133,24 +134,27 @@ const PumpDetail = props => (
 
 const styles = StyleSheet.create({
   town: {
-    flex: 1
+    flex: 1,
+    backgroundColor:'#fff'
   },
   header: {
-    width: width * 0.4,
+    width: width * 0.5,
     height: 40,
     paddingHorizontal: 10,
     paddingVertical: 10,
     // backgroundColor: "#fff",
     borderRadius: 35,
-    margin: width * 0.02,
+    marginTop: width * 0.02,
+    marginBottom:width * 0.02,
     marginRight: 0,
     alignItems:"flex-start",
-    
+    justifyContent:'center'
   },
   title: {
     fontWeight: "600",
     fontSize: 14,
-    color: "#397999"
+    color: "#4593bc",
+    margin:20
   },
   input: {
     width: width * 0.5,
@@ -163,7 +167,11 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     backgroundColor: "white"
   },
-  row: { flexDirection: "row" }
+  row: { 
+    flexDirection: "row",
+    borderBottomColor: '#bbb',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+   }
 });
 
 PumpDetail.propTypes = {};

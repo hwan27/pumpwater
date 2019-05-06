@@ -15,7 +15,7 @@ class Container extends Component {
     return {
       title: "상수도 가압장 관측 제어 설비",
       headerStyle: {
-        backgroundColor: "#008de6"
+        backgroundColor: "#00a5dd"
       },
       headerTitleStyle: { color: "white", marginLeft: width * 0.15 },
       headerRight: (

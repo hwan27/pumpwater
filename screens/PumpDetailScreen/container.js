@@ -10,7 +10,7 @@ class Container extends Component {
   static navigationOptions = {
     title: "PUMP DETAIL",
     headerStyle: {
-      backgroundColor: "#008de6"
+      backgroundColor: "#00a5dd"
     },
     headerTitleStyle: { color: "white", marginLeft: width * 0.2 }
   };

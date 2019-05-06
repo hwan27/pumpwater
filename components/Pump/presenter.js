@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     backgroundColor: "#fff",
     borderRadius: 35,
-    margin: width * 0.05
+    margin: width * 0.05,
+    
   },
   header: {
     alignItems: "center",
