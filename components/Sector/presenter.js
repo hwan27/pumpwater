@@ -8,7 +8,8 @@ import {
   Dimensions,
   StyleSheet,
   TouchableOpacity,
-  Alert
+  Alert,
+  Image
 } from "react-native";
 import { withNavigation } from "react-navigation";
 
@@ -25,6 +26,16 @@ const Sector = props => (
     >
       <View style={styles.header}>
         <Text style={styles.title}>{props.title}</Text>
+          <View style={{flexDirection:'row',width:width*0.3,height:height*0.07, justifyContent:'space-between',alignItems:'center',}}>
+            <Image
+            source={require('../../assets/images/waterTap.gif')}
+            style={{resizeMode:'contain',width:25}} 
+            />
+            <Image
+            source={require('../../assets/images/wifi02.png')}
+            style={{resizeMode:'contain',width:30}} 
+            />
+          </View>
       </View>
     </TouchableOpacity>
   </View>
@@ -32,13 +43,14 @@ const Sector = props => (
 
 const styles = StyleSheet.create({
   town: {
-    width: width * 0.3,
-    height: 70,
-    paddingHorizontal: 10,
-    paddingVertical: 20,
+    width: width * 0.45,
+    height: height * 0.2,
+    // paddingHorizontal: 10,
+    // paddingVertical: 20,
     backgroundColor: "#fff",
     borderRadius: 35,
-    margin: width * 0.05
+    margin: width * 0.05,
+    elevation:5
   },
   header: {
     alignItems: "center",
@@ -47,7 +59,9 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "600",
     fontSize: 20,
-    color: "#397999"
+    color: "#397999",
+    marginBottom:20,
+    marginTop:20
   }
 });
 

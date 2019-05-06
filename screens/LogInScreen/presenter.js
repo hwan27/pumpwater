@@ -23,15 +23,15 @@ const LogInScreen = props => (
     </View> */}
     <View style={styles.content}>
 
-    <View style={styles.character}>
-      <Image source={require('../../assets/images/character.gif')}
-        style={{resizeMode:'contain',width:width*0.25,
+    <View>
+      <Image source={require('../../assets/images/loginLogo.png')}
+        style={{resizeMode:'contain',height:width*0.7,marginLeft:width*0.13,
         }}
       />
       </View>
 
       <TextInput
-        placeholder="user name"
+        placeholder="ID"
         style={styles.textInput}
         autoCapitalize={"none"}
         autoCorrect={false}
@@ -41,7 +41,7 @@ const LogInScreen = props => (
         
       />
       <TextInput
-        placeholder="password"
+        placeholder="PASSWORD"
         style={styles.textInput}
         autoCapitalize={"none"}
         secureTextEntry={true}
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   container: { flex: 1 },
   header: {
     flex: 1,
-    backgroundColor: "#4E65B4",
+    backgroundColor: "#e4ecef",
     alignItems: "center",
     justifyContent: "center",
     width
