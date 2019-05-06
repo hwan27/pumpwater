@@ -72,7 +72,7 @@ const PumpScreen = props => (
     <View style={{flexDirection:'row', marginTop:20,justifyContent:'center',alignItems:'center'}}>
       <View style={styles.pressure}>
         <Text style={styles.pressureFont}>토출압력</Text>
-        <TextInput style={styles.input} value={props.name} />
+        <TextInput style={styles.input} value={200} />
         <Text style={styles.pressureFont}>Bar</Text>
       </View>
     </View>
@@ -80,7 +80,7 @@ const PumpScreen = props => (
     <View style={{flexDirection:'row', marginTop:20,justifyContent:'center',alignItems:'center'}}>
       <View style={styles.pressure}>
         <Text style={styles.pressureFont}>설정압력</Text>
-        <TextInput style={styles.input} value={props.name} />
+        <TextInput style={styles.input} value={340} />
         <Text style={styles.pressureFont}>Bar</Text>
       </View>
     </View>
