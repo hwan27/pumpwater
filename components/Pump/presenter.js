@@ -8,7 +8,8 @@ import {
   Dimensions,
   StyleSheet,
   TouchableOpacity,
-  Alert
+  Alert,
+  
 } from "react-native";
 import { withNavigation } from "react-navigation";
 
@@ -26,6 +27,8 @@ const Pump = props => (
       <View style={styles.header}>
         <Text style={styles.title}>{props.title}</Text>
       </View>
+   
+    
     </TouchableOpacity>
   </View>
 );
