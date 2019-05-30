@@ -12,26 +12,25 @@ import Town from "../../components/Town";
 
 const FeedScreen = props => (
   <View style={{ flexDirection: "row" }}>
-  <ScrollView
-    horizontal={false}
-    style={{ flexDirection: "row" }}
-    contentContainerStyle={[styles.djWJrn]}
-    refreshControl={
-      <RefreshControl
-        refreshing={props.isFetching}
-        onRefresh={props.refresh}
-        tintColor={"black"}
-      />
-    }
-  >
-
-
-    <View>
-      {props.feed &&
-        props.feed.town_set.map(town => <Town {...town} key={town.id} />)}
-    </View>
-  </ScrollView>
-
+    <ScrollView
+      horizontal={false}
+      style={{ flexDirection: "row" }}
+      contentContainerStyle={[styles.djWJrn]}
+      refreshControl={
+        <RefreshControl
+          refreshing={props.isFetching}
+          onRefresh={props.refresh}
+          tintColor={"black"}
+        />
+      }
+    >
+      <View>
+        {props.feed &&
+          props.feed.town_set.map(town => (
+            <Town {...town} key={town.id} town={town.title} />
+          ))}
+      </View>
+    </ScrollView>
   </View>
 );
 

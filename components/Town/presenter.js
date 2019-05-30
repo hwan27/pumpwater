@@ -18,7 +18,8 @@ const Town = props => (
     <TouchableOpacity
       onPressOut={() =>
         props.navigation.navigate("Sectors", {
-          sector: props.sector_set
+          sector: props.sector_set,
+          town: props.title
         })
       }
     >

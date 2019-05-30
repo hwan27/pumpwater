@@ -8,8 +8,8 @@ import {
   Dimensions,
   StyleSheet,
   TouchableOpacity,
-  Alert,
-  
+  Image,
+  Alert
 } from "react-native";
 import { withNavigation } from "react-navigation";
 
@@ -26,9 +26,15 @@ const Pump = props => (
     >
       <View style={styles.header}>
         <Text style={styles.title}>{props.title}</Text>
+        <Image
+          source={require("../../assets/images/pump_02.gif")}
+          style={{
+            resizeMode: "contain",
+            width: width * 0.8
+            // marginBottom: -20
+          }}
+        />
       </View>
-   
-    
     </TouchableOpacity>
   </View>
 );
@@ -36,17 +42,17 @@ const Pump = props => (
 const styles = StyleSheet.create({
   town: {
     width: width * 0.3,
-    height: 70,
+    height: 50,
     paddingHorizontal: 10,
     paddingVertical: 20,
     backgroundColor: "#fff",
     borderRadius: 35,
-    margin: width * 0.05,
-    
+    margin: width * 0.05
   },
   header: {
     alignItems: "center",
-    textAlign: "center"
+    textAlign: "center",
+    flexDirection: "row"
   },
   title: {
     fontWeight: "600",

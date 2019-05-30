@@ -6,33 +6,31 @@ import PropsTypes from "prop-types";
 import Sector from "../../components/Sector";
 import { Icon } from "native-base";
 
-const { width } = Dimensions.get('window')
+const { width } = Dimensions.get("window");
 
 class Container extends Component {
-  static navigationOptions = {
-    
-    headerStyle: {
-      backgroundColor: "#00a5dd"
-    },
-    headerTitleStyle: { color: "white", marginLeft: width * 0.28},
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: navigation.getParam("sector"),
+      headerStyle: {
+        backgroundColor: "#00a5dd"
+      },
+      headerTitleStyle: { color: "white", marginLeft: width * 0.3 },
 
-    title: "PUMP",
-
-    headerRight: (
-      <TouchableOpacity
-      >
-        <Icon
-        type="FontAwesome"
-        name="map"
-        style={{
-          paddingRight: 10,
-          fontSize: 25,
-          color: "white"
-        }}
-      />
-      </TouchableOpacity>
+      headerRight: (
+        <TouchableOpacity>
+          <Icon
+            type="FontAwesome"
+            name="map"
+            style={{
+              paddingRight: 10,
+              fontSize: 25,
+              color: "white"
+            }}
+          />
+        </TouchableOpacity>
       )
-    
+    };
   };
 
   render() {

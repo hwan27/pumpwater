@@ -5,16 +5,22 @@ import NavButton from "../../components/NavButton";
 import PropsTypes from "prop-types";
 import Sector from "../../components/Sector";
 
+const { width } = Dimensions.get("window");
 
-const {width} = Dimensions.get('window')
 class Container extends Component {
-  static navigationOptions = {
-    title: "SECTOR",
-    headerStyle: {
-      backgroundColor: "#00a5dd"
-    },
-    headerTitleStyle: { color: "white", marginLeft: width * 0.25 }
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: navigation.getParam("town"),
+      headerStyle: {
+        backgroundColor: "#00a5dd"
+      },
+      headerTitleStyle: { color: "white", marginLeft: width * 0.3 }
+    };
   };
+
+  // componentDidMount() {
+  //   Alert.alert(JSON.stringify(this.props.navigation.state.params.town));
+  // }
 
   render() {
     const {

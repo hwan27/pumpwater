@@ -20,22 +20,31 @@ const Sector = props => (
     <TouchableOpacity
       onPressOut={() =>
         props.navigation.navigate("Pumps", {
-          pump: props.pump_set
+          pump: props.pump_set,
+          sector: props.title
         })
       }
     >
       <View style={styles.header}>
         <Text style={styles.title}>{props.title}</Text>
-          <View style={{flexDirection:'row',width:width*0.3,height:height*0.07, justifyContent:'space-between',alignItems:'center',}}>
-            <Image
-            source={require('../../assets/images/waterTap.gif')}
-            style={{resizeMode:'contain',width:25}} 
-            />
-            <Image
-            source={require('../../assets/images/wifi02.png')}
-            style={{resizeMode:'contain',width:30}} 
-            />
-          </View>
+        <View
+          style={{
+            flexDirection: "row",
+            width: width * 0.3,
+            height: height * 0.07,
+            justifyContent: "space-between",
+            alignItems: "center"
+          }}
+        >
+          <Image
+            source={require("../../assets/images/waterTap.gif")}
+            style={{ resizeMode: "contain", width: 25 }}
+          />
+          <Image
+            source={require("../../assets/images/wifi02.png")}
+            style={{ resizeMode: "contain", width: 30 }}
+          />
+        </View>
       </View>
     </TouchableOpacity>
   </View>
@@ -50,7 +59,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 35,
     margin: width * 0.05,
-    elevation:5
+    elevation: 5
   },
   header: {
     alignItems: "center",
@@ -60,8 +69,8 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontSize: 20,
     color: "#397999",
-    marginBottom:20,
-    marginTop:20
+    marginBottom: 20,
+    marginTop: 20
   }
 });
 

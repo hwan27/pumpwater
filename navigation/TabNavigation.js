@@ -22,18 +22,7 @@ const TabNavigation = createBottomTabNavigator(
         )
       }
     },
-    Search: {
-      screen: SearchRoute,
-      navigationOptions: {
-        tabBarIcon: ({ tintColor }) => (
-          <Icon
-            type="FontAwesome"
-            name="search"
-            style={{ fontSize: 27, color: tintColor }}
-          />
-        )
-      }
-    },
+
     Notification: {
       screen: NotificationRoute,
       navigationOptions: {
@@ -41,18 +30,6 @@ const TabNavigation = createBottomTabNavigator(
           <Icon
             type="FontAwesome"
             name="exclamation-circle"
-            style={{ fontSize: 27, color: tintColor }}
-          />
-        )
-      }
-    },
-    Setting: {
-      screen: SettingRoute,
-      navigationOptions: {
-        tabBarIcon: ({ tintColor }) => (
-          <Icon
-            type="FontAwesome"
-            name="cog"
             style={{ fontSize: 27, color: tintColor }}
           />
         )
