@@ -371,7 +371,62 @@ const PumpScreen = props => (
               </Text>
             </View>
           ) : null}
-
+          {props.sector.water_level ? (
+            <View style={styles.warning}>
+              <Icon
+                type="FontAwesome"
+                name="exclamation-triangle"
+                style={{
+                  paddingRight: 10,
+                  fontSize: 20,
+                  color: "#f7727f"
+                }}
+              />
+              <Text
+                style={{
+                  color: "#f7727f",
+                  fontSize: 20,
+                  fontWeight: "500",
+                  marginRight: 10
+                }}
+              >
+                2번 펌프
+              </Text>
+              <Text
+                style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
+              >
+                수위이상
+              </Text>
+            </View>
+          ) : null}
+          {props.sector.pump_1_disorder ? (
+            <View style={styles.warning}>
+              <Icon
+                type="FontAwesome"
+                name="exclamation-triangle"
+                style={{
+                  paddingRight: 10,
+                  fontSize: 20,
+                  color: "#f7727f"
+                }}
+              />
+              <Text
+                style={{
+                  color: "#f7727f",
+                  fontSize: 20,
+                  fontWeight: "500",
+                  marginRight: 10
+                }}
+              >
+                1번 펌프
+              </Text>
+              <Text
+                style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
+              >
+                고장
+              </Text>
+            </View>
+          ) : null}
           {props.sector.pump_2_disorder ? (
             <View style={styles.warning}>
               <Icon
@@ -400,7 +455,7 @@ const PumpScreen = props => (
               </Text>
             </View>
           ) : null}
-          {props.sector.water_level ? (
+          {props.sector.pump_3_disorder ? (
             <View style={styles.warning}>
               <Icon
                 type="FontAwesome"
@@ -419,12 +474,40 @@ const PumpScreen = props => (
                   marginRight: 10
                 }}
               >
-                2번 펌프
+                3번 펌프
               </Text>
               <Text
                 style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
               >
-                수위이상
+                고장
+              </Text>
+            </View>
+          ) : null}
+          {props.sector.pump_4_disorder ? (
+            <View style={styles.warning}>
+              <Icon
+                type="FontAwesome"
+                name="exclamation-triangle"
+                style={{
+                  paddingRight: 10,
+                  fontSize: 20,
+                  color: "#f7727f"
+                }}
+              />
+              <Text
+                style={{
+                  color: "#f7727f",
+                  fontSize: 20,
+                  fontWeight: "500",
+                  marginRight: 10
+                }}
+              >
+                4번 펌프
+              </Text>
+              <Text
+                style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
+              >
+                고장
               </Text>
             </View>
           ) : null}
