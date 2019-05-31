@@ -228,10 +228,12 @@ const PumpScreen = props => (
             alignItems: "center"
           }}
         >
-          <Text style={styles.pressureFont}>유량</Text>
           <View style={styles.pressure}>
-            <TextInput style={styles.input} value={"340"} />
-            <Text style={styles.pressureFont}>m^3/s</Text>
+            <Text style={styles.pressureFont}>유량</Text>
+            <View style={{ flexDirection: "row" }}>
+              <TextInput style={styles.input} value={"200"} />
+              <Text style={styles.pressureFont}>m^3/s</Text>
+            </View>
           </View>
         </View>
       </View>
@@ -245,29 +247,33 @@ const PumpScreen = props => (
       >
         <View
           style={{
+            marginTop: 20,
             justifyContent: "center",
             alignItems: "center"
           }}
         >
-          <Text style={styles.pressureFont}>토출압력</Text>
           <View style={styles.pressure}>
-            <Text style={styles.pressureFont}>
-              토출압력: {props.sector.dis_pressure}
-            </Text>
-            {/* <TextInput style={styles.input} value={200} /> */}
+            <Text style={styles.pressureFont}>토출압력</Text>
+            <View style={{ flexDirection: "row" }}>
+              <Text style={styles.input}>{props.sector.dis_pressure}</Text>
+              <Text style={styles.pressureFont}>Bar</Text>
+            </View>
           </View>
         </View>
 
         <View
           style={{
+            marginTop: 20,
             justifyContent: "center",
             alignItems: "center"
           }}
         >
-          <Text style={styles.pressureFont}>설정압력</Text>
           <View style={styles.pressure}>
-            <TextInput style={styles.input} value={"340"} />
-            <Text style={styles.pressureFont}>Bar</Text>
+            <Text style={styles.pressureFont}>설정압력</Text>
+            <View style={{ flexDirection: "row" }}>
+            <TextInput style={styles.input} value={"200"} />
+              <Text style={styles.pressureFont}>Bar</Text>
+            </View>
           </View>
         </View>
       </View>
@@ -325,16 +331,7 @@ const PumpScreen = props => (
                   color: "#f7727f"
                 }}
               />
-              <Text
-                style={{
-                  color: "#f7727f",
-                  fontSize: 20,
-                  fontWeight: "500",
-                  marginRight: 10
-                }}
-              >
-                1번 펌프
-              </Text>
+            
               <Text
                 style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
               >
@@ -354,16 +351,7 @@ const PumpScreen = props => (
                   color: "#f7727f"
                 }}
               />
-              <Text
-                style={{
-                  color: "#f7727f",
-                  fontSize: 20,
-                  fontWeight: "500",
-                  marginRight: 10
-                }}
-              >
-                2번 펌프
-              </Text>
+             
               <Text
                 style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
               >
@@ -383,16 +371,7 @@ const PumpScreen = props => (
                   color: "#f7727f"
                 }}
               />
-              <Text
-                style={{
-                  color: "#f7727f",
-                  fontSize: 20,
-                  fontWeight: "500",
-                  marginRight: 10
-                }}
-              >
-                2번 펌프
-              </Text>
+            
               <Text
                 style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
               >
@@ -411,16 +390,7 @@ const PumpScreen = props => (
                   color: "#f7727f"
                 }}
               />
-              <Text
-                style={{
-                  color: "#f7727f",
-                  fontSize: 20,
-                  fontWeight: "500",
-                  marginRight: 10
-                }}
-              >
-                2번 펌프
-              </Text>
+            
               <Text
                 style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
               >
@@ -508,7 +478,7 @@ const styles = StyleSheet.create({
   pressure: {
     backgroundColor: "#fff",
     width: width * 0.4,
-    height: width * 0.4,
+    height: width * 0.3,
     borderRadius: width * 0.03,
     padding: 10,
     margin: 10,
@@ -532,6 +502,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#4593bc"
   },
+
+  pressureFontBig: {
+    fontSize: 18,
+    color: "#4593bc",
+    marginBottom:20
+  },
+
   input: {
     width: width * 0.1,
     margin: width * 0.02,
