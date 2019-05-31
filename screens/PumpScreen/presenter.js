@@ -177,7 +177,8 @@ const PumpScreen = props => (
         }}
       >
         <View style={styles.buttonRed}>
-          <Text style={styles.buttonText}>접속 종료 상태</Text>
+          <Text style={styles.buttonText}>접속 상태 :</Text>
+          <Text style={styles.buttonText}>종료</Text>
         </View>
 
         <TouchableOpacity style={styles.buttonBlue}>
@@ -204,29 +205,31 @@ const PumpScreen = props => (
       >
         <View
           style={{
-            flexDirection: "row",
             marginTop: 20,
             justifyContent: "center",
             alignItems: "center"
           }}
         >
+        
           <View style={styles.pressure}>
             <Text style={styles.pressureFont}>흡입압력</Text>
+            <View style={{flexDirection:'row'}}>
             <TextInput style={styles.input} value={"200"} />
             <Text style={styles.pressureFont}>Bar</Text>
+            </View>
           </View>
         </View>
 
         <View
           style={{
-            flexDirection: "row",
             marginTop: 20,
             justifyContent: "center",
             alignItems: "center"
           }}
         >
+        <Text style={styles.pressureFont}>유량</Text>
           <View style={styles.pressure}>
-            <Text style={styles.pressureFont}>유량</Text>
+            
             <TextInput style={styles.input} value={"340"} />
             <Text style={styles.pressureFont}>m^3/s</Text>
           </View>
@@ -242,13 +245,13 @@ const PumpScreen = props => (
       >
         <View
           style={{
-            flexDirection: "row",
             justifyContent: "center",
             alignItems: "center"
           }}
         >
+        <Text style={styles.pressureFont}>토출압력</Text>
           <View style={styles.pressure}>
-            <Text style={styles.pressureFont}>토출압력</Text>
+            
             <TextInput style={styles.input} value={"200"} />
             <Text style={styles.pressureFont}>Bar</Text>
           </View>
@@ -256,13 +259,13 @@ const PumpScreen = props => (
 
         <View
           style={{
-            flexDirection: "row",
             justifyContent: "center",
             alignItems: "center"
           }}
         >
+        <Text style={styles.pressureFont}>설정압력</Text>
           <View style={styles.pressure}>
-            <Text style={styles.pressureFont}>설정압력</Text>
+            
             <TextInput style={styles.input} value={"340"} />
             <Text style={styles.pressureFont}>Bar</Text>
           </View>
@@ -277,7 +280,8 @@ const PumpScreen = props => (
           flexDirection: "column"
         }}
       >
-        <View style={{ height: height * 0.3, width: width }}>
+        {/* <View style={{ height: height * 0.3, width: width }}> */}
+        <View style={{flexDirection:'column', display:'flex',marginTop:30}}>
           {props.pump &&
             props.pump.map(pump => <Pump {...pump} key={Pump.id} />)}
         </View>
@@ -487,14 +491,14 @@ const styles = StyleSheet.create({
   pressure: {
     backgroundColor: "#fff",
     width: width * 0.4,
-    height: width * 0.2,
-    flexDirection: "row",
+    height: width * 0.4,
     borderRadius: width * 0.03,
     padding: 10,
     margin: 10,
     elevation: 2,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    
   },
 
   warningBG: {
@@ -515,9 +519,9 @@ const styles = StyleSheet.create({
   input: {
     width: width * 0.1,
     margin: width * 0.02,
-    height: 20,
-    paddingHorizontal: 10,
-    paddingVertical: 10,
+    height: 23,
+    // paddingHorizontal: 10,
+    // paddingVertical: 10,
     borderColor: "#dbdbdb",
     borderWidth: 1,
     backgroundColor: "white"

@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff"
   },
   header: {
-    width: width * 0.5,
+    width: width * 0.4,
     height: 40,
     paddingHorizontal: 10,
     paddingVertical: 10,
@@ -92,8 +92,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 10,
     height: 40,
-    // borderColor: "#dbdbdb",
-    // borderWidth: 1,
+    borderColor: "#dbdbdb",
+    borderWidth: 1,
     backgroundColor: "white"
   },
   row: {
