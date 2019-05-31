@@ -5,18 +5,17 @@ import NavButton from "../../components/NavButton";
 import PropsTypes from "prop-types";
 import Sector from "../../components/Sector";
 
-const {width} = Dimensions.get('window')
+const { width } = Dimensions.get("window");
 class Container extends Component {
-  static navigationOptions = {
-    title: "PUMP DETAIL",
-    headerStyle: {
-      backgroundColor: "#00a5dd"
-    },
-    headerTitleStyle: { color: "white", marginLeft: width * 0.2 }
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: navigation.getParam("title"),
+      headerStyle: {
+        backgroundColor: "#00a5dd"
+      },
+      headerTitleStyle: { color: "white", marginLeft: width * 0.3 }
+    };
   };
-  //   componentDidMount() {
-  //     Alert.alert(JSON.stringify(this.props.navigation.state));
-  //   }
 
   render() {
     const { data } = this.props;

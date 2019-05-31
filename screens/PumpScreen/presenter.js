@@ -165,20 +165,9 @@ const PumpScreen = props => (
     <View styles={styles.container}>
       <View style={{ flexDirection: "column" }}>
         <View style={styles.name}>
-          <View style={{ position: "absolute", top: 5, left: 5 }}>
-            <Text style={styles.nameText}>현장명</Text>
-          </View>
-        </View>
-
-        <View style={styles.name}>
           <Text style={styles.nameText1}>모뎀번호</Text>
         </View>
-
-        <View style={styles.name}>
-          <Text style={styles.nameText1}>펌프개수</Text>
-        </View>
       </View>
-
       <View
         style={{
           flexDirection: "row",

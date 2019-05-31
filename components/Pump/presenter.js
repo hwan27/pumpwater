@@ -20,7 +20,8 @@ const Pump = props => (
     <TouchableOpacity
       onPressOut={() =>
         props.navigation.navigate("PumpDetail", {
-          pumpDetail: props
+          pumpDetail: props,
+          title: props.title
         })
       }
     >

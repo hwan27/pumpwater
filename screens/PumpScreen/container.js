@@ -11,7 +11,7 @@ const { width } = Dimensions.get("window");
 class Container extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      title: navigation.getParam("sector"),
+      title: navigation.getParam("title"),
       headerStyle: {
         backgroundColor: "#00a5dd"
       },
@@ -33,6 +33,9 @@ class Container extends Component {
     };
   };
 
+  // componentDidMount() {
+  //   console.log(JSON.stringify(this.props.navigation.state.params));
+  // }
   render() {
     const {
       navigation: {

@@ -21,7 +21,8 @@ const Sector = props => (
       onPressOut={() =>
         props.navigation.navigate("Pumps", {
           pump: props.pump_set,
-          sector: props.title
+          title: props.title,
+          sector: props
         })
       }
     >
