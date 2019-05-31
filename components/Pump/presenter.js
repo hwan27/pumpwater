@@ -9,14 +9,14 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
-  Alert
+  Alert,
+  ImageBackground
 } from "react-native";
 import { withNavigation } from "react-navigation";
 
 const { width, height } = Dimensions.get("window");
 
 const Pump = props => (
-  <View style={styles.town}>
     <TouchableOpacity
       onPressOut={() =>
         props.navigation.navigate("PumpDetail", {
@@ -26,34 +26,42 @@ const Pump = props => (
       }
     >
       <View style={styles.header}>
-        <Text style={styles.title}>{props.title}</Text>
-        <Image
-          source={require("../../assets/images/pump_02.gif")}
+        <ImageBackground
+          source={require("../../assets/images/pumpNone.gif")}
           style={{
-            resizeMode: "contain",
-            width: width * 0.8
-            // marginBottom: -20
+            // resizeMode: "contain",
+            width: width,
+            padding:20,
+            position:'relative',
+            alignItems:'center'
           }}
-        />
+          imageStyle={{resizeMode:'contain',height: height * 0.07}}
+          >
+          <View style={{height: height * 0.07,width:width,}}>
+            <Text style={{fontSize:20,fontWeight:'500',color:'#678293',position:'absolute',top:height * 0.035 - 20, right: width * 0.33,marginTop:-15}}>{props.title}</Text>
+            </View>
+          </ImageBackground>
       </View>
     </TouchableOpacity>
-  </View>
-);
+    );
+  
+
 
 const styles = StyleSheet.create({
-  town: {
-    width: width * 0.3,
-    height: 50,
-    paddingHorizontal: 10,
-    paddingVertical: 20,
-    backgroundColor: "#fff",
-    borderRadius: 35,
-    margin: width * 0.05
-  },
+  // town: {
+  //   width: width * 0.3,
+  //   height: 50,
+  //   paddingHorizontal: 10,
+  //   paddingVertical: 20,
+  //   backgroundColor: "#fff",
+  //   borderRadius: 35,
+  //   margin: width * 0.05
+  // },
   header: {
     alignItems: "center",
     textAlign: "center",
-    flexDirection: "row"
+    flexDirection: "row",
+    justifyContent:'center'
   },
   title: {
     fontWeight: "600",
