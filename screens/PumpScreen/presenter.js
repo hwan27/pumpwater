@@ -213,8 +213,8 @@ const PumpScreen = props => (
           }}
         >
           <View style={styles.pressure}>
-            <Text style={styles.pressureFont}>흡입압력</Text>
-            <View style={{ flexDirection: "row" }}>
+            <Text style={styles.pressureFontBig}>흡입압력</Text>
+            <View style={{ flexDirection: "row",justifyContent:'center',alignItems:'center' }}>
               <TextInput style={styles.input} value={"200"} />
               <Text style={styles.pressureFont}>Bar</Text>
             </View>
@@ -229,8 +229,8 @@ const PumpScreen = props => (
           }}
         >
           <View style={styles.pressure}>
-            <Text style={styles.pressureFont}>유량</Text>
-            <View style={{ flexDirection: "row" }}>
+            <Text style={styles.pressureFontBig}>유량</Text>
+            <View style={{ flexDirection: "row",justifyContent:'center',alignItems:'center' }}>
               <TextInput style={styles.input} value={"200"} />
               <Text style={styles.pressureFont}>m^3/s</Text>
             </View>
@@ -253,8 +253,8 @@ const PumpScreen = props => (
           }}
         >
           <View style={styles.pressure}>
-            <Text style={styles.pressureFont}>토출압력</Text>
-            <View style={{ flexDirection: "row" }}>
+            <Text style={styles.pressureFontBig}>토출압력</Text>
+            <View style={{ flexDirection: "row",justifyContent:'center',alignItems:'center' }}>
               <Text style={styles.input}>{props.sector.dis_pressure}</Text>
               <Text style={styles.pressureFont}>Bar</Text>
             </View>
@@ -269,8 +269,8 @@ const PumpScreen = props => (
           }}
         >
           <View style={styles.pressure}>
-            <Text style={styles.pressureFont}>설정압력</Text>
-            <View style={{ flexDirection: "row" }}>
+            <Text style={styles.pressureFontBig}>설정압력</Text>
+            <View style={{ flexDirection: "row",justifyContent:'center',alignItems:'center' }}>
             <TextInput style={styles.input} value={"200"} />
               <Text style={styles.pressureFont}>Bar</Text>
             </View>
@@ -602,13 +602,13 @@ const styles = StyleSheet.create({
   },
 
   pressureFontBig: {
-    fontSize: 18,
+    fontSize: 17,
     color: "#4593bc",
-    marginBottom:20
+    marginBottom:14
   },
 
   input: {
-    width: width * 0.1,
+    width: width * 0.15,
     margin: width * 0.02,
     height: 23,
     // paddingHorizontal: 10,

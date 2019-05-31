@@ -17,46 +17,46 @@ const { width, height } = Dimensions.get("window");
 const PumpDetail = props => (
   <View style={styles.town}>
     <View style={styles.row}>
-      <TouchableOpacity>
+      <View>
         <View style={styles.header}>
           <Text style={styles.title}>수동/자동</Text>
         </View>
-      </TouchableOpacity>
-      <Text>{props.auto}</Text>
+      </View>
+      <Text style={styles.input}>{props.auto}</Text>
     </View>
 
     <View style={styles.row}>
-      <TouchableOpacity>
+      <View>
         <View style={styles.header}>
           <Text style={styles.title}>가동률</Text>
         </View>
-      </TouchableOpacity>
-      <Text>{props.operating_rate}</Text>
+      </View>
+      <Text style={styles.input}>{props.operating_rate}</Text>
     </View>
 
     <View style={styles.row}>
-      <TouchableOpacity>
+      <View>
         <View style={styles.header}>
           <Text style={styles.title}>전류</Text>
         </View>
-      </TouchableOpacity>
-      <Text>{props.current}</Text>
+      </View>
+      <Text style={styles.input}>{props.current}</Text>
     </View>
     <View style={styles.row}>
-      <TouchableOpacity>
+      <View>
         <View style={styles.header}>
           <Text style={styles.title}>주파수</Text>
         </View>
-      </TouchableOpacity>
-      <Text>{props.freq}</Text>
+      </View>
+      <Text style={styles.input}>{props.freq}</Text>
     </View>
     <View style={styles.row}>
-      <TouchableOpacity>
+      <View>
         <View style={styles.header}>
           <Text style={styles.title}>전압</Text>
         </View>
-      </TouchableOpacity>
-      <Text>{props.power}</Text>
+      </View>
+      <Text style={styles.input}>{props.power}</Text>
     </View>
   </View>
 );
