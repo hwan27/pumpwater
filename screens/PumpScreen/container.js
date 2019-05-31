@@ -13,10 +13,13 @@ class Container extends Component {
     return {
       title: navigation.getParam("title"),
       headerStyle: {
-        backgroundColor: "#00a5dd"
+        backgroundColor: "#00a5dd",justifyContent:'center',alignItems:'center'
       },
-      headerTitleStyle: { color: "white", marginLeft: width * 0.3 },
-
+      headerTitleStyle: {  textAlign: 'center',
+      color:'#fff',
+      flexGrow:1,
+      alignSelf:'center',  },
+      headerLeft:<View style={{padding:6}}></View>, //add this
       headerRight: (
         <TouchableOpacity>
           <Icon

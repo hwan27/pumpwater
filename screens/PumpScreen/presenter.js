@@ -180,11 +180,11 @@ const PumpScreen = props => (
       >
         <View style={styles.buttonRed}>
           <Text style={styles.buttonText}>접속 상태 :</Text>
-          <Text style={styles.buttonText}>종료</Text>
+          <Text style={styles.buttonTextRed}>종료</Text>
         </View>
 
         <TouchableOpacity style={styles.buttonBlue}>
-          <Text style={styles.buttonText}>접속 요청</Text>
+          <Text style={styles.buttonText1}>접속 요청</Text>
         </TouchableOpacity>
       </View>
 
@@ -543,21 +543,36 @@ const styles = StyleSheet.create({
     margin: 5
   },
   buttonRed: {
-    backgroundColor: "#f7727f",
+    backgroundColor: "#fff",
     width: width * 0.4,
     height: width * 0.13,
-    borderRadius: width * 0.065,
+    borderRadius: width * 0.03,
     justifyContent: "center",
     alignItems: "center",
     elevation: 2,
-    margin: 5
+    margin: 5,
+    flexDirection:'row'
   },
 
-  buttonText: {
-    color: "#fff",
-    fontSize: 20,
+  buttonText1: {
+    color: "#757575",
+    fontSize: 15,
     fontWeight: "500"
   },
+
+  buttonTextRed: {
+    color: "#f7727f",
+    fontSize: 15,
+    fontWeight: "500"
+  },
+
+  buttonText1: {
+    color: "#fff",
+    fontSize: 15,
+    fontWeight: "500",
+    margin:10
+  },
+
   pressure: {
     backgroundColor: "#fff",
     width: width * 0.4,
