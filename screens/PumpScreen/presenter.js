@@ -165,7 +165,9 @@ const PumpScreen = props => (
     <View styles={styles.container}>
       <View style={{ flexDirection: "column" }}>
         <View style={styles.name}>
-          <Text style={styles.nameText1}>모뎀번호</Text>
+          <Text style={styles.nameText1}>
+            모뎀번호: {props.sector.modem_number}
+          </Text>
         </View>
       </View>
       <View
@@ -248,9 +250,10 @@ const PumpScreen = props => (
           }}
         >
           <View style={styles.pressure}>
-            <Text style={styles.pressureFont}>토출압력</Text>
-            <TextInput style={styles.input} value={"200"} />
-            <Text style={styles.pressureFont}>Bar</Text>
+            <Text style={styles.pressureFont}>
+              토출압력: {props.sector.dis_pressure}
+            </Text>
+            {/* <TextInput style={styles.input} value={200} /> */}
           </View>
         </View>
 
@@ -308,105 +311,120 @@ const PumpScreen = props => (
         </TouchableOpacity> */}
 
         <View style={styles.warningBG}>
-          <View style={styles.warning}>
-            <Icon
-              type="FontAwesome"
-              name="exclamation-triangle"
-              style={{
-                paddingRight: 10,
-                fontSize: 20,
-                color: "#f7727f"
-              }}
-            />
-            <Text
-              style={{
-                color: "#f7727f",
-                fontSize: 20,
-                fontWeight: "500",
-                marginRight: 10
-              }}
-            >
-              1번 펌프
-            </Text>
-            <Text style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}>
-              문열림
-            </Text>
-          </View>
+          {props.sector.pump_open ? (
+            <View style={styles.warning}>
+              <Icon
+                type="FontAwesome"
+                name="exclamation-triangle"
+                style={{
+                  paddingRight: 10,
+                  fontSize: 20,
+                  color: "#f7727f"
+                }}
+              />
+              <Text
+                style={{
+                  color: "#f7727f",
+                  fontSize: 20,
+                  fontWeight: "500",
+                  marginRight: 10
+                }}
+              >
+                1번 펌프
+              </Text>
+              <Text
+                style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
+              >
+                문열림
+              </Text>
+            </View>
+          ) : null}
 
-          <View style={styles.warning}>
-            <Icon
-              type="FontAwesome"
-              name="exclamation-triangle"
-              style={{
-                paddingRight: 10,
-                fontSize: 20,
-                color: "#f7727f"
-              }}
-            />
-            <Text
-              style={{
-                color: "#f7727f",
-                fontSize: 20,
-                fontWeight: "500",
-                marginRight: 10
-              }}
-            >
-              2번 펌프
-            </Text>
-            <Text style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}>
-              저압
-            </Text>
-          </View>
+          {props.sector.low_pressure ? (
+            <View style={styles.warning}>
+              <Icon
+                type="FontAwesome"
+                name="exclamation-triangle"
+                style={{
+                  paddingRight: 10,
+                  fontSize: 20,
+                  color: "#f7727f"
+                }}
+              />
+              <Text
+                style={{
+                  color: "#f7727f",
+                  fontSize: 20,
+                  fontWeight: "500",
+                  marginRight: 10
+                }}
+              >
+                2번 펌프
+              </Text>
+              <Text
+                style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
+              >
+                저압
+              </Text>
+            </View>
+          ) : null}
 
-          <View style={styles.warning}>
-            <Icon
-              type="FontAwesome"
-              name="exclamation-triangle"
-              style={{
-                paddingRight: 10,
-                fontSize: 20,
-                color: "#f7727f"
-              }}
-            />
-            <Text
-              style={{
-                color: "#f7727f",
-                fontSize: 20,
-                fontWeight: "500",
-                marginRight: 10
-              }}
-            >
-              2번 펌프
-            </Text>
-            <Text style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}>
-              고장
-            </Text>
-          </View>
-
-          <View style={styles.warning}>
-            <Icon
-              type="FontAwesome"
-              name="exclamation-triangle"
-              style={{
-                paddingRight: 10,
-                fontSize: 20,
-                color: "#f7727f"
-              }}
-            />
-            <Text
-              style={{
-                color: "#f7727f",
-                fontSize: 20,
-                fontWeight: "500",
-                marginRight: 10
-              }}
-            >
-              2번 펌프
-            </Text>
-            <Text style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}>
-              수위이상
-            </Text>
-          </View>
+          {props.sector.pump_2_disorder ? (
+            <View style={styles.warning}>
+              <Icon
+                type="FontAwesome"
+                name="exclamation-triangle"
+                style={{
+                  paddingRight: 10,
+                  fontSize: 20,
+                  color: "#f7727f"
+                }}
+              />
+              <Text
+                style={{
+                  color: "#f7727f",
+                  fontSize: 20,
+                  fontWeight: "500",
+                  marginRight: 10
+                }}
+              >
+                2번 펌프
+              </Text>
+              <Text
+                style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
+              >
+                고장
+              </Text>
+            </View>
+          ) : null}
+          {props.sector.water_level ? (
+            <View style={styles.warning}>
+              <Icon
+                type="FontAwesome"
+                name="exclamation-triangle"
+                style={{
+                  paddingRight: 10,
+                  fontSize: 20,
+                  color: "#f7727f"
+                }}
+              />
+              <Text
+                style={{
+                  color: "#f7727f",
+                  fontSize: 20,
+                  fontWeight: "500",
+                  marginRight: 10
+                }}
+              >
+                2번 펌프
+              </Text>
+              <Text
+                style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
+              >
+                수위이상
+              </Text>
+            </View>
+          ) : null}
         </View>
       </View>
 

@@ -23,7 +23,7 @@ const PumpDetailScreen = props => (
   >
     {/* {props.pump &&
         props.pump.map(pump =>  */}
-    <PumpDetail {...props.pumpDetail} />
+    <PumpDetail {...props.pump} />
     {/* )} */}
 
     {/* <TouchableOpacity onPress={() => Alert.alert(props.data)}>

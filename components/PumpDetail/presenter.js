@@ -22,7 +22,7 @@ const PumpDetail = props => (
           <Text style={styles.title}>수동/자동</Text>
         </View>
       </TouchableOpacity>
-      <TextInput style={styles.input} />
+      <Text>{props.auto}</Text>
     </View>
 
     <View style={styles.row}>
@@ -31,7 +31,7 @@ const PumpDetail = props => (
           <Text style={styles.title}>가동률</Text>
         </View>
       </TouchableOpacity>
-      <TextInput style={styles.input} value={props.modem_number} />
+      <Text>{props.operating_rate}</Text>
     </View>
 
     <View style={styles.row}>
@@ -40,7 +40,7 @@ const PumpDetail = props => (
           <Text style={styles.title}>전류</Text>
         </View>
       </TouchableOpacity>
-      <TextInput style={styles.input} value={props.latitude} />
+      <Text>{props.current}</Text>
     </View>
     <View style={styles.row}>
       <TouchableOpacity>
@@ -48,7 +48,7 @@ const PumpDetail = props => (
           <Text style={styles.title}>주파수</Text>
         </View>
       </TouchableOpacity>
-      <TextInput style={styles.input} value={props.longitude} />
+      <Text>{props.freq}</Text>
     </View>
     <View style={styles.row}>
       <TouchableOpacity>
@@ -56,7 +56,7 @@ const PumpDetail = props => (
           <Text style={styles.title}>전압</Text>
         </View>
       </TouchableOpacity>
-      <TextInput style={styles.input} value={props.pump_count} />
+      <Text>{props.power}</Text>
     </View>
   </View>
 );

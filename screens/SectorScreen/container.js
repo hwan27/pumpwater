@@ -18,10 +18,6 @@ class Container extends Component {
     };
   };
 
-  // componentDidMount() {
-  //   Alert.alert(JSON.stringify(this.props.navigation.state.params.town));
-  // }
-
   render() {
     const {
       navigation: {

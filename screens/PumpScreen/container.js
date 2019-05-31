@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Alert, Dimensions, TouchableOpacity } from "react-native";
+import { Alert, Dimensions, TouchableOpacity, View, Text } from "react-native";
 import PumpScreen from "./presenter";
 import NavButton from "../../components/NavButton";
 import PropsTypes from "prop-types";
@@ -33,18 +33,15 @@ class Container extends Component {
     };
   };
 
-  // componentDidMount() {
-  //   console.log(JSON.stringify(this.props.navigation.state.params));
-  // }
   render() {
     const {
       navigation: {
         state: {
-          params: { pump }
+          params: { pump, sector }
         }
       }
     } = this.props;
-    return <PumpScreen pump={pump} />;
+    return <PumpScreen pump={pump} sector={sector} />;
   }
 }
 export default Container;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Alert, Dimensions } from "react-native";
+import { Alert, Dimensions, View, Text } from "react-native";
 import PumpDetailScreen from "./presenter";
 import NavButton from "../../components/NavButton";
 import PropsTypes from "prop-types";
@@ -17,22 +17,19 @@ class Container extends Component {
     };
   };
 
+  componentDidMount() {
+    Alert.alert(JSON.stringify(this.props.navigation.state.params.pump));
+  }
   render() {
-    const { data } = this.props;
+    //const { data } = this.props;
     const {
       navigation: {
         state: {
-          params: { pumpDetail }
+          params: { pump }
         }
       }
     } = this.props;
-    return (
-      <PumpDetailScreen
-        pumpDetail={pumpDetail}
-        getModem={this._getModem}
-        data={data}
-      />
-    );
+    return <PumpDetailScreen pump={pump} getModem={this._getModem} />;
   }
 
   _getModem = () => {
