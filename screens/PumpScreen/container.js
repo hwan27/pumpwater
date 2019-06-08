@@ -4,22 +4,20 @@ import PumpScreen from "./presenter";
 import NavButton from "../../components/NavButton";
 import PropsTypes from "prop-types";
 import Sector from "../../components/Sector";
+import MapView from "react-native-daummap";
 import { Icon } from "native-base";
 
 const { width } = Dimensions.get("window");
 
 class Container extends Component {
   static navigationOptions = ({ navigation }) => {
+    const { params = {} } = navigation.state;
     return {
       title: navigation.getParam("title"),
       headerStyle: {
-        backgroundColor: "#00a5dd",justifyContent:'center',alignItems:'center'
+        backgroundColor: "#00a5dd"
       },
-      headerTitleStyle: {  textAlign: 'center',
-      color:'#fff',
-      flexGrow:1,
-      alignSelf:'center',  },
-      headerLeft:<View style={{padding:6}}></View>, //add this
+      headerTitleStyle: { color: "white", marginLeft: width * 0.3 }, //add this
       headerRight: (
         <TouchableOpacity>
           <Icon
@@ -36,6 +34,24 @@ class Container extends Component {
     };
   };
 
+  state = { modalVisible: false, isFetching: false };
+
+  componentWillRecevieProps = nextProps => {
+    if (nextProps.feed) {
+      this.setState({
+        isFetching: false
+      });
+    }
+  };
+
+  _setModalVisible = visible => {
+    this.setState({ modalVisible: visible });
+  };
+  _refresh = () => {
+    const { getFeed } = this.props;
+    this.setState({ isFetching: true });
+    getFeed();
+  };
   render() {
     const {
       navigation: {
@@ -44,7 +60,15 @@ class Container extends Component {
         }
       }
     } = this.props;
-    return <PumpScreen pump={pump} sector={sector} />;
+    return (
+      <PumpScreen
+        pump={pump}
+        sector={sector}
+        {...this.state}
+        setModalVisible={this._setModalVisible}
+        refresh={this._refresh}
+      />
+    );
   }
 }
 export default Container;

@@ -17,9 +17,6 @@ class Container extends Component {
     };
   };
 
-  componentDidMount() {
-    Alert.alert(JSON.stringify(this.props.navigation.state.params.pump));
-  }
   render() {
     //const { data } = this.props;
     const {

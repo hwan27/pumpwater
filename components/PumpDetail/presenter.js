@@ -22,7 +22,11 @@ const PumpDetail = props => (
           <Text style={styles.title}>수동/자동</Text>
         </View>
       </View>
-      <Text style={styles.input}>{props.auto}</Text>
+      {props.auto ? (
+        <Text style={styles.input}>자동</Text>
+      ) : (
+        <Text style={styles.input}>수동</Text>
+      )}
     </View>
 
     <View style={styles.row}>

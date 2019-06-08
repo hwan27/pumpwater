@@ -13,6 +13,7 @@
     "prop-types": "^15.7.2",
     "react": "16.8.3",
     "react-native": "0.59.3",
+    "react-native-daummap": "^0.2.8",
     "react-native-easy-grid": "^0.2.1",
     "react-native-fade-in-image": "^1.4.1",
     "react-native-grid-component": "^1.1.0",
