@@ -195,7 +195,7 @@ const PumpScreen = props => (
               alignItems: "center"
             }}
           >
-            <View style={styles.pressure}>
+            <View style={styles.pressureUnder}>
               <Text style={styles.pressureFontBig}>토출압력</Text>
               <View
                 style={{
@@ -217,7 +217,7 @@ const PumpScreen = props => (
               alignItems: "center"
             }}
           >
-            <View style={styles.pressure}>
+            <View style={styles.pressureUnder}>
               <Text style={styles.pressureFontBig}>설정압력</Text>
               <View
                 style={{
@@ -541,10 +541,22 @@ const styles = StyleSheet.create({
   pressure: {
     backgroundColor: "#fff",
     width: width * 0.4,
-    height: width * 0.3,
+    height: width * 0.2,
     borderRadius: width * 0.03,
     padding: 10,
-    margin: 10,
+    margin: 7,
+    elevation: 2,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+
+  pressureUnder: {
+    backgroundColor: "#fff",
+    width: width * 0.4,
+    height: width * 0.2,
+    borderRadius: width * 0.03,
+    padding: 15,
+    margin: 7,
     elevation: 2,
     justifyContent: "center",
     alignItems: "center"
@@ -563,7 +575,8 @@ const styles = StyleSheet.create({
   },
   pressureFont: {
     fontSize: 14,
-    color: "#4593bc"
+    color: "#4593bc",
+    marginLeft:5
   },
 
   pressureFontBig: {
@@ -574,7 +587,7 @@ const styles = StyleSheet.create({
 
   input: {
     width: width * 0.15,
-    margin: width * 0.02,
+    marginRight: width * 0.02,
     height: 23,
     // paddingHorizontal: 10,
     // paddingVertical: 10,
