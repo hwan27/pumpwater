@@ -19,7 +19,9 @@ const Town = props => (
       onPressOut={() =>
         props.navigation.navigate("Sectors", {
           sector: props.sector_set,
-          town: props.title
+          town: props.title,
+          refresh: props.refresh,
+          isFetching: props.isFetching
         })
       }
     >

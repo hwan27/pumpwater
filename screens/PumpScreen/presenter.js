@@ -13,7 +13,6 @@ import {
   TextInput,
   Alert
 } from "react-native";
-import MapView from "react-native-daummap";
 import Pump from "../../components/Pump";
 import Grid from "react-native-grid-component";
 import { Icon } from "native-base";

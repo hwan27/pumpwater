@@ -4,7 +4,6 @@ import PumpScreen from "./presenter";
 import NavButton from "../../components/NavButton";
 import PropsTypes from "prop-types";
 import Sector from "../../components/Sector";
-import MapView from "react-native-daummap";
 import { Icon } from "native-base";
 
 const { width } = Dimensions.get("window");
@@ -36,22 +35,19 @@ class Container extends Component {
 
   state = { modalVisible: false, isFetching: false };
 
-  componentWillRecevieProps = nextProps => {
-    if (nextProps.feed) {
-      this.setState({
-        isFetching: false
-      });
-    }
-  };
+  // async componentDidMount() {
+  //   await getFeed();
+  //   Alert.alert(JSON.stringify(props));
+  // }
 
   _setModalVisible = visible => {
     this.setState({ modalVisible: visible });
   };
-  _refresh = () => {
-    const { getFeed } = this.props;
-    this.setState({ isFetching: true });
-    getFeed();
-  };
+  // _refresh = () => {
+  //   const { getFeed } = this.props;
+  //   this.setState({ isFetching: true });
+  //   getFeed();
+  // };
   render() {
     const {
       navigation: {
@@ -66,7 +62,7 @@ class Container extends Component {
         sector={sector}
         {...this.state}
         setModalVisible={this._setModalVisible}
-        refresh={this._refresh}
+        //refresh={this._refresh}
       />
     );
   }

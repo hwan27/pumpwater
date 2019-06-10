@@ -17,6 +17,7 @@ import { withNavigation } from "react-navigation";
 const { width, height } = Dimensions.get("window");
 
 const Pump = props => (
+  <View>
     <TouchableOpacity
       onPressOut={() =>
         props.navigation.navigate("PumpDetail", {
@@ -31,21 +32,40 @@ const Pump = props => (
           style={{
             // resizeMode: "contain",
             width: width,
-            padding:20,
-            position:'relative',
-            alignItems:'center'
+            padding: 20,
+            position: "relative",
+            alignItems: "center"
           }}
-          imageStyle={{resizeMode:'contain',height: height * 0.07}}
-          >
-          <View style={{height: height * 0.07,width:width,}}>
-            <Text style={{fontSize:20,fontWeight:'500',color:'#678293',position:'absolute',top:height * 0.035 - 20, right: width * 0.33,marginTop:-15}}>{props.title}</Text>
-            </View>
-          </ImageBackground>
+          imageStyle={{ resizeMode: "contain", height: height * 0.07 }}
+        >
+          <View style={{ height: height * 0.07, width: width }}>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: "500",
+                color: "#678293",
+                position: "absolute",
+                top: height * 0.035 - 20,
+                right: width * 0.33,
+                marginTop: -15
+              }}
+            >
+              {props.title}
+            </Text>
+          </View>
+        </ImageBackground>
       </View>
     </TouchableOpacity>
-    );
-  
-
+    <View style={{ flexDirection: "row" }}>
+      {props.auto ? (
+        <Text style={styles.input}>자동</Text>
+      ) : (
+        <Text style={styles.input}>수동</Text>
+      )}
+      <Text>{props.operating_rate}</Text>
+    </View>
+  </View>
+);
 
 const styles = StyleSheet.create({
   // town: {
@@ -61,7 +81,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     textAlign: "center",
     flexDirection: "row",
-    justifyContent:'center'
+    justifyContent: "center"
   },
   title: {
     fontWeight: "600",
