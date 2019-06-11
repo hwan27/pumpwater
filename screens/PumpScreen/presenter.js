@@ -102,7 +102,7 @@ const PumpScreen = props => (
               borderRadius: 8,
               flexDirection: "row",
               padding: 10,
-              marginTop: 19,
+              marginTop: 20,
               marginLeft: 13,
               height: width * 0.12
             }}
@@ -153,7 +153,7 @@ const PumpScreen = props => (
           <Text style={styles.buttonTextRed}>종료</Text>
         </View>
 
-        <TouchableOpacity style={styles.buttonBlue}>
+        <TouchableOpacity style={styles.buttonBlue} onPress={props.connect}>
           <Text style={styles.buttonText1}>접속 요청</Text>
         </TouchableOpacity>
       </View>
@@ -291,6 +291,7 @@ const PumpScreen = props => (
           {props.pump &&
             props.pump.map(pump => <Pump {...pump} key={Pump.id} />)}
         </View>
+
         {/* <TouchableOpacity
           onPress={() => {
             props.setModalVisible(true, 1);
@@ -488,6 +489,9 @@ const PumpScreen = props => (
               </Text>
             </View>
           ) : null}
+        </View>
+        <View>
+          <Text>최종 업데이트: {props.updated_at}</Text>
         </View>
       </View>
 

@@ -38,7 +38,7 @@ class Container extends Component {
         });
         const loginResult = await login(username, password);
         if (!loginResult) {
-          Alert.alert("Something went wrong, try again");
+          Alert.alert("Check your ID & Password");
           this.setState({ isSubmitting: false });
         }
       } else {

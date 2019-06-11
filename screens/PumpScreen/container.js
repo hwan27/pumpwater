@@ -35,7 +35,7 @@ class Container extends Component {
     };
   };
 
-  state = { modalVisible: false, isFetching: false };
+  state = { modalVisible: false, isFetching: false, number: "" };
 
   // async componentDidMount() {
   //   await getFeed();
@@ -50,6 +50,17 @@ class Container extends Component {
   //   this.setState({ isFetching: true });
   //   getFeed();
   // };
+  _connect = async () => {
+    const { number } = this.state;
+    const { connect } = this.props;
+    if (number) {
+      const connectResult = await connect(number);
+    }
+  };
+  componentDidMount = async () => {
+    const number = await this.props.navigation.state.params.sector.modem_number;
+    this.setState({ number: number });
+  };
   render() {
     const {
       navigation: {
@@ -64,6 +75,7 @@ class Container extends Component {
         sector={sector}
         {...this.state}
         setModalVisible={this._setModalVisible}
+        connect={this._connect}
         //refresh={this._refresh}
       />
     );

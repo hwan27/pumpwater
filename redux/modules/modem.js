@@ -3,12 +3,26 @@ import { API_URL } from "../../constants";
 import { actionCreators as userActions } from "./user";
 //actions
 const GET_MODEM = "GET_MODEM";
-const SET_SECTOR = "SET_SECTOR";
+const SET_MODEM = "SET_MODEM";
+const CONNECT = "CONNECT";
 //action creators
 function getModem() {
   return { type: GET_MODEM };
 }
 
+function setModem(number) {
+  return {
+    type: SET_MODEM,
+    number
+  };
+}
+
+function setConnect(number) {
+  return {
+    type: SET_CONNECT,
+    number
+  };
+}
 //api action
 function applyGetModem(state, action) {
   //serialport
@@ -16,6 +30,27 @@ function applyGetModem(state, action) {
   return {
     ...state,
     data: test
+  };
+}
+
+function connect(number) {
+  return (dispatch, getState) => {
+    const {
+      user: { token }
+    } = getState();
+    fetch(`${API_URL}/modems/`, {
+      method: "POST",
+      headers: {
+        Authorization: `JWT ${token}`
+      },
+      body: JSON.stringify({
+        number
+      })
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(json => dispatch(setConnect(json)));
   };
 }
 
@@ -29,16 +64,36 @@ function reducer(state = initialState, action) {
   switch (action.type) {
     case GET_MODEM:
       return applyGetModem(state, action);
+    case SET_MODEM:
+      return applySetModem(state, action);
+    case CONNECT:
+      return applyConnect(state, action);
     default:
       return state;
   }
 }
 
 // reducer actions
+function applySetModem(state, action) {
+  const { number } = action;
+  return {
+    ...state,
+    number
+  };
+}
+
+function applyConnect(state, action) {
+  const { number } = action;
+  return {
+    ...state,
+    number
+  };
+}
 
 //exports
 const actionCreators = {
-  getModem
+  getModem,
+  connect
 };
 
 export { actionCreators };
