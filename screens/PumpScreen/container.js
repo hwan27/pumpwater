@@ -16,20 +16,22 @@ class Container extends Component {
       headerStyle: {
         backgroundColor: "#00a5dd"
       },
-      headerTitleStyle: { color: "white", marginLeft: width * 0.3 }, //add this
-      headerRight: (
-        <TouchableOpacity>
-          <Icon
-            type="FontAwesome"
-            name="map"
-            style={{
-              paddingRight: 10,
-              fontSize: 25,
-              color: "white"
-            }}
-          />
-        </TouchableOpacity>
-      )
+      headerTitleStyle: { color: "white", marginLeft: width * 0.3 } //add this
+      // headerRight: (
+      //   <TouchableOpacity
+      //     onPress={() => this.setModalVisible(!this.state.modalVisible)}
+      //   >
+      //     <Icon
+      //       type="FontAwesome"
+      //       name="map"
+      //       style={{
+      //         paddingRight: 10,
+      //         fontSize: 25,
+      //         color: "white"
+      //       }}
+      //     />
+      //   </TouchableOpacity>
+      //)
     };
   };
 

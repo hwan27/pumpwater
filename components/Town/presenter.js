@@ -16,7 +16,7 @@ const { width, height } = Dimensions.get("window");
 const Town = props => (
   <View style={styles.town}>
     <TouchableOpacity
-      onPressOut={() =>
+      onPress={() =>
         props.navigation.navigate("Sectors", {
           sector: props.sector_set,
           town: props.title,

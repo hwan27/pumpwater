@@ -19,7 +19,7 @@ const { width, height } = Dimensions.get("window");
 const Pump = props => (
   <View>
     <TouchableOpacity
-      onPressOut={() =>
+      onPress={() =>
         props.navigation.navigate("PumpDetail", {
           pump: props,
           title: props.title
@@ -36,7 +36,7 @@ const Pump = props => (
             position: "relative",
             alignItems: "center"
           }}
-          imageStyle={{ resizeMode:'contain',height: height * 0.1 }}
+          imageStyle={{ resizeMode: "contain", height: height * 0.1 }}
         >
           <View style={{ height: height * 0.07, width: width }}>
             <Text
@@ -56,18 +56,45 @@ const Pump = props => (
         </ImageBackground>
       </View>
     </TouchableOpacity>
-    <View style={{ width: width, justifyContent:'center',flexDirection:'row',paddingRight:30,marginBottom:20}}>
-    
-      <View style={{ backgroundColor: '#fff', elevation:3, borderRadius:8, flexDirection:'row',padding:10,marginLeft:105}}>
-      {props.auto ? (
-        <Text style={styles.input}>자동</Text>
-      ) : (
-        <Text style={styles.input}>수동</Text>
-      )}
-      
-      <Text style={{ color: '#00a5dd', fontSize: 20, fontWeight:'400'}}>{props.operating_rate}</Text>
+    <View
+      style={{
+        width: width,
+        justifyContent: "center",
+        flexDirection: "row",
+        paddingRight: 30,
+        marginBottom: 20
+      }}
+    >
+      <View
+        style={{
+          backgroundColor: "#fff",
+          elevation: 3,
+          borderRadius: 8,
+          flexDirection: "row",
+          padding: 10,
+          marginLeft: 105
+        }}
+      >
+        {props.auto ? (
+          <Text style={styles.input}>자동</Text>
+        ) : (
+          <Text style={styles.input}>수동</Text>
+        )}
       </View>
-    
+      <View
+        style={{
+          backgroundColor: "#fff",
+          elevation: 3,
+          borderRadius: 8,
+          flexDirection: "row",
+          padding: 10,
+          marginLeft: 15
+        }}
+      >
+        <Text style={{ color: "#00a5dd", fontSize: 20, fontWeight: "400" }}>
+          가동률: {props.operating_rate}
+        </Text>
+      </View>
     </View>
   </View>
 );
@@ -96,8 +123,8 @@ const styles = StyleSheet.create({
   input: {
     color: "#678293",
     fontSize: 20,
-    fontWeight:'400',
-    marginRight:5
+    fontWeight: "400",
+    marginRight: 5
   }
 });
 
