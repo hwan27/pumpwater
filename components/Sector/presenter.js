@@ -20,9 +20,10 @@ const Sector = props => (
     <TouchableOpacity
       onPress={() =>
         props.navigation.navigate("Pumps", {
-          pump: props.pump_set,
-          title: props.title,
-          sector: props
+          // pump: props.pump_set,
+          sector_title: props.title,
+          sector_id: props.id
+          // sector: props
         })
       }
     >

@@ -71,11 +71,6 @@ class Container extends Component {
     });
     getFeed();
   };
-  _update = () => {
-    const { getFeed } = this.props;
-    this.setState({ isFetching: true });
-    getFeed();
-  };
 }
 
 export default Container;
