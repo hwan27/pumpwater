@@ -16,40 +16,50 @@ class Container extends Component {
       headerStyle: {
         backgroundColor: "#00a5dd"
       },
-      headerTitleStyle: { color: "white", marginLeft: width * 0.3 }, //add this
-      headerRight: (
-        <TouchableOpacity>
-          <Icon
-            type="FontAwesome"
-            name="map"
-            style={{
-              paddingRight: 10,
-              fontSize: 25,
-              color: "white"
-            }}
-          />
-        </TouchableOpacity>
-      )
+      headerTitleStyle: { color: "white", marginLeft: width * 0.3 } //add this
+      // headerRight: (
+      //   <TouchableOpacity
+      //     onPress={() => this.setModalVisible(!this.state.modalVisible)}
+      //   >
+      //     <Icon
+      //       type="FontAwesome"
+      //       name="map"
+      //       style={{
+      //         paddingRight: 10,
+      //         fontSize: 25,
+      //         color: "white"
+      //       }}
+      //     />
+      //   </TouchableOpacity>
+      //)
     };
   };
 
-  state = { modalVisible: false, isFetching: false };
+  state = { modalVisible: false, isFetching: false, number: "" };
 
-  componentWillRecevieProps = nextProps => {
-    if (nextProps.feed) {
-      this.setState({
-        isFetching: false
-      });
-    }
-  };
+  // async componentDidMount() {
+  //   await getFeed();
+  //   Alert.alert(JSON.stringify(props));
+  // }
 
   _setModalVisible = visible => {
     this.setState({ modalVisible: visible });
   };
-  _refresh = () => {
-    const { getFeed } = this.props;
-    this.setState({ isFetching: true });
-    getFeed();
+  // _refresh = () => {
+  //   const { getFeed } = this.props;
+  //   this.setState({ isFetching: true });
+  //   getFeed();
+  // };
+  _connect = async () => {
+    const { number } = this.state;
+    const { connect } = this.props;
+    if (number) {
+      const connectResult = await connect(number);
+    }
+  };
+  componentDidMount = async () => {
+    const number = await this.props.navigation.state.params.sector.modem_number;
+    this.setState({ number: number });
   };
   render() {
     const {
@@ -65,7 +75,8 @@ class Container extends Component {
         sector={sector}
         {...this.state}
         setModalVisible={this._setModalVisible}
-        refresh={this._refresh}
+        connect={this._connect}
+        //refresh={this._refresh}
       />
     );
   }

@@ -16,17 +16,13 @@ const { width, height } = Dimensions.get("window");
 
 const PumpDetail = props => (
   <View style={styles.town}>
-    <View style={styles.row}>
+    {/* <View style={styles.row}>
       <View>
         <View style={styles.header}>
           <Text style={styles.title}>수동/자동</Text>
         </View>
       </View>
-      {props.auto ? (
-        <Text style={styles.input}>자동</Text>
-      ) : (
-        <Text style={styles.input}>수동</Text>
-      )}
+      
     </View>
 
     <View style={styles.row}>
@@ -36,7 +32,7 @@ const PumpDetail = props => (
         </View>
       </View>
       <Text style={styles.input}>{props.operating_rate}</Text>
-    </View>
+    </View> */}
 
     <View style={styles.row}>
       <View>

@@ -18,7 +18,7 @@ const { width, height } = Dimensions.get("window");
 const Sector = props => (
   <View style={styles.town}>
     <TouchableOpacity
-      onPressOut={() =>
+      onPress={() =>
         props.navigation.navigate("Pumps", {
           pump: props.pump_set,
           title: props.title,

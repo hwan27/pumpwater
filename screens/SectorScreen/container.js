@@ -18,15 +18,43 @@ class Container extends Component {
     };
   };
 
+  // componentDidMount() {
+  //   Alert.alert(JSON.stringify(this.props.navigation.state.params.sector));
+  // }
+  // shouldComponentUpdate(nextProps) {
+  //   const propsChange =
+  //     this.props.navigation.state.params.sector !==
+  //     nextProps.navigation.state.params.sector;
+  //   return propsChange;
+  // }
+
+  // componentWillReceiveProps = nextProps => {
+  //   if (nextProps) {
+  //     Alert.alert(JSON.stringify(nextProps));
+  //   }
+  // };
+
+  // state = { update: null };
+
+  // _update() {
+  //   this.setState({ update: this.props });
+  //   Alert.alert(JSON.stringify(this.props.navigation.state.params.sector));
+  // }
+  componentDidMount() {
+    Alert.alert(JSON.stringify(this.props.navigation.state.params.sector));
+  }
+
   render() {
     const {
       navigation: {
         state: {
-          params: { sector }
+          params: { sector, refresh, isFetching }
         }
       }
     } = this.props;
-    return <SectorScreen sector={sector} />;
+    return (
+      <SectorScreen sector={sector} refresh={refresh} isFetching={isFetching} />
+    );
   }
 }
 export default Container;

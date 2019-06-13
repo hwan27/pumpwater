@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import Container from "./container";
 import { actionCreators as townActions } from "../../redux/modules/town";
+import { actionCreators as modemActions } from "../../redux/modules/modem";
 
 const mapStateToProps = (state, ownProps) => {
   const {
@@ -14,6 +15,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getFeed: () => {
       dispatch(townActions.getFeed());
+    },
+    connect: number => {
+      return dispatch(modemActions.connect(number));
     }
   };
 };

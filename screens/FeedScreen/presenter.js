@@ -27,7 +27,13 @@ const FeedScreen = props => (
       <View>
         {props.feed &&
           props.feed.town_set.map(town => (
-            <Town {...town} key={town.id} town={town.title} />
+            <Town
+              {...town}
+              key={town.id}
+              town={town.title}
+              refresh={props.refresh}
+              isFetching={props.isFetching}
+            />
           ))}
       </View>
     </ScrollView>
