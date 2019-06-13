@@ -4,7 +4,6 @@ import PumpScreen from "./presenter";
 import NavButton from "../../components/NavButton";
 import PropsTypes from "prop-types";
 import Sector from "../../components/Sector";
-import MapView from "react-native-daummap";
 import { Icon } from "native-base";
 
 const { width } = Dimensions.get("window");
