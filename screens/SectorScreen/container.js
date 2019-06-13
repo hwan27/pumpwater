@@ -40,11 +40,9 @@ class Container extends Component {
   //   this.setState({ update: this.props });
   //   Alert.alert(JSON.stringify(this.props.navigation.state.params.sector));
   // }
-  // componentDidMount() {
-  //   setInterval(() => {
-  //     this._update();
-  //   }, 2000);
-  // }
+  componentDidMount() {
+    Alert.alert(JSON.stringify(this.props.navigation.state.params.sector));
+  }
 
   render() {
     const {
