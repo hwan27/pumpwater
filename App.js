@@ -27,9 +27,9 @@ class App extends React.Component {
     }
     return (
       <Provider store={store}>
-        {/* <PersistGate persistor={persistor}> */}
-        <AppContainer />
-        {/* </PersistGate> */}
+        <PersistGate persistor={persistor}>
+          <AppContainer />
+        </PersistGate>
       </Provider>
     );
   }

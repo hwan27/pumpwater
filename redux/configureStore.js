@@ -13,7 +13,7 @@ const persistConfig = {
   storage
 };
 
-const reducer = combineReducers({
+const reducer = persistCombineReducers(persistConfig, {
   user,
   town,
   modem
