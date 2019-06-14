@@ -18,10 +18,11 @@ const Town = props => (
     <TouchableOpacity
       onPress={() =>
         props.navigation.navigate("Sectors", {
-          sector: props.sector_set,
-          town: props.title,
-          refresh: props.refresh,
-          isFetching: props.isFetching
+          //sector: props.sector_set,
+          town_id: props.id,
+          town_title: props.title
+          //refresh: props.refresh,
+          //isFetching: props.isFetching
         })
       }
     >

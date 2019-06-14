@@ -10,9 +10,9 @@ const { width } = Dimensions.get("window");
 
 class Container extends Component {
   static navigationOptions = ({ navigation }) => {
-    const { params = {} } = navigation.state;
+    //const { params = {} } = navigation.state;
     return {
-      title: navigation.getParam("title"),
+      title: navigation.getParam("sector_title"),
       headerStyle: {
         backgroundColor: "#00a5dd"
       },
@@ -35,7 +35,11 @@ class Container extends Component {
     };
   };
 
-  state = { modalVisible: false, isFetching: false, number: "" };
+  state = {
+    modalVisible: false,
+    isFetching: false,
+    number: ""
+  };
 
   // async componentDidMount() {
   //   await getFeed();
@@ -58,25 +62,46 @@ class Container extends Component {
     }
   };
   componentDidMount = async () => {
-    const number = await this.props.navigation.state.params.sector.modem_number;
-    this.setState({ number: number });
+    this._refresh();
+    //Alert.alert(JSON.stringify(this.props.navigation.state.params.sector.id));
+    // const number = await this.props.navigation.state.params.sector.modem_number;
+    // this.setState({ number: number });
+  };
+  componentWillReceiveProps = nextProps => {
+    if (nextProps.sectorFeed) {
+      this.setState({
+        isFetching: false
+      });
+    }
+  };
+
+  _refresh = () => {
+    const { getSector } = this.props;
+    this.setState({
+      isFetching: true
+    });
+    getSector(this.props.navigation.state.params.sector_id);
   };
   render() {
     const {
       navigation: {
         state: {
-          params: { pump, sector }
+          params: { sector_id }
         }
       }
     } = this.props;
+    const { loading } = this.state;
+
     return (
       <PumpScreen
-        pump={pump}
-        sector={sector}
+        // pump={pump}
+        // sector={sector}
+        {...this.props}
+        sector_id={sector_id}
         {...this.state}
         setModalVisible={this._setModalVisible}
         connect={this._connect}
-        //refresh={this._refresh}
+        refresh={this._refresh}
       />
     );
   }

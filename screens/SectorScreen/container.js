@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Alert, Dimensions } from "react-native";
+import { Alert, Dimensions, Text } from "react-native";
 import SectorScreen from "./presenter";
 import NavButton from "../../components/NavButton";
 import PropsTypes from "prop-types";
@@ -10,7 +10,7 @@ const { width } = Dimensions.get("window");
 class Container extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      title: navigation.getParam("town"),
+      title: navigation.getParam("town_title"),
       headerStyle: {
         backgroundColor: "#00a5dd"
       },
@@ -40,21 +40,44 @@ class Container extends Component {
   //   this.setState({ update: this.props });
   //   Alert.alert(JSON.stringify(this.props.navigation.state.params.sector));
   // }
+
+  state = { isFetching: false };
   componentDidMount() {
-    Alert.alert(JSON.stringify(this.props.navigation.state.params.sector));
+    this._refresh();
+    //Alert.alert(JSON.stringify(this.props.navigation.state.params.town_id));
   }
 
+  componentWillReceiveProps = nextProps => {
+    if (nextProps.townFeed) {
+      this.setState({
+        isFetching: false
+      });
+    }
+  };
   render() {
     const {
       navigation: {
         state: {
-          params: { sector, refresh, isFetching }
+          params: { town_id }
         }
       }
     } = this.props;
     return (
-      <SectorScreen sector={sector} refresh={refresh} isFetching={isFetching} />
+      <SectorScreen
+        {...this.props}
+        {...this.state}
+        town_id={town_id}
+        //sector_id={sector.id}
+        refresh={this._refresh}
+      />
     );
   }
+  _refresh = () => {
+    const { getTown } = this.props;
+    this.setState({
+      isFetching: true
+    });
+    getTown(this.props.navigation.state.params.town_id);
+  };
 }
 export default Container;

@@ -5,16 +5,19 @@ import { actionCreators as modemActions } from "../../redux/modules/modem";
 
 const mapStateToProps = (state, ownProps) => {
   const {
-    town: { feed }
+    town: { sectorFeed }
   } = state;
   return {
-    feed
+    sectorFeed
   };
 };
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getFeed: () => {
-      dispatch(townActions.getFeed());
+    // getFeed: () => {
+    //   dispatch(townActions.getFeed());
+    // },
+    getSector: id => {
+      dispatch(townActions.getSector(id));
     },
     connect: number => {
       return dispatch(modemActions.connect(number));

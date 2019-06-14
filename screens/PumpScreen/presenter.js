@@ -71,94 +71,102 @@ const PumpScreen = props => (
   //       </View>
   //     </View>
   //   </Modal>
-  <ScrollView
-    refreshControl={
-      <RefreshControl
-        refreshing={props.isFetching}
-        onRefresh={props.refresh}
-        tintColor={"black"}
-      />
-    }
-  >
-    {/* <Grid
+  <View style={{ flexDirection: "row" }}>
+    <ScrollView
+      horizontal={false}
+      style={{ flexDirection: "row" }}
+      contentContainerStyle={[styles.djWJrn]}
+      refreshControl={
+        <RefreshControl
+          refreshing={props.isFetching}
+          onRefresh={props.refresh}
+          tintColor={"black"}
+        />
+      }
+    >
+      {/* <Grid
       styles={styles.container}
       itemPerRow={3}
       renderItem={this._renderItem}
       renderItem={this._renderPlaceholder}
       data={["black"]}
     > */}
-    <View styles={styles.container}>
-      <View style={{ flexDirection: "column" }}>
-        <View style={{ flexDirection: "row" }}>
-          <View style={styles.name}>
-            <Text style={styles.nameText1}>
-              모뎀: {props.sector.modem_number}
-            </Text>
-          </View>
-          <View
-            style={{
-              backgroundColor: "#fff",
-              elevation: 3,
-              borderRadius: 8,
-              flexDirection: "row",
-              padding: 10,
-              marginTop: 20,
-              marginLeft: 13,
-              height: width * 0.12
-            }}
-          >
-            <TouchableOpacity
-              onPress={() => props.setModalVisible(!props.modalVisible)}
-            >
-              <Text
-                style={{ color: "#00a5dd", fontSize: 20, fontWeight: "400" }}
-              >
-                지도
+      <View styles={styles.container}>
+        <View style={{ flexDirection: "column" }}>
+          <View style={{ flexDirection: "row" }}>
+            <View style={styles.name}>
+              <Text style={styles.nameText1}>
+                모뎀: {props.sectorFeed && props.sectorFeed.modem_number}
               </Text>
-            </TouchableOpacity>
+            </View>
+            <View
+              style={{
+                backgroundColor: "#fff",
+                elevation: 3,
+                borderRadius: 8,
+                flexDirection: "row",
+                padding: 10,
+                marginTop: 20,
+                marginLeft: 13,
+                height: width * 0.12
+              }}
+            >
+              <TouchableOpacity
+                onPress={() => props.setModalVisible(!props.modalVisible)}
+              >
+                <Text
+                  style={{ color: "#00a5dd", fontSize: 20, fontWeight: "400" }}
+                >
+                  지도
+                </Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
-      </View>
-      {props.modalVisible ? (
-        <View style={styles.map_view}>
-          <MapView
-            provider={PROVIDER_GOOGLE}
-            style={styles.map}
-            initialRegion={{
-              latitude: parseFloat(props.sector.lat),
-              longitude: parseFloat(props.sector.lon),
-              latitudeDelta: 0.005,
-              longitudeDelta: 0.005 * (width / height)
-            }}
-          >
-            <MapView.Marker
-              coordinate={{
-                latitude: parseFloat(props.sector.lat),
-                longitude: parseFloat(props.sector.lon)
+        {props.modalVisible ? (
+          <View style={styles.map_view}>
+            <MapView
+              provider={PROVIDER_GOOGLE}
+              style={styles.map}
+              initialRegion={{
+                latitude: parseFloat(props.sectorFeed && props.sectorFeed.lat),
+                longitude: parseFloat(props.sectorFeed && props.sectorFeed.lon),
+                latitudeDelta: 0.005,
+                longitudeDelta: 0.005 * (width / height)
               }}
-            />
-          </MapView>
-        </View>
-      ) : null}
-      <View
-        style={{
-          flexDirection: "row",
-          marginTop: 20,
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
-        <View style={styles.buttonRed}>
-          <Text style={styles.buttonText}>접속 상태 :</Text>
-          <Text style={styles.buttonTextRed}>종료</Text>
+            >
+              <MapView.Marker
+                coordinate={{
+                  latitude: parseFloat(
+                    props.sectorFeed && props.sectorFeed.lat
+                  ),
+                  longitude: parseFloat(
+                    props.sectorFeed && props.sectorFeed.lon
+                  )
+                }}
+              />
+            </MapView>
+          </View>
+        ) : null}
+        <View
+          style={{
+            flexDirection: "row",
+            marginTop: 20,
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
+          <View style={styles.buttonRed}>
+            <Text style={styles.buttonText}>접속 상태 :</Text>
+            <Text style={styles.buttonTextRed}>종료</Text>
+          </View>
+
+          <TouchableOpacity style={styles.buttonBlue} onPress={props.connect}>
+            <Text style={styles.buttonText1}>접속 요청</Text>
+          </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={styles.buttonBlue} onPress={props.connect}>
-          <Text style={styles.buttonText1}>접속 요청</Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* <View style={{flexDirection:'row', marginTop:20,justifyContent:'center',alignItems:'center'}}>
+        {/* <View style={{flexDirection:'row', marginTop:20,justifyContent:'center',alignItems:'center'}}>
     <TouchableOpacity style={styles.buttonBlue}>
       <Text style={styles.buttonText}>펌프 설정</Text>
     </TouchableOpacity>
@@ -168,23 +176,78 @@ const PumpScreen = props => (
     </TouchableOpacity>
     </View> */}
 
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
         <View
           style={{
-            marginTop: 20,
+            flexDirection: "row",
             justifyContent: "center",
             alignItems: "center"
           }}
         >
-          {props.sector.pressure == "" ? null : (
-            <View style={styles.pressure}>
-              <Text style={styles.pressureFontBig}>흡입압력</Text>
+          <View
+            style={{
+              marginTop: 20,
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            {props.sectorFeed && props.sectorFeed.pressure == "" ? null : (
+              <View style={styles.pressure}>
+                <Text style={styles.pressureFontBig}>흡입압력</Text>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    alignItems: "center"
+                  }}
+                >
+                  <Text>{props.sectorFeed && props.sectorFeed.pressure}</Text>
+                  <Text style={styles.pressureFont}>Bar</Text>
+                </View>
+              </View>
+            )}
+          </View>
+
+          <View
+            style={{
+              marginTop: 20,
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            {props.sectorFeed && props.sectorFeed.discharge == "" ? null : (
+              <View style={styles.pressure}>
+                <Text style={styles.pressureFontBig}>유량</Text>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    alignItems: "center"
+                  }}
+                >
+                  <Text>{props.sectorFeed && props.sectorFeed.discharge}</Text>
+                  <Text style={styles.pressureFont}>m^3/s</Text>
+                </View>
+              </View>
+            )}
+          </View>
+        </View>
+
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
+          <View
+            style={{
+              marginTop: 20,
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            <View style={styles.pressureUnder}>
+              <Text style={styles.pressureFontBig}>토출압력</Text>
               <View
                 style={{
                   flexDirection: "row",
@@ -192,23 +255,21 @@ const PumpScreen = props => (
                   alignItems: "center"
                 }}
               >
-                <Text>{props.sector.pressure}</Text>
+                <Text>{props.sectorFeed && props.sectorFeed.dis_pressure}</Text>
                 <Text style={styles.pressureFont}>Bar</Text>
               </View>
             </View>
-          )}
-        </View>
+          </View>
 
-        <View
-          style={{
-            marginTop: 20,
-            justifyContent: "center",
-            alignItems: "center"
-          }}
-        >
-          {props.sector.discharge == "" ? null : (
-            <View style={styles.pressure}>
-              <Text style={styles.pressureFontBig}>유량</Text>
+          <View
+            style={{
+              marginTop: 20,
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            <View style={styles.pressureUnder}>
+              <Text style={styles.pressureFontBig}>설정압력</Text>
               <View
                 style={{
                   flexDirection: "row",
@@ -216,83 +277,37 @@ const PumpScreen = props => (
                   alignItems: "center"
                 }}
               >
-                <Text>{props.sector.discharge}</Text>
-                <Text style={styles.pressureFont}>m^3/s</Text>
+                <TextInput style={styles.input} value={"200"} />
+                <Text style={styles.pressureFont}>Bar</Text>
               </View>
             </View>
-          )}
-        </View>
-      </View>
-
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
-        <View
-          style={{
-            marginTop: 20,
-            justifyContent: "center",
-            alignItems: "center"
-          }}
-        >
-          <View style={styles.pressureUnder}>
-            <Text style={styles.pressureFontBig}>토출압력</Text>
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-            >
-              <Text>{props.sector.dis_pressure}</Text>
-              <Text style={styles.pressureFont}>Bar</Text>
-            </View>
           </View>
         </View>
 
         <View
           style={{
-            marginTop: 20,
+            width: width,
             justifyContent: "center",
-            alignItems: "center"
+            alignItems: "center",
+            flexDirection: "column"
           }}
         >
-          <View style={styles.pressureUnder}>
-            <Text style={styles.pressureFontBig}>설정압력</Text>
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-            >
-              <TextInput style={styles.input} value={"200"} />
-              <Text style={styles.pressureFont}>Bar</Text>
-            </View>
+          <View>
+            <Text>
+              최종 업데이트: {props.sectorFeed && props.sectorFeed.updated_at}
+            </Text>
           </View>
-        </View>
-      </View>
+          {/* <View style={{ height: height * 0.3, width: width }}> */}
+          <View
+            style={{ flexDirection: "column", display: "flex", marginTop: 30 }}
+          >
+            {props.sectorFeed &&
+              props.sectorFeed.pump_set.map(pump => (
+                <Pump {...pump} key={pump.id} />
+              ))}
+          </View>
 
-      <View
-        style={{
-          width: width,
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column"
-        }}
-      >
-        {/* <View style={{ height: height * 0.3, width: width }}> */}
-        <View
-          style={{ flexDirection: "column", display: "flex", marginTop: 30 }}
-        >
-          {props.pump &&
-            props.pump.map(pump => <Pump {...pump} key={Pump.id} />)}
-        </View>
-
-        {/* <TouchableOpacity
+          {/* <TouchableOpacity
           onPress={() => {
             props.setModalVisible(true, 1);
           }}
@@ -318,187 +333,185 @@ const PumpScreen = props => (
           />
         </TouchableOpacity> */}
 
-        <View style={styles.warningBG}>
-          {props.sector.pump_open ? (
-            <View style={styles.warning}>
-              <Icon
-                type="FontAwesome"
-                name="exclamation-triangle"
-                style={{
-                  paddingRight: 10,
-                  fontSize: 20,
-                  color: "#f7727f"
-                }}
-              />
+          <View style={styles.warningBG}>
+            {props.sectorFeed && props.sectorFeed.pump_open ? (
+              <View style={styles.warning}>
+                <Icon
+                  type="FontAwesome"
+                  name="exclamation-triangle"
+                  style={{
+                    paddingRight: 10,
+                    fontSize: 20,
+                    color: "#f7727f"
+                  }}
+                />
 
-              <Text
-                style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
-              >
-                문열림
-              </Text>
-            </View>
-          ) : null}
+                <Text
+                  style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
+                >
+                  문열림
+                </Text>
+              </View>
+            ) : null}
 
-          {props.sector.low_pressure ? (
-            <View style={styles.warning}>
-              <Icon
-                type="FontAwesome"
-                name="exclamation-triangle"
-                style={{
-                  paddingRight: 10,
-                  fontSize: 20,
-                  color: "#f7727f"
-                }}
-              />
+            {props.sectorFeed && props.sectorFeed.low_pressure ? (
+              <View style={styles.warning}>
+                <Icon
+                  type="FontAwesome"
+                  name="exclamation-triangle"
+                  style={{
+                    paddingRight: 10,
+                    fontSize: 20,
+                    color: "#f7727f"
+                  }}
+                />
 
-              <Text
-                style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
-              >
-                저압
-              </Text>
-            </View>
-          ) : null}
-          {props.sector.water_level ? (
-            <View style={styles.warning}>
-              <Icon
-                type="FontAwesome"
-                name="exclamation-triangle"
-                style={{
-                  paddingRight: 10,
-                  fontSize: 20,
-                  color: "#f7727f"
-                }}
-              />
+                <Text
+                  style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
+                >
+                  저압
+                </Text>
+              </View>
+            ) : null}
+            {props.sectorFeed && props.sectorFeed.water_level ? (
+              <View style={styles.warning}>
+                <Icon
+                  type="FontAwesome"
+                  name="exclamation-triangle"
+                  style={{
+                    paddingRight: 10,
+                    fontSize: 20,
+                    color: "#f7727f"
+                  }}
+                />
 
-              <Text
-                style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
-              >
-                수위이상
-              </Text>
-            </View>
-          ) : null}
-          {props.sector.pump_1_disorder ? (
-            <View style={styles.warning}>
-              <Icon
-                type="FontAwesome"
-                name="exclamation-triangle"
-                style={{
-                  paddingRight: 10,
-                  fontSize: 20,
-                  color: "#f7727f"
-                }}
-              />
-              <Text
-                style={{
-                  color: "#f7727f",
-                  fontSize: 20,
-                  fontWeight: "500",
-                  marginRight: 10
-                }}
-              >
-                1번 펌프
-              </Text>
-              <Text
-                style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
-              >
-                고장
-              </Text>
-            </View>
-          ) : null}
-          {props.sector.pump_2_disorder ? (
-            <View style={styles.warning}>
-              <Icon
-                type="FontAwesome"
-                name="exclamation-triangle"
-                style={{
-                  paddingRight: 10,
-                  fontSize: 20,
-                  color: "#f7727f"
-                }}
-              />
-              <Text
-                style={{
-                  color: "#f7727f",
-                  fontSize: 20,
-                  fontWeight: "500",
-                  marginRight: 10
-                }}
-              >
-                2번 펌프
-              </Text>
-              <Text
-                style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
-              >
-                고장
-              </Text>
-            </View>
-          ) : null}
-          {props.sector.pump_3_disorder ? (
-            <View style={styles.warning}>
-              <Icon
-                type="FontAwesome"
-                name="exclamation-triangle"
-                style={{
-                  paddingRight: 10,
-                  fontSize: 20,
-                  color: "#f7727f"
-                }}
-              />
-              <Text
-                style={{
-                  color: "#f7727f",
-                  fontSize: 20,
-                  fontWeight: "500",
-                  marginRight: 10
-                }}
-              >
-                3번 펌프
-              </Text>
-              <Text
-                style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
-              >
-                고장
-              </Text>
-            </View>
-          ) : null}
-          {props.sector.pump_4_disorder ? (
-            <View style={styles.warning}>
-              <Icon
-                type="FontAwesome"
-                name="exclamation-triangle"
-                style={{
-                  paddingRight: 10,
-                  fontSize: 20,
-                  color: "#f7727f"
-                }}
-              />
-              <Text
-                style={{
-                  color: "#f7727f",
-                  fontSize: 20,
-                  fontWeight: "500",
-                  marginRight: 10
-                }}
-              >
-                4번 펌프
-              </Text>
-              <Text
-                style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
-              >
-                고장
-              </Text>
-            </View>
-          ) : null}
+                <Text
+                  style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
+                >
+                  수위이상
+                </Text>
+              </View>
+            ) : null}
+            {props.sectorFeed && props.sectorFeed.pump_1_disorder ? (
+              <View style={styles.warning}>
+                <Icon
+                  type="FontAwesome"
+                  name="exclamation-triangle"
+                  style={{
+                    paddingRight: 10,
+                    fontSize: 20,
+                    color: "#f7727f"
+                  }}
+                />
+                <Text
+                  style={{
+                    color: "#f7727f",
+                    fontSize: 20,
+                    fontWeight: "500",
+                    marginRight: 10
+                  }}
+                >
+                  1번 펌프
+                </Text>
+                <Text
+                  style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
+                >
+                  고장
+                </Text>
+              </View>
+            ) : null}
+            {props.sectorFeed && props.sectorFeed.pump_2_disorder ? (
+              <View style={styles.warning}>
+                <Icon
+                  type="FontAwesome"
+                  name="exclamation-triangle"
+                  style={{
+                    paddingRight: 10,
+                    fontSize: 20,
+                    color: "#f7727f"
+                  }}
+                />
+                <Text
+                  style={{
+                    color: "#f7727f",
+                    fontSize: 20,
+                    fontWeight: "500",
+                    marginRight: 10
+                  }}
+                >
+                  2번 펌프
+                </Text>
+                <Text
+                  style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
+                >
+                  고장
+                </Text>
+              </View>
+            ) : null}
+            {props.sectorFeed && props.sectorFeed.pump_3_disorder ? (
+              <View style={styles.warning}>
+                <Icon
+                  type="FontAwesome"
+                  name="exclamation-triangle"
+                  style={{
+                    paddingRight: 10,
+                    fontSize: 20,
+                    color: "#f7727f"
+                  }}
+                />
+                <Text
+                  style={{
+                    color: "#f7727f",
+                    fontSize: 20,
+                    fontWeight: "500",
+                    marginRight: 10
+                  }}
+                >
+                  3번 펌프
+                </Text>
+                <Text
+                  style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
+                >
+                  고장
+                </Text>
+              </View>
+            ) : null}
+            {props.sectorFeed && props.sectorFeed.pump_4_disorder ? (
+              <View style={styles.warning}>
+                <Icon
+                  type="FontAwesome"
+                  name="exclamation-triangle"
+                  style={{
+                    paddingRight: 10,
+                    fontSize: 20,
+                    color: "#f7727f"
+                  }}
+                />
+                <Text
+                  style={{
+                    color: "#f7727f",
+                    fontSize: 20,
+                    fontWeight: "500",
+                    marginRight: 10
+                  }}
+                >
+                  4번 펌프
+                </Text>
+                <Text
+                  style={{ color: "#f7727f", fontSize: 20, fontWeight: "500" }}
+                >
+                  고장
+                </Text>
+              </View>
+            ) : null}
+          </View>
         </View>
-        <View>
-          <Text>최종 업데이트: {props.updated_at}</Text>
-        </View>
+
+        {/* {props.pump && props.pump.map(pump => <Pump {...pump} key={pump.id} />)} */}
       </View>
-
-      {/* {props.pump && props.pump.map(pump => <Pump {...pump} key={pump.id} />)} */}
-    </View>
-    {/* </Grid> */}
-  </ScrollView>
+      {/* </Grid> */}
+    </ScrollView>
+  </View>
 );
 
 const styles = StyleSheet.create({
@@ -668,8 +681,8 @@ const styles = StyleSheet.create({
   }
 });
 
-PumpScreen.propTypes = {
-  pump: PropTypes.array.isRequired
-};
+// PumpScreen.propTypes = {
+//   pump: PropTypes.array.isRequired
+// };
 
 export default PumpScreen;

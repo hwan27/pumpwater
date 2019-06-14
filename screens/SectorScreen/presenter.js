@@ -20,8 +20,10 @@ const SectorScreen = props => (
     }
   >
     <View styles={styles.container}>
-      {props.sector &&
-        props.sector.map(sector => <Sector {...sector} key={sector.id} />)}
+      {props.townFeed &&
+        props.townFeed.sector_set.map(sector => (
+          <Sector {...sector} key={sector.id} />
+        ))}
     </View>
   </ScrollView>
 );

@@ -21,8 +21,10 @@ const Pump = props => (
     <TouchableOpacity
       onPress={() =>
         props.navigation.navigate("PumpDetail", {
-          pump: props,
-          title: props.title
+          // pump: props,
+          // title: props.title
+          pump_title: props.title,
+          pump_id: props.id
         })
       }
     >
@@ -81,21 +83,61 @@ const Pump = props => (
           <Text style={styles.input}>수동</Text>
         )}
       </View>
-      <View
-        style={{
-          backgroundColor: "#fff",
-          elevation: 3,
-          borderRadius: 8,
-          flexDirection: "row",
-          padding: 10,
-          marginLeft: 15
-        }}
-      >
-        <Text style={{ color: "#00a5dd", fontSize: 20, fontWeight: "400" }}>
-          가동률: {props.operating_rate}
-        </Text>
+      <View>
+        <View
+          style={{
+            backgroundColor: "#fff",
+            elevation: 3,
+            flexDirection: "row",
+            borderRadius: 8,
+            padding: 10,
+            marginLeft: 15
+          }}
+        >
+          <Text style={{ color: "#00a5dd", fontSize: 20, fontWeight: "400" }}>
+            가동률: {props.operating_rate}
+          </Text>
+
+          <Text
+            style={{
+              marginLeft: 10,
+              color: "#00a5dd",
+              fontSize: 20,
+              fontWeight: "400"
+            }}
+          >
+            전류: {props.current}
+          </Text>
+        </View>
+
+        <View
+          style={{
+            backgroundColor: "#fff",
+            elevation: 3,
+            flexDirection: "row",
+            borderRadius: 8,
+            padding: 10,
+            marginLeft: 15
+          }}
+        >
+          <Text style={{ color: "#00a5dd", fontSize: 20, fontWeight: "400" }}>
+            주파수: {props.freq}
+          </Text>
+          <Text
+            style={{
+              marginLeft: 10,
+              color: "#00a5dd",
+              fontSize: 20,
+              fontWeight: "400"
+            }}
+          >
+            전압: {props.power}
+          </Text>
+        </View>
       </View>
+      <View />
     </View>
+    <Text>최종 업데이트: {props.updated_at}</Text>
   </View>
 );
 
