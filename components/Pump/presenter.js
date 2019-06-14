@@ -18,7 +18,7 @@ const { width, height } = Dimensions.get("window");
 
 const Pump = props => (
   <View>
-    <TouchableOpacity
+    {/* <TouchableOpacity
       onPress={() =>
         props.navigation.navigate("PumpDetail", {
           // pump: props,
@@ -27,41 +27,41 @@ const Pump = props => (
           pump_id: props.id
         })
       }
-    >
-      <View style={styles.header}>
-        <ImageBackground
-          source={require("../../assets/images/whitePump.gif")}
-          style={{
-            // resizeMode: "contain",
-            width: width,
-            padding: 20,
-            position: "relative",
-            alignItems: "center"
-          }}
-          imageStyle={{ resizeMode: "contain", height: height * 0.1 }}
-        >
-          <View style={{ height: height * 0.07, width: width }}>
-            <Text
-              style={{
-                fontSize: 20,
-                fontWeight: "500",
-                color: "#678293",
-                position: "absolute",
-                top: height * 0.05 - 20,
-                left: width * 0.7,
-                marginTop: -15
-              }}
-            >
-              {props.title}
-            </Text>
-          </View>
-        </ImageBackground>
-      </View>
-    </TouchableOpacity>
+    > */}
+    <View style={styles.header}>
+      <ImageBackground
+        source={require("../../assets/images/whitePump.gif")}
+        style={{
+          // resizeMode: "contain",
+          width: width,
+          padding: 20,
+          position: "relative",
+          alignItems: "center"
+        }}
+        imageStyle={{ resizeMode: "contain", height: height * 0.1 }}
+      >
+        <View style={{ height: height * 0.07, width: width }}>
+          <Text
+            style={{
+              fontSize: 20,
+              fontWeight: "500",
+              color: "#678293",
+              position: "absolute",
+              top: height * 0.05 - 20,
+              left: width * 0.7,
+              marginTop: -15
+            }}
+          >
+            {props.title}
+          </Text>
+        </View>
+      </ImageBackground>
+    </View>
     <View
       style={{
         width: width,
         justifyContent: "center",
+        alignItems: "center",
         flexDirection: "row",
         paddingRight: 30,
         marginBottom: 20
@@ -73,8 +73,7 @@ const Pump = props => (
           elevation: 3,
           borderRadius: 8,
           flexDirection: "row",
-          padding: 10,
-          marginLeft: 105
+          padding: 10
         }}
       >
         {props.auto ? (
@@ -137,7 +136,20 @@ const Pump = props => (
       </View>
       <View />
     </View>
-    <Text>최종 업데이트: {props.updated_at}</Text>
+    <View
+      style={{
+        width: width,
+        justifyContent: "center",
+        alignItems: "center",
+        marginBottom: 20
+      }}
+    >
+      <Text>
+        최종 업데이트: {props.updated_at.slice(0, 4)}년{" "}
+        {props.updated_at.slice(5, 7)}월 {props.updated_at.slice(8, 10)}일{" "}
+        {props.updated_at.slice(11, 19)}
+      </Text>
+    </View>
   </View>
 );
 

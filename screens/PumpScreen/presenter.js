@@ -78,7 +78,7 @@ const PumpScreen = props => (
       contentContainerStyle={[styles.djWJrn]}
       refreshControl={
         <RefreshControl
-          refreshing={props.isFetching}
+          refreshing={props.isFetching || props.isRefreshing}
           onRefresh={props.refresh}
           tintColor={"black"}
         />
@@ -158,10 +158,17 @@ const PumpScreen = props => (
         >
           <View style={styles.buttonRed}>
             <Text style={styles.buttonText}>접속 상태 :</Text>
-            <Text style={styles.buttonTextRed}>종료</Text>
+            {props.isRefreshing ? (
+              <Text style={styles.buttonTextBlue}>접속 중</Text>
+            ) : (
+              <Text style={styles.buttonTextRed}>접속 종료</Text>
+            )}
           </View>
 
-          <TouchableOpacity style={styles.buttonBlue} onPress={props.connect}>
+          <TouchableOpacity
+            style={styles.buttonBlue}
+            onPress={props.refreshInterval}
+          >
             <Text style={styles.buttonText1}>접속 요청</Text>
           </TouchableOpacity>
         </View>
@@ -294,7 +301,11 @@ const PumpScreen = props => (
         >
           <View>
             <Text>
-              최종 업데이트: {props.sectorFeed && props.sectorFeed.updated_at}
+              최종 업데이트:{" "}
+              {props.sectorFeed && props.sectorFeed.updated_at.slice(0, 4)}년{" "}
+              {props.sectorFeed && props.sectorFeed.updated_at.slice(5, 7)}월{" "}
+              {props.sectorFeed && props.sectorFeed.updated_at.slice(8, 10)}일{" "}
+              {props.sectorFeed && props.sectorFeed.updated_at.slice(11, 19)}
             </Text>
           </View>
           {/* <View style={{ height: height * 0.3, width: width }}> */}
@@ -586,6 +597,12 @@ const styles = StyleSheet.create({
 
   buttonTextRed: {
     color: "#f7727f",
+    fontSize: 15,
+    fontWeight: "500"
+  },
+
+  buttonTextBlue: {
+    color: "#30b4d8",
     fontSize: 15,
     fontWeight: "500"
   },

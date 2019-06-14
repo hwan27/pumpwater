@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { Alert, Dimensions, TouchableOpacity, View, Text } from "react-native";
+import {
+  Alert,
+  Dimensions,
+  TouchableOpacity,
+  View,
+  Image,
+  Text
+} from "react-native";
 import PumpScreen from "./presenter";
 import NavButton from "../../components/NavButton";
 import PropsTypes from "prop-types";
@@ -16,7 +23,21 @@ class Container extends Component {
       headerStyle: {
         backgroundColor: "#00a5dd"
       },
-      headerTitleStyle: { color: "white", marginLeft: width * 0.3 } //add this
+      headerTitleStyle: { color: "white", marginLeft: width * 0.3 }, //add this
+      headerRight: (
+        <TouchableOpacity onPress={navigation.getParam("logout")}>
+          {/* <Text
+            style={{ paddingRight: 10, fontSize: 16, color: "white" }}
+            onPress={navigation.getParam("logout")}
+          >
+            LOGOUT
+          </Text> */}
+          <Image
+            source={require("../../assets/images/logoutIcon.png")}
+            style={{ resizeMode: "contain", width: 28, marginRight: 10 }}
+          />
+        </TouchableOpacity>
+      )
       // headerRight: (
       //   <TouchableOpacity
       //     onPress={() => this.setModalVisible(!this.state.modalVisible)}
@@ -38,6 +59,7 @@ class Container extends Component {
   state = {
     modalVisible: false,
     isFetching: false,
+    isRefreshing: false,
     number: ""
   };
 
@@ -46,6 +68,10 @@ class Container extends Component {
   //   Alert.alert(JSON.stringify(props));
   // }
 
+  _logout = () => {
+    const { logout } = this.props;
+    logout();
+  };
   _setModalVisible = visible => {
     this.setState({ modalVisible: visible });
   };
@@ -63,6 +89,7 @@ class Container extends Component {
   };
   componentDidMount = async () => {
     this._refresh();
+    this.props.navigation.setParams({ logout: this._logout });
     //Alert.alert(JSON.stringify(this.props.navigation.state.params.sector.id));
     // const number = await this.props.navigation.state.params.sector.modem_number;
     // this.setState({ number: number });
@@ -73,6 +100,16 @@ class Container extends Component {
         isFetching: false
       });
     }
+  };
+
+  _refreshInterval = () => {
+    const { getSector } = this.props;
+    this.setState({ isRefreshing: true });
+    let interval = setInterval(() => this._refresh(), 2000);
+    setTimeout(() => {
+      clearInterval(interval);
+      this.setState({ isRefreshing: false });
+    }, 30000);
   };
 
   _refresh = () => {
@@ -102,6 +139,7 @@ class Container extends Component {
         setModalVisible={this._setModalVisible}
         connect={this._connect}
         refresh={this._refresh}
+        refreshInterval={this._refreshInterval}
       />
     );
   }

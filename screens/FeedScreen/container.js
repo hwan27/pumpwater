@@ -7,10 +7,10 @@ import { Alert, TouchableOpacity, Text, Image, Dimensions } from "react-native";
 
 const { width } = Dimensions.get("window");
 class Container extends Component {
-  static propsTypes = {
-    feed: PropsTypes.object,
-    getFeed: PropsTypes.func.isRequired
-  };
+  // static propsTypes = {
+  //   feed: PropsTypes.object,
+  //   getFeed: PropsTypes.func.isRequired
+  // };
   static navigationOptions = ({ navigation }) => {
     return {
       title: "상수도 가압장 관측 제어 설비",
@@ -35,7 +35,8 @@ class Container extends Component {
     };
   };
   state = {
-    isFetching: false
+    isFetching: false,
+    data: {}
   };
 
   _logout = () => {
@@ -49,6 +50,8 @@ class Container extends Component {
 
   componentDidMount() {
     this._refresh();
+    let data = JSON.stringify(this.props.feed.town_set);
+    this.setState({ data: data });
     this.props.navigation.setParams({ logout: this._logout });
   }
   componentWillReceiveProps = nextProps => {

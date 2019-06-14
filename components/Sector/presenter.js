@@ -16,17 +16,17 @@ import { withNavigation } from "react-navigation";
 const { width, height } = Dimensions.get("window");
 
 const Sector = props => (
-  <View style={styles.town}>
-    <TouchableOpacity
-      onPress={() =>
-        props.navigation.navigate("Pumps", {
-          // pump: props.pump_set,
-          sector_title: props.title,
-          sector_id: props.id
-          // sector: props
-        })
-      }
-    >
+  <TouchableOpacity
+    onPress={() =>
+      props.navigation.navigate("Pumps", {
+        // pump: props.pump_set,
+        sector_title: props.title,
+        sector_id: props.id
+        // sector: props
+      })
+    }
+  >
+    <View elevation={10} style={styles.town}>
       <View style={styles.header}>
         <Text style={styles.title}>{props.title}</Text>
         <View
@@ -48,20 +48,27 @@ const Sector = props => (
           />
         </View>
       </View>
-    </TouchableOpacity>
-  </View>
+    </View>
+  </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({
   town: {
-    width: width * 0.45,
+    // width: width * 0.45,
+    // height: height * 0.2,
+    // // paddingHorizontal: 10,
+    // // paddingVertical: 20,
+    // backgroundColor: "#fff",
+    // borderRadius: 35,
+    // margin: width * 0.05,
+    // elevation: 5
+    width: width * 0.4,
     height: height * 0.2,
-    // paddingHorizontal: 10,
-    // paddingVertical: 20,
-    backgroundColor: "#fff",
-    borderRadius: 35,
-    margin: width * 0.05,
-    elevation: 5
+    paddingHorizontal: 10,
+    paddingVertical: 20,
+    backgroundColor: "white",
+    //borderRadius: 35,
+    margin: width * 0.05
   },
   header: {
     alignItems: "center",

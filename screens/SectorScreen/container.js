@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Alert, Dimensions, Text } from "react-native";
+import { Alert, Dimensions, Text, Image, TouchableOpacity } from "react-native";
 import SectorScreen from "./presenter";
 import NavButton from "../../components/NavButton";
 import PropsTypes from "prop-types";
@@ -14,7 +14,21 @@ class Container extends Component {
       headerStyle: {
         backgroundColor: "#00a5dd"
       },
-      headerTitleStyle: { color: "white", marginLeft: width * 0.3 }
+      headerTitleStyle: { color: "white", marginLeft: width * 0.3 },
+      headerRight: (
+        <TouchableOpacity onPress={navigation.getParam("logout")}>
+          {/* <Text
+            style={{ paddingRight: 10, fontSize: 16, color: "white" }}
+            onPress={navigation.getParam("logout")}
+          >
+            LOGOUT
+          </Text> */}
+          <Image
+            source={require("../../assets/images/logoutIcon.png")}
+            style={{ resizeMode: "contain", width: 28, marginRight: 10 }}
+          />
+        </TouchableOpacity>
+      )
     };
   };
 
@@ -42,8 +56,14 @@ class Container extends Component {
   // }
 
   state = { isFetching: false };
+
+  _logout = () => {
+    const { logout } = this.props;
+    logout();
+  };
   componentDidMount() {
     this._refresh();
+    this.props.navigation.setParams({ logout: this._logout });
     //Alert.alert(JSON.stringify(this.props.navigation.state.params.town_id));
   }
 

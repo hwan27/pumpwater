@@ -6,51 +6,51 @@ import {
   ScrollView,
   RefreshControl,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  FlatList
 } from "react-native";
 import Town from "../../components/Town";
 
 const FeedScreen = props => (
-  <View style={{ flexDirection: "row" }}>
-    <ScrollView
-      horizontal={false}
-      style={{ flexDirection: "row" }}
-      contentContainerStyle={[styles.djWJrn]}
-      refreshControl={
-        <RefreshControl
-          refreshing={props.isFetching}
-          onRefresh={props.refresh}
-          tintColor={"black"}
-        />
-      }
-    >
-      <View>
-        {props.feed &&
-          props.feed.town_set.map(town => (
-            <Town
-              {...town}
-              key={town.id}
-              town={town.title}
-              refresh={props.refresh}
-              isFetching={props.isFetching}
-            />
-          ))}
-      </View>
-    </ScrollView>
-  </View>
+  //<View style={{ flexDirection: "row", flexWrap: 'wrap' }}>
+  <ScrollView
+    horizontal={false}
+    contentContainerStyle={styles.contentContainer}
+    refreshControl={
+      <RefreshControl
+        refreshing={props.isFetching}
+        onRefresh={props.refresh}
+        tintColor={"black"}
+      />
+    }
+  >
+    <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+      {props.feed &&
+        props.feed.town_set.map(town => (
+          <Town
+            {...town}
+            key={town.id}
+            town={town.title}
+            refresh={props.refresh}
+            isFetching={props.isFetching}
+          />
+        ))}
+    </View>
+  </ScrollView>
+  //</View>
 );
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#e8e8e8",
+    backgroundColor: "white",
     display: "flex",
     flexDirection: "row"
   },
 
-  djWJrn: {
-    flexWrap: "wrap",
-    flexDirection: "row"
+  contentContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap"
   }
 });
 

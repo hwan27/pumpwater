@@ -11,6 +11,8 @@ import Sector from "../../components/Sector";
 
 const SectorScreen = props => (
   <ScrollView
+    horizontal={false}
+    contentContainerStyle={styles.contentContainer}
     refreshControl={
       <RefreshControl
         refreshing={props.isFetching}
@@ -19,7 +21,7 @@ const SectorScreen = props => (
       />
     }
   >
-    <View styles={styles.container}>
+    <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
       {props.townFeed &&
         props.townFeed.sector_set.map(sector => (
           <Sector {...sector} key={sector.id} />
@@ -32,12 +34,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
+    display: "flex",
     flexDirection: "row"
+  },
+
+  contentContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap"
   }
 });
 
-SectorScreen.propTypes = {
-  sector: PropTypes.array.isRequired
-};
+SectorScreen.propTypes = {};
 
 export default SectorScreen;
