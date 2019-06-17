@@ -57,6 +57,7 @@ const Pump = props => (
         </View>
       </ImageBackground>
     </View>
+
     <View
       style={{
         width: width,
@@ -64,7 +65,9 @@ const Pump = props => (
         alignItems: "center",
         flexDirection: "row",
         paddingRight: 30,
-        marginBottom: 20
+        marginBottom: 20,
+        horizontalAlign:'center',
+        marginLeft:20
       }}
     >
       <View
@@ -73,13 +76,14 @@ const Pump = props => (
           elevation: 3,
           borderRadius: 8,
           flexDirection: "row",
-          padding: 10
+          padding: 10,
+         
         }}
       >
         {props.auto ? (
-          <Text style={styles.input}>자동</Text>
+          <Text style={styles.inputRed}>자동</Text>
         ) : (
-          <Text style={styles.input}>수동</Text>
+          <Text style={styles.inputBlue}>수동</Text>
         )}
       </View>
       <View>
@@ -87,51 +91,86 @@ const Pump = props => (
           style={{
             backgroundColor: "#fff",
             elevation: 3,
-            flexDirection: "row",
             borderRadius: 8,
-            padding: 10,
+            padding: 20,
             marginLeft: 15
           }}
         >
-          <Text style={{ color: "#00a5dd", fontSize: 20, fontWeight: "400" }}>
-            가동률: {props.operating_rate}
-          </Text>
 
-          <Text
-            style={{
-              marginLeft: 10,
-              color: "#00a5dd",
-              fontSize: 20,
-              fontWeight: "400"
-            }}
-          >
-            전류: {props.current}
+        <View style={{flexDirection:'row',marginBottom:15}}>
+          <Text style={{ color: "#678293", fontSize: 17, fontWeight: "400" }}>
+            가동률 : 
           </Text>
-        </View>
-
-        <View
+          <Text 
           style={{
-            backgroundColor: "#fff",
-            elevation: 3,
-            flexDirection: "row",
-            borderRadius: 8,
-            padding: 10,
-            marginLeft: 15
-          }}
-        >
-          <Text style={{ color: "#00a5dd", fontSize: 20, fontWeight: "400" }}>
-            주파수: {props.freq}
-          </Text>
-          <Text
-            style={{
               marginLeft: 10,
               color: "#00a5dd",
-              fontSize: 20,
+              fontSize: 17,
               fontWeight: "400"
             }}
           >
-            전압: {props.power}
+          {props.operating_rate}
           </Text>
+
+          <Text
+            style={{
+              marginLeft: 10,
+              color: "#678293",
+              fontSize: 17,
+              fontWeight: "400"
+            }}
+          >
+            전류 : 
+          </Text>
+          <Text
+          style={{
+              marginLeft: 10,
+              color: "#00a5dd",
+              fontSize: 17,
+              fontWeight: "400"
+            }}
+          >
+          {props.current} A
+          </Text>
+          </View>
+      
+          <View style={{flexDirection:'row'}}>
+          <Text style={{ color: "#678293", fontSize: 17, fontWeight: "400" }}>
+            주파수 : 
+          </Text>
+          <Text
+          style={{
+              marginLeft: 10,
+              color: "#00a5dd",
+              fontSize: 17,
+              fontWeight: "400"
+            }}
+          >
+          {props.freq} Hz
+        </Text>
+
+          
+          <Text
+            style={{
+              marginLeft: 10,
+              color: "#678293",
+              fontSize: 17,
+              fontWeight: "400"
+            }}
+          >
+            전력 :
+          </Text>
+          <Text
+             style={{
+              marginLeft: 10,
+              color: "#00a5dd",
+              fontSize: 17,
+              fontWeight: "400"
+            }}
+          >
+          {props.power} kw
+          </Text>
+          </View>
         </View>
       </View>
       <View />
@@ -176,6 +215,18 @@ const styles = StyleSheet.create({
   },
   input: {
     color: "#678293",
+    fontSize: 20,
+    fontWeight: "400",
+    marginRight: 5
+  },
+  inputBlue: {
+    color: "#00a5dd",
+    fontSize: 20,
+    fontWeight: "400",
+    marginRight: 5
+  },
+  inputRed: {
+    color: "#f7727f",
     fontSize: 20,
     fontWeight: "400",
     marginRight: 5

@@ -25,11 +25,11 @@ const Town = props => (
       })
     }
   >
-    <View elevation={10} style={styles.town}>
-      <View style={styles.header}>
+    <View elevation={3} style={styles.town}>
+    
         <Text style={styles.title}>{props.title}</Text>
       </View>
-    </View>
+  
   </TouchableOpacity>
 );
 
@@ -39,14 +39,15 @@ const styles = StyleSheet.create({
     height: 85,
     paddingHorizontal: 10,
     paddingVertical: 20,
-    backgroundColor: "white",
+    backgroundColor: "#fff",
     //borderRadius: 35,
-    margin: width * 0.05
+    margin: width * 0.05,
+    textAlign: "center",
+    justifyContent: 'center', 
+alignItems: 'center',
+borderRadius:5
   },
-  header: {
-    alignItems: "center",
-    textAlign: "center"
-  },
+
   title: {
     fontWeight: "600",
     fontSize: 20,

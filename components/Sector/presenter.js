@@ -26,7 +26,7 @@ const Sector = props => (
       })
     }
   >
-    <View elevation={10} style={styles.town}>
+    <View elevation={3} style={styles.town}>
       <View style={styles.header}>
         <Text style={styles.title}>{props.title}</Text>
         <View
@@ -35,7 +35,8 @@ const Sector = props => (
             width: width * 0.3,
             height: height * 0.07,
             justifyContent: "space-between",
-            alignItems: "center"
+            alignItems: "center",
+           
           }}
         >
           <Image
@@ -59,16 +60,16 @@ const styles = StyleSheet.create({
     // // paddingHorizontal: 10,
     // // paddingVertical: 20,
     // backgroundColor: "#fff",
-    // borderRadius: 35,
+    borderRadius: 5,
     // margin: width * 0.05,
     // elevation: 5
     width: width * 0.4,
     height: height * 0.2,
     paddingHorizontal: 10,
     paddingVertical: 20,
-    backgroundColor: "white",
+    backgroundColor: "#fff",
     //borderRadius: 35,
-    margin: width * 0.05
+    margin: width * 0.05,
   },
   header: {
     alignItems: "center",
@@ -78,8 +79,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontSize: 20,
     color: "#397999",
-    marginBottom: 20,
-    marginTop: 20
+    marginBottom: 20
   }
 });
 

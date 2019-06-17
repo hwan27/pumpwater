@@ -19,9 +19,10 @@ class App extends React.Component {
       return (
         <View style={styles.container}>
           <Image
-            source={require("./assets/images/loadingLogo.png")}
-            style={{ resizeMode: "contain", width: width * 0.3 }}
+            source={require("./assets/images/cjswlLogo02.png")}
+            style={{ resizeMode: "contain", width: width * 0.5 }}
           />
+      
         </View>
       );
     }
