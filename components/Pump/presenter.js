@@ -93,7 +93,7 @@ const Pump = props => (
             elevation: 3,
             borderRadius: 8,
             padding: 20,
-            marginLeft: 15
+            marginLeft: 5
           }}
         >
 
@@ -101,6 +101,7 @@ const Pump = props => (
           <Text style={{ color: "#678293", fontSize: 17, fontWeight: "400" }}>
             가동률 : 
           </Text>
+          <View style={{width:60}}>
           <Text 
           style={{
               marginLeft: 10,
@@ -111,6 +112,7 @@ const Pump = props => (
           >
           {props.operating_rate}
           </Text>
+          </View>
 
           <Text
             style={{
@@ -138,6 +140,8 @@ const Pump = props => (
           <Text style={{ color: "#678293", fontSize: 17, fontWeight: "400" }}>
             주파수 : 
           </Text>
+
+          <View style={{width:60}}>
           <Text
           style={{
               marginLeft: 10,
@@ -148,7 +152,7 @@ const Pump = props => (
           >
           {props.freq} Hz
         </Text>
-
+</View>
           
           <Text
             style={{
@@ -183,6 +187,7 @@ const Pump = props => (
         marginBottom: 20
       }}
     >
+
       <Text>
         최종 업데이트: {props.updated_at.slice(0, 4)}년{" "}
         {props.updated_at.slice(5, 7)}월 {props.updated_at.slice(8, 10)}일{" "}

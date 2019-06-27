@@ -300,7 +300,8 @@ const PumpScreen = props => (
           }}
         >
           <View>
-            <Text>
+            <Text style={{backgroundColor:'#00a5dd',color:'#fff',paddingHorizontal:20,paddingVertical:10,
+            fontSize:15,fontWeight:'500',elevation:3,borderRadius:5,marginTop:20}}>
               최종 업데이트:{" "}
               {props.sectorFeed && props.sectorFeed.updated_at.slice(0, 4)}년{" "}
               {props.sectorFeed && props.sectorFeed.updated_at.slice(5, 7)}월{" "}
