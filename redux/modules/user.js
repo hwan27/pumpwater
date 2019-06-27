@@ -59,6 +59,30 @@ function login(username, password) {
       });
   };
 }
+function updateFcm(username, fcmToken) {
+  return (dispatch, getState) => {
+    const {
+      user: { token }
+    } = getState();
+    fetch(`${API_URL}/users/${username}/fcmtoken/`, {
+      method: "POST",
+      headers: {
+        Authorization: `JWT ${token}`
+      },
+      body: JSON.stringify({
+        fcmToken
+      })
+      // }).then(response => {
+      //   if (response.status === 401) {
+      //     dispatch(userActions.logOut());
+      //   } else if (response.ok) {
+      //     return true;
+      //   } else {
+      //     return false;
+      //   }
+    });
+  };
+}
 
 // function getNotifications() {
 //   return (dispatch, getState) => {
@@ -162,7 +186,8 @@ async function applyAlert(state, action) {
 const actionCreators = {
   login,
   logout,
-  alert
+  alert,
+  updateFcm
   //getNotifications
 };
 

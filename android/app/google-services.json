@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "746924101597",
+    "firebase_url": "https://pumpwater-6e72d.firebaseio.com",
+    "project_id": "pumpwater-6e72d",
+    "storage_bucket": "pumpwater-6e72d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746924101597:android:3c427ebb57eba81d",
+        "android_client_info": {
+          "package_name": "com.pumpwater"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "746924101597-a624ac0siq4apoqtfot6lcbocrq1olp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAa0gQMRGzgJJr1qwlng67H3vy2i3oSfnA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "746924101597-a624ac0siq4apoqtfot6lcbocrq1olp7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

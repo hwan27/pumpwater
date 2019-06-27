@@ -88,6 +88,7 @@ class Container extends Component {
     }
   };
   componentDidMount = async () => {
+    //Alert.alert(JSON.stringify(this.props.sectorFeed.modem_number));
     this._refresh();
     this.props.navigation.setParams({ logout: this._logout });
     //Alert.alert(JSON.stringify(this.props.navigation.state.params.sector.id));
@@ -102,8 +103,10 @@ class Container extends Component {
     }
   };
 
-  _refreshInterval = () => {
-    const { getSector } = this.props;
+  _refreshInterval = number => {
+    const { getSector, connect } = this.props;
+    connect(this.props.sectorFeed.modem_number);
+    Alert.alert(JSON.stringify(this.props.sectorFeed.modem_number));
     this.setState({ isRefreshing: true });
     let interval = setInterval(() => this._refresh(), 2000);
     setTimeout(() => {
