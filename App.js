@@ -35,10 +35,15 @@ class App extends React.Component {
       </Provider>
     );
   }
-  componentDidMount = async () => {
+  componentDidMount = () => {
     // this._checkPermission();
-    // this._createNotificationListeners();
+    this._createNotificationListeners();
+    //this.messageListener();
     //this._listenForNotifications();
+    this.messageListener = firebase.messaging().onMessage(function(message) {
+      alert("asdf");
+    });
+
     setTimeout(() => {
       this.setState({ isLoading: true });
     }, 2000);
@@ -46,6 +51,7 @@ class App extends React.Component {
   componentWillUnMount() {
     this.notificationListener();
     this.notificationOpenedListener();
+    this.messageListener();
   }
 
   // _checkPermission = async () => {
@@ -63,6 +69,7 @@ class App extends React.Component {
       .notifications()
       .onNotification(notification => {
         const { title, body } = notification;
+        Alert.alert(title, body);
         console.log(notification);
       });
     this.notificationListener = firebase
@@ -77,9 +84,6 @@ class App extends React.Component {
     if (notificationOpen) {
       const { title, body } = notificationOpen.notification;
     }
-    this.messageListener = firebase.messaging().onMessage(message => {
-      console.log(JSON.stringify(message));
-    });
   }
 
   // async _requestPermission() {
@@ -135,6 +139,7 @@ _listenForNotifications = async () => {
   this.notificationListener = firebase
     .notifications()
     .onNotification(notification => {
+      alert(notification);
       console.log("onNotification", notification);
     });
 

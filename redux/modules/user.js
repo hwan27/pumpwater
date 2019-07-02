@@ -60,17 +60,22 @@ function login(username, password) {
   };
 }
 function updateFcm(username, fcmToken) {
+  //console.log(fcmToken);
   return (dispatch, getState) => {
+    //alert(fcmToken);
     const {
       user: { token }
     } = getState();
-    fetch(`${API_URL}/users/${username}/fcmtoken/`, {
-      method: "POST",
+
+    fetch(`${API_URL}/users/${username}/`, {
+      method: "PUT",
       headers: {
-        Authorization: `JWT ${token}`
+        Authorization: `JWT ${token}`,
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        fcmToken
+        fcmToken,
+        JwtToken: token
       })
       // }).then(response => {
       //   if (response.status === 401) {

@@ -8,6 +8,7 @@ class Container extends Component {
   state = {
     username: "",
     password: "",
+    fcmToken: "",
     isSubmitting: false
   };
   static propTypes = {
@@ -68,7 +69,9 @@ class Container extends Component {
   async _updateTokenToServer(username) {
     const { updateFcm } = this.props;
     const fcmToken = await firebase.messaging().getToken();
+    //console.log(fcmToken);
     updateFcm(username, fcmToken);
+    //alert(fcmToken);
   }
 }
 
