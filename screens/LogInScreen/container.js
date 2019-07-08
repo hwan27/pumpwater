@@ -40,13 +40,13 @@ class Container extends Component {
         });
         const loginResult = await login(username, password);
         if (!loginResult) {
-          Alert.alert("Check your ID & Password");
+          Alert.alert("  ","Check your ID & Password");
           this.setState({ isSubmitting: false });
         } else {
           await this._chenckPermission(username);
         }
       } else {
-        Alert.alert("All fields are required");
+        Alert.alert("  ","All fields are required");
       }
     }
   };
@@ -63,7 +63,7 @@ class Container extends Component {
       await firebase.messaging().requestPermission();
       await this._updateTokenToServer();
     } catch (err) {
-      alert("You can't handle push notification");
+      alert("  ","You can't handle push notification");
     }
   };
   async _updateTokenToServer(username) {

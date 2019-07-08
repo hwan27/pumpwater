@@ -294,7 +294,7 @@ const PumpScreen = props => (
                   value={props.setPressure ? String(props.setPressure) : null}
                 />
                 <TouchableOpacity
-                  style={{ backgroundColor: "#4593bc" }}
+                  style={{ backgroundColor: "#00a5dd",justifyContent:'center',alignItems:'center' }}
                   onPress={props.update_pressure}
                 >
                   <Text style={{ fontSize: 14, color: "white", marginLeft: 5 }}>

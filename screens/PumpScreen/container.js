@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   View,
   Image,
-  Text
+  Text,
+  Modal
 } from "react-native";
 import PumpScreen from "./presenter";
 import NavButton from "../../components/NavButton";
@@ -62,7 +63,7 @@ class Container extends Component {
     isRefreshing: false,
     number: "",
     //defaultPressure: 0,
-    setPressure: 0
+    setPressure: 0,
     //sector_id: 0
   };
 
@@ -78,12 +79,16 @@ class Container extends Component {
       setPressure
     );
     this._refresh();
-    alert("설정압력이 " + setPressure + "(으)로 변경되었습니다");
+    Alert.alert(
+      "   ",
+      "설정압력이 " + setPressure + "(으)로 변경되었습니다");
+   
   };
 
   _setPressure = text => {
     this.setState({ setPressure: text });
   };
+
   _logout = () => {
     const { logout } = this.props;
     logout();
