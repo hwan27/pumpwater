@@ -71,13 +71,24 @@ class Container extends Component {
   //   await getFeed();
   //   Alert.alert(JSON.stringify(props));
   // }
+  _setModem = () => {
+    const { setModem } = this.props;
+    setModem(this.props.sectorFeed.modem_number, this.state.setPressure);
+  };
+
+  _connectModem = () => {
+    const { connectModem } = this.props;
+    connectModem(this.props.sectorFeed.modem_number);
+  };
+
   _updatePressure = async () => {
-    const { updatePressure } = this.props;
+    const { updatePressure, setModem } = this.props;
     const { setPressure } = this.state;
     await updatePressure(
       this.props.navigation.state.params.sector_id,
       setPressure
     );
+    this._setModem();
     this._refresh();
     Alert.alert(
       "   ",
@@ -124,8 +135,9 @@ class Container extends Component {
     }
   };
 
-  _refreshInterval = () => {
-    const { getSector } = this.props;
+  _refreshInterval = async () => {
+    //const { getSector } = this.props;
+    await this._connectModem();
     // await connect();
     // Alert.alert(JSON.stringify(this.props.sectorFeed.modem_number));
     this.setState({ isRefreshing: true });
