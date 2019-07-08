@@ -28,6 +28,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     //},
     updatePressure: (sector_id, pressure) => {
       return dispatch(townActions.updatePressure(sector_id, pressure));
+    },
+    connectModem: number => {
+      return dispatch(modemActions.connectModem(number));
+    },
+    setModem: (number, pressure) => {
+      return dispatch(modemActions.setModem(number, pressure));
     }
   };
 };
