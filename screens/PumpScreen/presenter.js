@@ -11,10 +11,14 @@ import {
   TouchableOpacity,
   Modal,
   TextInput,
+  ImageBackground,
   Alert
 } from "react-native";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
-import Pump from "../../components/Pump";
+import Pump_1 from "../../components/Pump_1";
+import Pump_2 from "../../components/Pump_2";
+import Pump_3 from "../../components/Pump_3";
+import Pump_4 from "../../components/Pump_4";
 import Grid from "react-native-grid-component";
 import { Icon } from "native-base";
 
@@ -294,7 +298,11 @@ const PumpScreen = props => (
                   value={props.setPressure ? String(props.setPressure) : null}
                 />
                 <TouchableOpacity
-                  style={{ backgroundColor: "#00a5dd",justifyContent:'center',alignItems:'center' }}
+                  style={{
+                    backgroundColor: "#00a5dd",
+                    justifyContent: "center",
+                    alignItems: "center"
+                  }}
                   onPress={props.update_pressure}
                 >
                   <Text style={{ fontSize: 14, color: "white", marginLeft: 5 }}>
@@ -339,10 +347,26 @@ const PumpScreen = props => (
           <View
             style={{ flexDirection: "column", display: "flex", marginTop: 30 }}
           >
-            {props.sectorFeed &&
+            {/* {props.sectorFeed && props.sectorFeed.pump_count == 1 ? (
+              <Pump_1 {...props.sectorFeed} />
+            ) : null} */}
+            {/* {props.sectorFeed && props.sectorFeed.pump_count == 2 ? (
+              <Pump_2 {...props.sectorFeed} />
+            ) : null} */}
+            {props.sectorFeed && props.sectorFeed.pump_count == 1 ? (
+              <Pump_1 {...props.sectorFeed} />
+            ) : props.sectorFeed && props.sectorFeed.pump_count == 2 ? (
+              <Pump_2 {...props.sectorFeed} />
+            ) : props.sectorFeed && props.sectorFeed.pump_count == 3 ? (
+              <Pump_3 {...props.sectorFeed} />
+            ) : props.sectorFeed && props.sectorFeed.pump_count == 4 ? (
+              <Pump_4 {...props.sectorFeed} />
+            ) : null}
+
+            {/* {props.sectorFeed &&
               props.sectorFeed.pump_set.map(pump => (
                 <Pump {...pump} key={pump.id} />
-              ))}
+              ))} */}
           </View>
 
           {/* <TouchableOpacity
@@ -593,6 +617,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     flexDirection: "row"
+  },
+  header: {
+    alignItems: "center",
+    textAlign: "center",
+    flexDirection: "row",
+    justifyContent: "center"
   },
   item: {
     flex: 1,
