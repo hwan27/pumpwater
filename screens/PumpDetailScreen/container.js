@@ -29,9 +29,9 @@ class Container extends Component {
     return <PumpDetailScreen pump={pump} getModem={this._getModem} />;
   }
 
-  _getModem = () => {
-    const { getModem } = this.props;
-    getModem();
-  };
+  // _getModem = () => {
+  //   const { getModem } = this.props;
+  //   getModem();
+  // };
 }
 export default Container;

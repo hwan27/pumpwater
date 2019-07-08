@@ -60,14 +60,30 @@ class Container extends Component {
     modalVisible: false,
     isFetching: false,
     isRefreshing: false,
-    number: ""
+    number: "",
+    //defaultPressure: 0,
+    setPressure: 0
+    //sector_id: 0
   };
 
   // async componentDidMount() {
   //   await getFeed();
   //   Alert.alert(JSON.stringify(props));
   // }
+  _updatePressure = async () => {
+    const { updatePressure } = this.props;
+    const { setPressure } = this.state;
+    await updatePressure(
+      this.props.navigation.state.params.sector_id,
+      setPressure
+    );
+    this._refresh();
+    alert("설정압력이 " + setPressure + "(으)로 변경되었습니다");
+  };
 
+  _setPressure = text => {
+    this.setState({ setPressure: text });
+  };
   _logout = () => {
     const { logout } = this.props;
     logout();
@@ -80,16 +96,16 @@ class Container extends Component {
   //   this.setState({ isFetching: true });
   //   getFeed();
   // };
-  _connect = async () => {
-    const { number } = this.state;
-    const { connect } = this.props;
-    if (number) {
-      const connectResult = await connect(number);
-    }
-  };
+  // _connect = () => {
+  //   //const { number } = this.state;
+  //   const { connect } = this.props;
+
+  //   connect();
+  // };
   componentDidMount = async () => {
     //Alert.alert(JSON.stringify(this.props.sectorFeed.modem_number));
-    this._refresh();
+    await this._refresh();
+    this.setState({ Pressure: this.props.sectorFeed.set_pressure });
     this.props.navigation.setParams({ logout: this._logout });
     //Alert.alert(JSON.stringify(this.props.navigation.state.params.sector.id));
     // const number = await this.props.navigation.state.params.sector.modem_number;
@@ -103,10 +119,10 @@ class Container extends Component {
     }
   };
 
-  _refreshInterval = number => {
-    const { getSector, connect } = this.props;
-    connect(this.props.sectorFeed.modem_number);
-    Alert.alert(JSON.stringify(this.props.sectorFeed.modem_number));
+  _refreshInterval = () => {
+    const { getSector } = this.props;
+    // await connect();
+    // Alert.alert(JSON.stringify(this.props.sectorFeed.modem_number));
     this.setState({ isRefreshing: true });
     let interval = setInterval(() => this._refresh(), 2000);
     setTimeout(() => {
@@ -140,9 +156,11 @@ class Container extends Component {
         sector_id={sector_id}
         {...this.state}
         setModalVisible={this._setModalVisible}
-        connect={this._connect}
+        //connect={this._connect}
         refresh={this._refresh}
         refreshInterval={this._refreshInterval}
+        set_pressure={this._setPressure}
+        update_pressure={this._updatePressure}
       />
     );
   }

@@ -23,8 +23,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     logout: () => {
       dispatch(userActions.logout());
     },
-    connect: number => {
-      return dispatch(modemActions.connect(number));
+    //connect: () => {
+    //  return dispatch(modemActions.connect());
+    //},
+    updatePressure: (sector_id, pressure) => {
+      return dispatch(townActions.updatePressure(sector_id, pressure));
     }
   };
 };

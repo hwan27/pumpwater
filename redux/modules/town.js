@@ -37,6 +37,25 @@ function getFeed() {
   };
 }
 
+function updatePressure(sector_id, pressure) {
+  return (dispatch, getState) => {
+    const {
+      user: { token }
+    } = getState();
+    //alert(pressure);
+    fetch(`${API_URL}/pumps/sector/${sector_id}/`, {
+      method: "put",
+      headers: {
+        Authorization: `JWT ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        set_pressure: pressure
+      })
+    });
+  };
+}
+
 function getTown(townId) {
   return (dispatch, getState) => {
     const {
@@ -114,7 +133,8 @@ function applySetTown(state, action) {
 const actionCreators = {
   getFeed,
   getSector,
-  getTown
+  getTown,
+  updatePressure
 };
 
 export { actionCreators };

@@ -48,12 +48,12 @@ class Container extends Component {
   //   getFeed();
   // }
 
-  componentDidMount() {
-    this._refresh();
-    let data = JSON.stringify(this.props.feed.town_set);
-    this.setState({ data: data });
+  componentDidMount = async () => {
+    await this._refresh();
+    // let data = JSON.stringify(this.props.feed.town_set);
+    // this.setState({ data: data });
     this.props.navigation.setParams({ logout: this._logout });
-  }
+  };
   componentWillReceiveProps = nextProps => {
     if (nextProps.feed) {
       this.setState({
