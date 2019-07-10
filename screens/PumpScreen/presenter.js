@@ -342,6 +342,13 @@ const PumpScreen = props => (
               {props.sectorFeed && props.sectorFeed.updated_at.slice(8, 10)}일{" "}
               {props.sectorFeed && props.sectorFeed.updated_at.slice(11, 19)}
             </Text>
+            <Text>
+              {(Date.now() - Date.parse(props.sectorFeed.updated_at)) /
+                3600000 >
+              2
+                ? "False"
+                : "True"}
+            </Text>
           </View>
           {/* <View style={{ height: height * 0.3, width: width }}> */}
           <View

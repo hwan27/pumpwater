@@ -35,18 +35,19 @@ const Sector = props => (
             width: width * 0.3,
             height: height * 0.07,
             justifyContent: "space-between",
-            alignItems: "center",
-           
+            alignItems: "center"
           }}
         >
           <Image
             source={require("../../assets/images/waterTap.gif")}
             style={{ resizeMode: "contain", width: 25 }}
           />
-          <Image
-            source={require("../../assets/images/wifi02.png")}
-            style={{ resizeMode: "contain", width: 30 }}
-          />
+          {(Date.now() - Date.parse(props.updated_at)) / 3600000 > 2 ? null : (
+            <Image
+              source={require("../../assets/images/wifi02.png")}
+              style={{ resizeMode: "contain", width: 30 }}
+            />
+          )}
         </View>
       </View>
     </View>
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     backgroundColor: "#fff",
     //borderRadius: 35,
-    margin: width * 0.05,
+    margin: width * 0.05
   },
   header: {
     alignItems: "center",
