@@ -63,7 +63,7 @@ class Container extends Component {
     isRefreshing: false,
     number: "",
     //defaultPressure: 0,
-    setPressure: 0,
+    setPressure: 0
     //sector_id: 0
   };
 
@@ -90,10 +90,7 @@ class Container extends Component {
     );
     this._setModem();
     this._refresh();
-    Alert.alert(
-      "   ",
-      "설정압력이 " + setPressure + "(으)로 변경되었습니다");
-   
+    Alert.alert("   ", "설정압력이 " + setPressure + "(으)로 변경되었습니다");
   };
 
   _setPressure = text => {
@@ -120,6 +117,7 @@ class Container extends Component {
   // };
   componentDidMount = async () => {
     //Alert.alert(JSON.stringify(this.props.sectorFeed.modem_number));
+    //Alert.alert(JSON.stringify(this.props.sectorFeed));
     await this._refresh();
     this.setState({ Pressure: this.props.sectorFeed.set_pressure });
     this.props.navigation.setParams({ logout: this._logout });
