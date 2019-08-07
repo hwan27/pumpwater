@@ -21,7 +21,7 @@ const Sector = props => (
       props.navigation.navigate("Pumps", {
         // pump: props.pump_set,
         sector_title: props.title,
-        sector_id: props.id
+        sector_id: props.sector_id
         // sector: props
       })
     }

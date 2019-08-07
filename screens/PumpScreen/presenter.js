@@ -214,7 +214,8 @@ const PumpScreen = props => (
               alignItems: "center"
             }}
           >
-            {props.sectorFeed && props.sectorFeed.pressure == "" ? null : (
+            {props.sectorFeed &&
+            props.sectorFeed.suction_pressure == "" ? null : (
               <View style={styles.pressure}>
                 <Text style={styles.pressureFontBig}>흡입압력</Text>
                 <View
@@ -224,7 +225,9 @@ const PumpScreen = props => (
                     alignItems: "center"
                   }}
                 >
-                  <Text>{props.sectorFeed && props.sectorFeed.pressure}</Text>
+                  <Text>
+                    {props.sectorFeed && props.sectorFeed.suction_pressure}
+                  </Text>
                   <Text style={styles.pressureFont}>Bar</Text>
                 </View>
               </View>
@@ -279,7 +282,9 @@ const PumpScreen = props => (
                   alignItems: "center"
                 }}
               >
-                <Text>{props.sectorFeed && props.sectorFeed.dis_pressure}</Text>
+                <Text>
+                  {props.sectorFeed && props.sectorFeed.discharge_pressure}
+                </Text>
                 <Text style={styles.pressureFont}>Bar</Text>
               </View>
             </View>
@@ -303,6 +308,7 @@ const PumpScreen = props => (
                   width: 70
                 }}
               >
+                <Text>기존</Text>
                 <Text>{props.sectorFeed && props.sectorFeed.set_pressure}</Text>
                 <TextInput
                   keyboardType="numeric"
@@ -355,6 +361,7 @@ const PumpScreen = props => (
               {props.sectorFeed && props.sectorFeed.updated_at.slice(8, 10)}일{" "}
               {props.sectorFeed && props.sectorFeed.updated_at.slice(11, 19)}
             </Text>
+<<<<<<< HEAD
             {/* <Text>
               {(Date.now() - Date.parse(props.sectorFeed.updated_at)) /
                 3600000 >
@@ -362,6 +369,15 @@ const PumpScreen = props => (
                 ? "False"
                 : "True"}
             </Text> */}
+=======
+            <Text>
+              {/* {(Date.now() - Date.parse(props.sectorFeed.updated_at)) /
+                3600000 >
+              2
+                ? "False"
+                : "True"} */}
+            </Text>
+>>>>>>> 34ebc8fcda46a9b529a830b2038e41fa71396262
           </View>
           {/* <View style={{ height: height * 0.3, width: width }}> */}
           <View
