@@ -169,12 +169,25 @@ const PumpScreen = props => (
             )}
           </View>
 
+          {props.isRefreshing ? (
+            <TouchableOpacity style={styles.buttonGray}>
+              <Text style={styles.buttonText1}>접속 요청</Text>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              style={styles.buttonBlue}
+              onPress={props.refreshInterval}
+            >
+              <Text style={styles.buttonText1}>접속 요청</Text>
+            </TouchableOpacity>
+          )}
+          {/* 
           <TouchableOpacity
-            style={styles.buttonBlue}
+            style={props.isRefreshing ? styles.buttonGray : styles.buttonBlue}
             onPress={props.refreshInterval}
           >
             <Text style={styles.buttonText1}>접속 요청</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
 
         {/* <View style={{flexDirection:'row', marginTop:20,justifyContent:'center',alignItems:'center'}}>
@@ -342,13 +355,13 @@ const PumpScreen = props => (
               {props.sectorFeed && props.sectorFeed.updated_at.slice(8, 10)}일{" "}
               {props.sectorFeed && props.sectorFeed.updated_at.slice(11, 19)}
             </Text>
-            <Text>
+            {/* <Text>
               {(Date.now() - Date.parse(props.sectorFeed.updated_at)) /
                 3600000 >
               2
                 ? "False"
                 : "True"}
-            </Text>
+            </Text> */}
           </View>
           {/* <View style={{ height: height * 0.3, width: width }}> */}
           <View
@@ -667,6 +680,16 @@ const styles = StyleSheet.create({
     marginTop: width * 0.015
   },
 
+  buttonGray: {
+    backgroundColor: "gray",
+    width: width * 0.4,
+    height: width * 0.13,
+    borderRadius: width * 0.065,
+    justifyContent: "center",
+    alignItems: "center",
+    elevation: 2,
+    margin: 5
+  },
   buttonBlue: {
     backgroundColor: "#30b4d8",
     width: width * 0.4,
@@ -707,6 +730,12 @@ const styles = StyleSheet.create({
     fontWeight: "500"
   },
 
+  buttonGrey: {
+    color: "#fff",
+    fontSize: 15,
+    fontWeight: "500",
+    margin: 10
+  },
   buttonText1: {
     color: "#fff",
     fontSize: 15,

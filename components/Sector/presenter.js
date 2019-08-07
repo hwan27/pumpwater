@@ -42,9 +42,14 @@ const Sector = props => (
             source={require("../../assets/images/waterTap.gif")}
             style={{ resizeMode: "contain", width: 25 }}
           />
-          {(Date.now() - Date.parse(props.updated_at)) / 3600000 > 2 ? null : (
+          {(Date.now() - Date.parse(props.updated_at)) / 3600000 < 2 ? (
             <Image
               source={require("../../assets/images/wifi02.png")}
+              style={{ resizeMode: "contain", width: 30 }}
+            />
+          ) : (
+            <Image
+              source={require("../../assets/images/wifiError.png")}
               style={{ resizeMode: "contain", width: 30 }}
             />
           )}
