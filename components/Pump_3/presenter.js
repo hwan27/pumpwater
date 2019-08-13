@@ -164,7 +164,6 @@ const Pump_3 = props => (
           </View>
         </View>
       </View>
-      <View />
     </View>
 
     <View style={styles.header}>
@@ -313,7 +312,6 @@ const Pump_3 = props => (
           </View>
         </View>
       </View>
-      <View />
     </View>
     <View style={styles.header}>
       <ImageBackground

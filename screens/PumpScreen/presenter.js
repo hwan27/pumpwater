@@ -361,7 +361,6 @@ const PumpScreen = props => (
               {props.sectorFeed && props.sectorFeed.updated_at.slice(8, 10)}일{" "}
               {props.sectorFeed && props.sectorFeed.updated_at.slice(11, 19)}
             </Text>
-<<<<<<< HEAD
             {/* <Text>
               {(Date.now() - Date.parse(props.sectorFeed.updated_at)) /
                 3600000 >
@@ -369,15 +368,6 @@ const PumpScreen = props => (
                 ? "False"
                 : "True"}
             </Text> */}
-=======
-            <Text>
-              {/* {(Date.now() - Date.parse(props.sectorFeed.updated_at)) /
-                3600000 >
-              2
-                ? "False"
-                : "True"} */}
-            </Text>
->>>>>>> 34ebc8fcda46a9b529a830b2038e41fa71396262
           </View>
           {/* <View style={{ height: height * 0.3, width: width }}> */}
           <View
@@ -431,13 +421,26 @@ const PumpScreen = props => (
           />
         </TouchableOpacity> */}
           {props.sectorFeed &&
-          (props.sectorFeed.pump_open ||
-            props.sectorFeed.low_pressure ||
-            props.sectorFeed.water_level ||
-            props.sectorFeed.pump_1_disorder ||
-            props.sectorFeed.pump_2_disorder ||
-            props.sectorFeed.pump_3_disorder ||
-            props.sectorFeed.pump_4_disorder) ? (
+          (!props.sectorFeed.pump_open &&
+            !props.sectorFeed.low_pressure &&
+            !props.sectorFeed.pump_1_low_water &&
+            !props.sectorFeed.pump_2_low_water &&
+            !props.sectorFeed.pump_3_low_water &&
+            !props.sectorFeed.pump_4_low_water &&
+            props.sectorFeed.pump_1_disorder_a == "0000" &&
+            props.sectorFeed.pump_1_disorder_b == "0000" &&
+            props.sectorFeed.pump_2_disorder_b == "0000" &&
+            props.sectorFeed.pump_3_disorder_a == "0000" &&
+            props.sectorFeed.pump_3_disorder_b == "0000" &&
+            props.sectorFeed.pump_4_disorder_a == "0000" &&
+            props.sectorFeed.pump_4_disorder_b) ? null : (
+            // (props.sectorFeed.pump_open ||
+            //   props.sectorFeed.low_pressure ||
+            //   props.sectorFeed.water_level ||
+            //   props.sectorFeed.pump_1_disorder ||
+            //   props.sectorFeed.pump_2_disorder ||
+            //   props.sectorFeed.pump_3_disorder ||
+            //   props.sectorFeed.pump_4_disorder) ? (
             <View style={styles.warningBG}>
               {props.sectorFeed && props.sectorFeed.pump_open ? (
                 <View style={styles.warning}>
@@ -486,7 +489,7 @@ const PumpScreen = props => (
                   </Text>
                 </View>
               ) : null}
-              {props.sectorFeed && props.sectorFeed.water_level ? (
+              {props.sectorFeed && props.sectorFeed.pump_1_low_water ? (
                 <View style={styles.warning}>
                   <Icon
                     type="FontAwesome"
@@ -505,29 +508,6 @@ const PumpScreen = props => (
                       fontWeight: "500"
                     }}
                   >
-                    수위이상
-                  </Text>
-                </View>
-              ) : null}
-              {props.sectorFeed && props.sectorFeed.pump_1_disorder ? (
-                <View style={styles.warning}>
-                  <Icon
-                    type="FontAwesome"
-                    name="exclamation-triangle"
-                    style={{
-                      paddingRight: 10,
-                      fontSize: 20,
-                      color: "#f7727f"
-                    }}
-                  />
-                  <Text
-                    style={{
-                      color: "#f7727f",
-                      fontSize: 20,
-                      fontWeight: "500",
-                      marginRight: 10
-                    }}
-                  >
                     1번 펌프
                   </Text>
                   <Text
@@ -537,11 +517,11 @@ const PumpScreen = props => (
                       fontWeight: "500"
                     }}
                   >
-                    고장
+                    수위 이상
                   </Text>
                 </View>
               ) : null}
-              {props.sectorFeed && props.sectorFeed.pump_2_disorder ? (
+              {props.sectorFeed && props.sectorFeed.pump_2_low_water ? (
                 <View style={styles.warning}>
                   <Icon
                     type="FontAwesome"
@@ -552,12 +532,12 @@ const PumpScreen = props => (
                       color: "#f7727f"
                     }}
                   />
+
                   <Text
                     style={{
                       color: "#f7727f",
                       fontSize: 20,
-                      fontWeight: "500",
-                      marginRight: 10
+                      fontWeight: "500"
                     }}
                   >
                     2번 펌프
@@ -569,11 +549,11 @@ const PumpScreen = props => (
                       fontWeight: "500"
                     }}
                   >
-                    고장
+                    수위 이상
                   </Text>
                 </View>
               ) : null}
-              {props.sectorFeed && props.sectorFeed.pump_3_disorder ? (
+              {props.sectorFeed && props.sectorFeed.pump_3_low_water ? (
                 <View style={styles.warning}>
                   <Icon
                     type="FontAwesome"
@@ -584,12 +564,12 @@ const PumpScreen = props => (
                       color: "#f7727f"
                     }}
                   />
+
                   <Text
                     style={{
                       color: "#f7727f",
                       fontSize: 20,
-                      fontWeight: "500",
-                      marginRight: 10
+                      fontWeight: "500"
                     }}
                   >
                     3번 펌프
@@ -601,11 +581,44 @@ const PumpScreen = props => (
                       fontWeight: "500"
                     }}
                   >
-                    고장
+                    수위 이상
                   </Text>
                 </View>
               ) : null}
-              {props.sectorFeed && props.sectorFeed.pump_4_disorder ? (
+              {props.sectorFeed && props.sectorFeed.pump_4_low_water ? (
+                <View style={styles.warning}>
+                  <Icon
+                    type="FontAwesome"
+                    name="exclamation-triangle"
+                    style={{
+                      paddingRight: 10,
+                      fontSize: 20,
+                      color: "#f7727f"
+                    }}
+                  />
+
+                  <Text
+                    style={{
+                      color: "#f7727f",
+                      fontSize: 20,
+                      fontWeight: "500"
+                    }}
+                  >
+                    4번 펌프
+                  </Text>
+                  <Text
+                    style={{
+                      color: "#f7727f",
+                      fontSize: 20,
+                      fontWeight: "500"
+                    }}
+                  >
+                    수위 이상
+                  </Text>
+                </View>
+              ) : null}
+              {props.sectorFeed &&
+              props.sectorFeed.pump_1_disorder_a != "0000" ? (
                 <View style={styles.warning}>
                   <Icon
                     type="FontAwesome"
@@ -624,7 +637,7 @@ const PumpScreen = props => (
                       marginRight: 10
                     }}
                   >
-                    4번 펌프
+                    1번 펌프 고장 A:
                   </Text>
                   <Text
                     style={{
@@ -633,12 +646,243 @@ const PumpScreen = props => (
                       fontWeight: "500"
                     }}
                   >
-                    고장
+                    {props.sectorFeed.pump_1_disorder_a}
+                  </Text>
+                </View>
+              ) : null}
+              {props.sectorFeed &&
+              props.sectorFeed.pump_1_disorder_b != "0000" ? (
+                <View style={styles.warning}>
+                  <Icon
+                    type="FontAwesome"
+                    name="exclamation-triangle"
+                    style={{
+                      paddingRight: 10,
+                      fontSize: 20,
+                      color: "#f7727f"
+                    }}
+                  />
+                  <Text
+                    style={{
+                      color: "#f7727f",
+                      fontSize: 20,
+                      fontWeight: "500",
+                      marginRight: 10
+                    }}
+                  >
+                    1번 펌프 고장 B:
+                  </Text>
+                  <Text
+                    style={{
+                      color: "#f7727f",
+                      fontSize: 20,
+                      fontWeight: "500"
+                    }}
+                  >
+                    {props.sectorFeed.pump_1_disorder_b}
+                  </Text>
+                </View>
+              ) : null}
+              {props.sectorFeed &&
+              props.sectorFeed.pump_2_disorder_a != "0000" ? (
+                <View style={styles.warning}>
+                  <Icon
+                    type="FontAwesome"
+                    name="exclamation-triangle"
+                    style={{
+                      paddingRight: 10,
+                      fontSize: 20,
+                      color: "#f7727f"
+                    }}
+                  />
+                  <Text
+                    style={{
+                      color: "#f7727f",
+                      fontSize: 20,
+                      fontWeight: "500",
+                      marginRight: 10
+                    }}
+                  >
+                    2번 펌프 고장 A:
+                  </Text>
+                  <Text
+                    style={{
+                      color: "#f7727f",
+                      fontSize: 20,
+                      fontWeight: "500"
+                    }}
+                  >
+                    {props.sectorFeed.pump_2_disorder_a}
+                  </Text>
+                </View>
+              ) : null}
+              {props.sectorFeed &&
+              props.sectorFeed.pump_2_disorder_b != "0000" ? (
+                <View style={styles.warning}>
+                  <Icon
+                    type="FontAwesome"
+                    name="exclamation-triangle"
+                    style={{
+                      paddingRight: 10,
+                      fontSize: 20,
+                      color: "#f7727f"
+                    }}
+                  />
+                  <Text
+                    style={{
+                      color: "#f7727f",
+                      fontSize: 20,
+                      fontWeight: "500",
+                      marginRight: 10
+                    }}
+                  >
+                    2번 펌프 고장 B:
+                  </Text>
+                  <Text
+                    style={{
+                      color: "#f7727f",
+                      fontSize: 20,
+                      fontWeight: "500"
+                    }}
+                  >
+                    {props.sectorFeed.pump_2_disorder_b}
+                  </Text>
+                </View>
+              ) : null}
+              {props.sectorFeed &&
+              props.sectorFeed.pump_3_disorder_a != "0000" ? (
+                <View style={styles.warning}>
+                  <Icon
+                    type="FontAwesome"
+                    name="exclamation-triangle"
+                    style={{
+                      paddingRight: 10,
+                      fontSize: 20,
+                      color: "#f7727f"
+                    }}
+                  />
+                  <Text
+                    style={{
+                      color: "#f7727f",
+                      fontSize: 20,
+                      fontWeight: "500",
+                      marginRight: 10
+                    }}
+                  >
+                    3번 펌프 고장 A:
+                  </Text>
+                  <Text
+                    style={{
+                      color: "#f7727f",
+                      fontSize: 20,
+                      fontWeight: "500"
+                    }}
+                  >
+                    {props.sectorFeed.pump_3_disorder_a}
+                  </Text>
+                </View>
+              ) : null}
+              {props.sectorFeed &&
+              props.sectorFeed.pump_3_disorder_b != "0000" ? (
+                <View style={styles.warning}>
+                  <Icon
+                    type="FontAwesome"
+                    name="exclamation-triangle"
+                    style={{
+                      paddingRight: 10,
+                      fontSize: 20,
+                      color: "#f7727f"
+                    }}
+                  />
+                  <Text
+                    style={{
+                      color: "#f7727f",
+                      fontSize: 20,
+                      fontWeight: "500",
+                      marginRight: 10
+                    }}
+                  >
+                    3번 펌프 고장 B:
+                  </Text>
+                  <Text
+                    style={{
+                      color: "#f7727f",
+                      fontSize: 20,
+                      fontWeight: "500"
+                    }}
+                  >
+                    {props.sectorFeed.pump_3_disorder_b}
+                  </Text>
+                </View>
+              ) : null}
+              {props.sectorFeed &&
+              props.sectorFeed.pump_4_disorder_a != "0000" ? (
+                <View style={styles.warning}>
+                  <Icon
+                    type="FontAwesome"
+                    name="exclamation-triangle"
+                    style={{
+                      paddingRight: 10,
+                      fontSize: 20,
+                      color: "#f7727f"
+                    }}
+                  />
+                  <Text
+                    style={{
+                      color: "#f7727f",
+                      fontSize: 20,
+                      fontWeight: "500",
+                      marginRight: 10
+                    }}
+                  >
+                    4번 펌프 고장 A:
+                  </Text>
+                  <Text
+                    style={{
+                      color: "#f7727f",
+                      fontSize: 20,
+                      fontWeight: "500"
+                    }}
+                  >
+                    {props.sectorFeed.pump_4_disorder_a}
+                  </Text>
+                </View>
+              ) : null}
+              {props.sectorFeed &&
+              props.sectorFeed.pump_4_disorder_b != "0000" ? (
+                <View style={styles.warning}>
+                  <Icon
+                    type="FontAwesome"
+                    name="exclamation-triangle"
+                    style={{
+                      paddingRight: 10,
+                      fontSize: 20,
+                      color: "#f7727f"
+                    }}
+                  />
+                  <Text
+                    style={{
+                      color: "#f7727f",
+                      fontSize: 20,
+                      fontWeight: "500",
+                      marginRight: 10
+                    }}
+                  >
+                    4번 펌프 고장 B:
+                  </Text>
+                  <Text
+                    style={{
+                      color: "#f7727f",
+                      fontSize: 20,
+                      fontWeight: "500"
+                    }}
+                  >
+                    {props.sectorFeed.pump_4_disorder_b}
                   </Text>
                 </View>
               ) : null}
             </View>
-          ) : null}
+          )}
         </View>
 
         {/* {props.pump && props.pump.map(pump => <Pump {...pump} key={pump.id} />)} */}
