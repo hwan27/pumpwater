@@ -325,7 +325,8 @@ const PumpScreen = props => (
                     justifyContent: "center",
                     alignItems: "center",
                     marginLeft: 8,
-                    height: 32,
+                    height: 38,
+                    width: 60,
                     borderRadius: 3
                   }}
                   onPress={props.update_pressure}
@@ -1059,9 +1060,9 @@ const styles = StyleSheet.create({
   input: {
     //width: width * 0.15,
     //marginRight: width * 0.02,
-    height: 32,
+    height: 38,
     width: 70,
-    textAlign: "right",
+    textAlign: "center",
     // paddingHorizontal: 10,
     // paddingVertical: 10,
     borderColor: "#dbdbdb",
