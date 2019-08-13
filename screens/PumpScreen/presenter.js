@@ -304,27 +304,33 @@ const PumpScreen = props => (
                   flexDirection: "row",
                   justifyContent: "center",
                   alignItems: "center",
-                  height: 35,
+                  height: 32,
                   width: 70
                 }}
               >
-                <Text>기존</Text>
-                <Text>{props.sectorFeed && props.sectorFeed.set_pressure}</Text>
+                {/* <Text>기존</Text>
+                <Text>{props.sectorFeed && props.sectorFeed.set_pressure}</Text> */}
                 <TextInput
                   keyboardType="numeric"
                   style={styles.input}
                   onChangeText={props.set_pressure}
+                  placeholder={
+                    props.sectorFeed && props.sectorFeed.set_pressure
+                  }
                   value={props.setPressure ? String(props.setPressure) : null}
                 />
                 <TouchableOpacity
                   style={{
                     backgroundColor: "#00a5dd",
                     justifyContent: "center",
-                    alignItems: "center"
+                    alignItems: "center",
+                    marginLeft: 8,
+                    height: 32,
+                    borderRadius: 3
                   }}
                   onPress={props.update_pressure}
                 >
-                  <Text style={{ fontSize: 14, color: "white", marginLeft: 5 }}>
+                  <Text style={{ fontSize: 15, color: "white", margin: 3 }}>
                     입력
                   </Text>
                 </TouchableOpacity>
@@ -1053,8 +1059,9 @@ const styles = StyleSheet.create({
   input: {
     //width: width * 0.15,
     //marginRight: width * 0.02,
-    height: 38,
+    height: 32,
     width: 70,
+    textAlign: "right",
     // paddingHorizontal: 10,
     // paddingVertical: 10,
     borderColor: "#dbdbdb",

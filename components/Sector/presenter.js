@@ -38,10 +38,21 @@ const Sector = props => (
             alignItems: "center"
           }}
         >
-          <Image
-            source={require("../../assets/images/waterTap.gif")}
-            style={{ resizeMode: "contain", width: 25 }}
-          />
+          {props.pump_1_on ||
+          props.pump_2_on ||
+          props.pump_3_on ||
+          props.pump_4_on ? (
+            <Image
+              source={require("../../assets/images/waterTap.gif")}
+              style={{ resizeMode: "contain", width: 25 }}
+            />
+          ) : (
+            <Image
+              source={require("../../assets/images/watertapx.png")}
+              style={{ resizeMode: "contain", width: 25 }}
+            />
+          )}
+
           {(Date.now() - Date.parse(props.updated_at)) / 3600000 < 2 ? (
             <Image
               source={require("../../assets/images/wifi02.png")}
