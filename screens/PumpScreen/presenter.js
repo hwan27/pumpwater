@@ -303,9 +303,9 @@ const PumpScreen = props => (
                 style={{
                   flexDirection: "row",
                   justifyContent: "center",
-                  alignItems: "center",
-                  height: 32,
-                  width: 70
+                  alignItems: "center"
+                  // height: height * 0.05,
+                  // width: width * 0.12
                 }}
               >
                 {/* <Text>기존</Text>
@@ -325,8 +325,8 @@ const PumpScreen = props => (
                     justifyContent: "center",
                     alignItems: "center",
                     marginLeft: 8,
-                    height: 38,
-                    width: 60,
+                    height: height * 0.06,
+                    width: width * 0.13,
                     borderRadius: 3
                   }}
                   onPress={props.update_pressure}
@@ -1013,7 +1013,7 @@ const styles = StyleSheet.create({
   pressure: {
     backgroundColor: "#fff",
     width: width * 0.4,
-    height: width * 0.2,
+    height: width * 0.3,
     borderRadius: width * 0.03,
     padding: 10,
     margin: 7,
@@ -1025,9 +1025,9 @@ const styles = StyleSheet.create({
   pressureUnder: {
     backgroundColor: "#fff",
     width: width * 0.4,
-    height: width * 0.2,
+    height: width * 0.3,
     borderRadius: width * 0.03,
-    padding: 15,
+    padding: 10,
     margin: 7,
     elevation: 2,
     justifyContent: "center",
@@ -1060,8 +1060,8 @@ const styles = StyleSheet.create({
   input: {
     //width: width * 0.15,
     //marginRight: width * 0.02,
-    height: 38,
-    width: 70,
+    height: height * 0.06,
+    width: width * 0.15,
     textAlign: "center",
     // paddingHorizontal: 10,
     // paddingVertical: 10,
