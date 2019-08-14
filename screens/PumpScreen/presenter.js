@@ -440,7 +440,7 @@ const PumpScreen = props => (
             props.sectorFeed.pump_3_disorder_a == "0000" &&
             props.sectorFeed.pump_3_disorder_b == "0000" &&
             props.sectorFeed.pump_4_disorder_a == "0000" &&
-            props.sectorFeed.pump_4_disorder_b) ? null : (
+            props.sectorFeed.pump_4_disorder_b == "0000") ? null : (
             // (props.sectorFeed.pump_open ||
             //   props.sectorFeed.low_pressure ||
             //   props.sectorFeed.water_level ||
@@ -521,7 +521,8 @@ const PumpScreen = props => (
                     style={{
                       color: "#f7727f",
                       fontSize: 20,
-                      fontWeight: "500"
+                      fontWeight: "500",
+                      marginLeft: 7
                     }}
                   >
                     수위 이상
@@ -553,7 +554,8 @@ const PumpScreen = props => (
                     style={{
                       color: "#f7727f",
                       fontSize: 20,
-                      fontWeight: "500"
+                      fontWeight: "500",
+                      marginLeft: 7
                     }}
                   >
                     수위 이상
@@ -585,7 +587,8 @@ const PumpScreen = props => (
                     style={{
                       color: "#f7727f",
                       fontSize: 20,
-                      fontWeight: "500"
+                      fontWeight: "500",
+                      marginLeft: 7
                     }}
                   >
                     수위 이상
@@ -617,7 +620,8 @@ const PumpScreen = props => (
                     style={{
                       color: "#f7727f",
                       fontSize: 20,
-                      fontWeight: "500"
+                      fontWeight: "500",
+                      marginLeft: 7
                     }}
                   >
                     수위 이상

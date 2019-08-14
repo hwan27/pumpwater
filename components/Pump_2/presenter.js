@@ -82,14 +82,14 @@ const Pump_2 = props => (
             borderRadius: 8,
             padding: 8,
             marginLeft: 5,
-            width: width * 0.75
+            width: width * 0.7
           }}
         >
           <View style={{ flexDirection: "row", marginBottom: 15 }}>
             <Text style={{ color: "#678293", fontSize: 16, fontWeight: "400" }}>
               가동률:
             </Text>
-            <View style={{ width: width * 0.25, marginLeft: 5 }}>
+            <View style={{ width: width * 0.23, marginLeft: 3 }}>
               <Text
                 style={{
                   color: "#00a5dd",
@@ -111,7 +111,7 @@ const Pump_2 = props => (
             >
               전류:
             </Text>
-            <View style={{ width: width * 0.25, marginLeft: 5 }}>
+            <View style={{ width: width * 0.23, marginLeft: 3 }}>
               <Text
                 style={{
                   color: "#00a5dd",
@@ -129,7 +129,7 @@ const Pump_2 = props => (
               주파수:
             </Text>
 
-            <View style={{ width: width * 0.25, marginLeft: 5 }}>
+            <View style={{ width: width * 0.23, marginLeft: 3 }}>
               <Text
                 style={{
                   color: "#00a5dd",
@@ -151,7 +151,7 @@ const Pump_2 = props => (
             >
               전력:
             </Text>
-            <View style={{ width: width * 0.25, marginLeft: 5 }}>
+            <View style={{ width: width * 0.23, marginLeft: 3 }}>
               <Text
                 style={{
                   color: "#00a5dd",
@@ -231,14 +231,14 @@ const Pump_2 = props => (
             borderRadius: 8,
             padding: 8,
             marginLeft: 5,
-            width: width * 0.75
+            width: width * 0.7
           }}
         >
           <View style={{ flexDirection: "row", marginBottom: 15 }}>
             <Text style={{ color: "#678293", fontSize: 16, fontWeight: "400" }}>
               가동률:
             </Text>
-            <View style={{ width: width * 0.25, marginLeft: 5 }}>
+            <View style={{ width: width * 0.23, marginLeft: 3 }}>
               <Text
                 style={{
                   color: "#00a5dd",
@@ -260,7 +260,7 @@ const Pump_2 = props => (
             >
               전류:
             </Text>
-            <View style={{ width: width * 0.25, marginLeft: 5 }}>
+            <View style={{ width: width * 0.23, marginLeft: 3 }}>
               <Text
                 style={{
                   color: "#00a5dd",
@@ -278,7 +278,7 @@ const Pump_2 = props => (
               주파수:
             </Text>
 
-            <View style={{ width: width * 0.25, marginLeft: 5 }}>
+            <View style={{ width: width * 0.23, marginLeft: 3 }}>
               <Text
                 style={{
                   color: "#00a5dd",
@@ -300,7 +300,7 @@ const Pump_2 = props => (
             >
               전력:
             </Text>
-            <View style={{ width: width * 0.25, marginLeft: 5 }}>
+            <View style={{ width: width * 0.23, marginLeft: 3 }}>
               <Text
                 style={{
                   color: "#00a5dd",
@@ -348,15 +348,15 @@ const styles = StyleSheet.create({
   },
   inputBlue: {
     color: "#00a5dd",
-    fontSize: 20,
-    fontWeight: "400",
-    marginRight: 5
+    fontSize: 18,
+    fontWeight: "400"
+    //marginRight: 5
   },
   inputRed: {
     color: "#f7727f",
-    fontSize: 20,
-    fontWeight: "400",
-    marginRight: 5
+    fontSize: 18,
+    fontWeight: "400"
+    //marginRight: 5
   }
 });
 
