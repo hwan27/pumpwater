@@ -215,7 +215,7 @@ const PumpScreen = props => (
             }}
           >
             {props.sectorFeed &&
-            props.sectorFeed.suction_pressure == "" ? null : (
+            props.sectorFeed.suction_pressure == "00.00" ? null : (
               <View style={styles.pressure}>
                 <Text style={styles.pressureFontBig}>흡입압력</Text>
                 <View
@@ -241,7 +241,8 @@ const PumpScreen = props => (
               alignItems: "center"
             }}
           >
-            {props.sectorFeed && props.sectorFeed.discharge == "" ? null : (
+            {props.sectorFeed &&
+            props.sectorFeed.discharge == "00.00" ? null : (
               <View style={styles.pressure}>
                 <Text style={styles.pressureFontBig}>유량</Text>
                 <View
