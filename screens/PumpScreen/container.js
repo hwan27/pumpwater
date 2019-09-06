@@ -71,9 +71,9 @@ class Container extends Component {
   //   await getFeed();
   //   Alert.alert(JSON.stringify(props));
   // }
-  _setModem = () => {
+  _setModem = pressure => {
     const { setModem } = this.props;
-    setModem(this.props.sectorFeed.modem_number, this.state.setPressure);
+    setModem(this.props.sectorFeed.modem_number, pressure);
   };
 
   _connectModem = () => {
@@ -84,13 +84,50 @@ class Container extends Component {
   _updatePressure = async () => {
     const { updatePressure, setModem } = this.props;
     const { setPressure } = this.state;
-    await updatePressure(
-      this.props.navigation.state.params.sector_id,
-      setPressure
-    );
-    this._setModem();
-    this._refresh();
-    Alert.alert("   ", "설정압력이 " + setPressure + "(으)로 변경되었습니다");
+
+    const pressure = setPressure * 100;
+
+    if (setPressure < 100) {
+      if (setPressure.length == 3 && setPressure.slice(1, 2) == ".") {
+        await updatePressure(
+          this.props.navigation.state.params.sector_id,
+          setPressure
+        );
+        this._setModem(pressure);
+        this._refresh();
+        Alert.alert("설정압력이 " + setPressure + "(으)로 변경되었습니다");
+      } else if (
+        setPressure.length == 4 &&
+        (setPressure.slice(1, 2) == "." || setPressure.slice(2, 3) == ".")
+      ) {
+        await updatePressure(
+          this.props.navigation.state.params.sector_id,
+          setPressure
+        );
+        this._setModem(pressure);
+        this._refresh();
+        Alert.alert("설정압력이 " + setPressure + "(으)로 변경되었습니다");
+      } else if (setPressure.length == 5 && setPressure.slice(2, 3) == ".") {
+        await updatePressure(
+          this.props.navigation.state.params.sector_id,
+          setPressure
+        );
+        this._setModem(pressure);
+        this._refresh();
+        Alert.alert("설정압력이 " + setPressure + "(으)로 변경되었습니다");
+      } else {
+        Alert.alert("입력값이 잘못되었습니다");
+      }
+    } else {
+      Alert.alert("입력값이 잘못되었습니다");
+    }
+    // await updatePressure(
+    //   this.props.navigation.state.params.sector_id,
+    //   pressure
+    // );
+    // this._setModem(pressure);
+    // this._refresh();
+    // Alert.alert("   ", "설정압력이 " + setPressure + "(으)로 변경되었습니다");
   };
 
   _setPressure = text => {

@@ -642,7 +642,7 @@ const styles = StyleSheet.create({
     color: "#678293",
     fontSize: 20,
     fontWeight: "400",
-    marginRight: 5
+    marginRight: 5  
   },
   inputBlue: {
     color: "#00a5dd",
