@@ -12,7 +12,6 @@ import {
   Alert,
   ImageBackground
 } from "react-native";
-//import { withNavigation } from "react-navigation";
 
 const { width, height } = Dimensions.get("window");
 
@@ -54,10 +53,10 @@ const Pump_1 = props => (
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "row",
-        paddingRight: 30,
+        paddingRight: 10,
         marginBottom: 20,
         horizontalAlign: "center",
-        marginLeft: 20
+        marginLeft: 15
       }}
     >
       <View
@@ -81,60 +80,60 @@ const Pump_1 = props => (
             backgroundColor: "#fff",
             elevation: 3,
             borderRadius: 8,
-            padding: 20,
-            marginLeft: 5
+            padding: 8,
+            marginLeft: 5,
+            width: width * 0.7
           }}
         >
           <View style={{ flexDirection: "row", marginBottom: 15 }}>
-            <Text style={{ color: "#678293", fontSize: 17, fontWeight: "400" }}>
-              가동률 :
+            <Text style={{ color: "#678293", fontSize: 16, fontWeight: "400" }}>
+              가동률:
             </Text>
-            <View style={{ width: 60 }}>
+            <View style={{ width: width * 0.23, marginLeft: 3 }}>
               <Text
                 style={{
-                  marginLeft: 10,
                   color: "#00a5dd",
-                  fontSize: 17,
+                  fontSize: 16,
                   fontWeight: "400"
                 }}
               >
-                {props.pump_1_operating_rate}
+                {props.pump_1_operating_rate} %
               </Text>
             </View>
 
             <Text
               style={{
-                marginLeft: 10,
+                marginLeft: 3,
                 color: "#678293",
-                fontSize: 17,
+                fontSize: 16,
                 fontWeight: "400"
               }}
             >
-              전류 :
+              전류:
             </Text>
-            <Text
-              style={{
-                marginLeft: 10,
-                color: "#00a5dd",
-                fontSize: 17,
-                fontWeight: "400"
-              }}
-            >
-              {props.pump_1_current} A
-            </Text>
+            <View style={{ width: width * 0.23, marginLeft: 3 }}>
+              <Text
+                style={{
+                  color: "#00a5dd",
+                  fontSize: 16,
+                  fontWeight: "400"
+                }}
+              >
+                {props.pump_1_current} A
+              </Text>
+            </View>
           </View>
 
           <View style={{ flexDirection: "row" }}>
-            <Text style={{ color: "#678293", fontSize: 17, fontWeight: "400" }}>
-              주파수 :
+            <Text style={{ color: "#678293", fontSize: 16, fontWeight: "400" }}>
+              주파수:
             </Text>
 
-            <View style={{ width: 60 }}>
+            <View style={{ width: width * 0.23, marginLeft: 3 }}>
               <Text
                 style={{
-                  marginLeft: 10,
                   color: "#00a5dd",
-                  fontSize: 17,
+                  fontSize: 16,
                   fontWeight: "400"
                 }}
               >
@@ -144,32 +143,31 @@ const Pump_1 = props => (
 
             <Text
               style={{
-                marginLeft: 10,
+                marginLeft: 3,
                 color: "#678293",
-                fontSize: 17,
+                fontSize: 16,
                 fontWeight: "400"
               }}
             >
-              전력 :
+              전력:
             </Text>
-            <Text
-              style={{
-                marginLeft: 10,
-                color: "#00a5dd",
-                fontSize: 17,
-                fontWeight: "400"
-              }}
-            >
-              {props.pump_1_power} kw
-            </Text>
+            <View style={{ width: width * 0.23, marginLeft: 3 }}>
+              <Text
+                style={{
+                  color: "#00a5dd",
+                  fontSize: 16,
+                  fontWeight: "400"
+                }}
+              >
+                {props.pump_1_power} kw
+              </Text>
+            </View>
           </View>
         </View>
       </View>
-      <View />
     </View>
   </View>
 );
-
 const styles = StyleSheet.create({
   // town: {
   //   width: width * 0.3,
@@ -199,15 +197,15 @@ const styles = StyleSheet.create({
   },
   inputBlue: {
     color: "#00a5dd",
-    fontSize: 20,
-    fontWeight: "400",
-    marginRight: 5
+    fontSize: 18,
+    fontWeight: "400"
+    //marginRight: 5
   },
   inputRed: {
     color: "#f7727f",
-    fontSize: 20,
-    fontWeight: "400",
-    marginRight: 5
+    fontSize: 18,
+    fontWeight: "400"
+    //marginRight: 5
   }
 });
 
