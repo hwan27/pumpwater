@@ -437,6 +437,7 @@ const PumpScreen = props => (
             !props.sectorFeed.pump_4_low_water &&
             props.sectorFeed.pump_1_disorder_a == "0000" &&
             props.sectorFeed.pump_1_disorder_b == "0000" &&
+            props.sectorFeed.pump_2_disorder_a == "0000" &&
             props.sectorFeed.pump_2_disorder_b == "0000" &&
             props.sectorFeed.pump_3_disorder_a == "0000" &&
             props.sectorFeed.pump_3_disorder_b == "0000" &&
